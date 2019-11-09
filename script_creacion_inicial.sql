@@ -20,8 +20,8 @@ create table [NO_SRTA_E_GATOREI].[ROLES](
 ) ON [PRIMARY]
 GO
 create table [NO_SRTA_E_GATOREI].[PERMISOS_ROLES](
-	[ROL_ID] int foreign KEY REFERENCES [NO_SRTA_E_GATOREI].[ROL](ROL_ID) not null,
-	[PERMISO_ID] int foreign KEY REFERENCES [NO_SRTA_E_GATOREI].[PERMISO](PERMISO_ID) not null
+	[ROL_ID] int foreign KEY REFERENCES [NO_SRTA_E_GATOREI].[ROLES](ROL_ID) not null,
+	[PERMISO_ID] int foreign KEY REFERENCES [NO_SRTA_E_GATOREI].[PERMISOS](PERMISO_ID) not null
 ) ON [PRIMARY]
 GO
 create table [NO_SRTA_E_GATOREI].[USUARIOS](
@@ -35,8 +35,8 @@ create table [NO_SRTA_E_GATOREI].[USUARIOS](
 ) ON [PRIMARY]
 GO
 create table [NO_SRTA_E_GATOREI].[USUARIOS_ROLES](
-	[ROL_ID] int foreign KEY REFERENCES [NO_SRTA_E_GATOREI].[ROL](ROL_ID) not null,
-	[USUARIO_ID] int foreign KEY REFERENCES [NO_SRTA_E_GATOREI].[USUARIO](USUARIO_ID) not null
+	[ROL_ID] int foreign KEY REFERENCES [NO_SRTA_E_GATOREI].[ROLES](ROL_ID) not null,
+	[USUARIO_ID] int foreign KEY REFERENCES [NO_SRTA_E_GATOREI].[USUARIOS](USUARIO_ID) not null
 ) ON [PRIMARY]
 GO
 create table [NO_SRTA_E_GATOREI].[DIRECCIONES](
@@ -54,8 +54,8 @@ create table [NO_SRTA_E_GATOREI].[CLIENTES](
 	[MAIL] [nvarchar](255) not null,
 	[TELEFONO] [numeric](18, 0) not null,
 	[FECHA_NACIMIENTO] [DATETIME] not null,
-	[USUARIO_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[USUARIO](USUARIO_ID),
-	[DIRECCION_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[DIRECCION](DIRECCION_ID)
+	[USUARIO_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[USUARIOS](USUARIO_ID),
+	[DIRECCION_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[DIRECCIONES](DIRECCION_ID)
 ) ON [PRIMARY]
 GO
 create table [NO_SRTA_E_GATOREI].[PROVEEDORES](
@@ -66,8 +66,8 @@ create table [NO_SRTA_E_GATOREI].[PROVEEDORES](
 	[RUBRO] [nvarchar](100) not null,
 	[MAIL] [nvarchar](255) not null,
 	[TELEFONO] [numeric](18, 0) not null,
-	[USUARIO_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[USUARIO](USUARIO_ID),
-	[DIRECCION_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[DIRECCION](DIRECCION_ID)
+	[USUARIO_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[USUARIOS](USUARIO_ID),
+	[DIRECCION_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[DIRECCIONES](DIRECCION_ID)
 ) ON [PRIMARY]
 GO
 create table [NO_SRTA_E_GATOREI].[TARJETAS](
@@ -81,8 +81,8 @@ create table [NO_SRTA_E_GATOREI].[CREDITOS](
 	[FECHA] datetime not null,
 	[TIPO_PAGO] [nvarchar](100) not null,
 	[MONTO] [numeric](18, 2) not null,
-	[CLIENTE_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[CLIENTE](CLIENTE_ID),
-	[TARJETA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[TARJETA](TARJETA_ID)
+	[CLIENTE_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[CLIENTES](CLIENTE_ID),
+	[TARJETA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[TARJETAS](TARJETA_ID)
 ) ON [PRIMARY]
 GO
 create table [NO_SRTA_E_GATOREI].[OFERTAS](
@@ -100,15 +100,15 @@ create table [NO_SRTA_E_GATOREI].[OFERTAS](
 GO
 create table [NO_SRTA_E_GATOREI].[CONSUMOS_CUPONES](
 	[CONSUMO_CUPON_ID] int IDENTITY(1,1) primary key,
-	[OFERTA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[OFERTA](OFERTA_ID),
-	[CLIENTE_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[CLIENTE](CLIENTE_ID),
+	[OFERTA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[OFERTAS](OFERTA_ID),
+	[CLIENTE_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[CLIENTES](CLIENTE_ID),
 	[FECHA_CONSUMO] [datetime] not null
 ) ON [PRIMARY]
 GO
 create table [NO_SRTA_E_GATOREI].[COMPRAS](
 	[COMPRA_ID] int IDENTITY(1,1) primary key,
-	[OFERTA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[OFERTA](OFERTA_ID),
-	[CLIENTE_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[CLIENTE](CLIENTE_ID),
+	[OFERTA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[OFERTAS](OFERTA_ID),
+	[CLIENTE_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[CLIENTES](CLIENTE_ID),
 	[FECHA_COMPRA] [datetime] not null
 ) ON [PRIMARY]
 GO
@@ -118,7 +118,7 @@ create table [NO_SRTA_E_GATOREI].[FACTURAS](
 ) ON [PRIMARY]
 GO
 create table [NO_SRTA_E_GATOREI].[FACTURAS_COMPRAS](
-	[FACTURA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[FACTURA](FACTURA_ID),
-	[COMPRA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[COMPRA](COMPRA_ID)
+	[FACTURA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[FACTURAS](FACTURA_ID),
+	[COMPRA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[COMPRAS](COMPRA_ID)
 ) ON [PRIMARY] 
 GO
