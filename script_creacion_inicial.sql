@@ -54,7 +54,7 @@ create table [NO_SRTA_E_GATOREI].[CLIENTES](
 	[MAIL] [nvarchar](255) not null,
 	[TELEFONO] [numeric](18, 0) not null,
 	[FECHA_NACIMIENTO] [DATETIME] not null,
-	[USUARIO_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[USUARIOS](USUARIO_ID),
+	[USUARIO_ID] int foreign key REFERENCES [NO_SRTA_E_GATOREI].[USUARIOS](USUARIO_ID),
 	[DIRECCION_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[DIRECCIONES](DIRECCION_ID)
 ) ON [PRIMARY]
 GO
@@ -62,11 +62,11 @@ create table [NO_SRTA_E_GATOREI].[PROVEEDORES](
 	[PROVEEDOR_ID] int IDENTITY(1,1) primary key,
 	[CUIT] [nvarchar](20) unique not null,
 	[RAZON_SOCIAL] [nvarchar](255) unique not null,
-	[NOMBRE_CONTACTO] [nvarchar](255) not null,
+	[NOMBRE_CONTACTO] [nvarchar](255),
 	[RUBRO] [nvarchar](100) not null,
-	[MAIL] [nvarchar](255) not null,
+	[MAIL] [nvarchar](255) ,
 	[TELEFONO] [numeric](18, 0) not null,
-	[USUARIO_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[USUARIOS](USUARIO_ID),
+	[USUARIO_ID] int foreign key REFERENCES [NO_SRTA_E_GATOREI].[USUARIOS](USUARIO_ID),
 	[DIRECCION_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[DIRECCIONES](DIRECCION_ID)
 ) ON [PRIMARY]
 GO
@@ -108,17 +108,17 @@ GO
 create table [NO_SRTA_E_GATOREI].[COMPRAS](
 	[COMPRA_ID] int IDENTITY(1,1) primary key,
 	[OFERTA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[OFERTAS](OFERTA_ID),
-	[CLIENTE_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[CLIENTES](CLIENTE_ID),
-	[FECHA_COMPRA] [datetime] not null
-) ON [PRIMARY]
-GO
-create table [NO_SRTA_E_GATOREI].[FACTURAS](
-	[FACTURA_ID] int IDENTITY(1,1) primary key,
-	[IMPORTE] [numeric](18,0)
+	[CLIENTE_ID] int not null foreig,0)
 ) ON [PRIMARY]
 GO
 create table [NO_SRTA_E_GATOREI].[FACTURAS_COMPRAS](
 	[FACTURA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[FACTURAS](FACTURA_ID),
 	[COMPRA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[COMPRAS](COMPRA_ID)
-) ON [PRIMARY] 
+) ON [PRIMARY] n key REFERENCES [NO_SRTA_E_GATOREI].[CLIENTES](CLIENTE_ID),
+	[FECHA_COMPRA] [datetime] not null
+) ON [PRIMARY]
+GO
+create table [NO_SRTA_E_GATOREI].[FACTURAS](
+	[FACTURA_ID] int IDENTITY(1,1) primary key,
+	[IMPORTE] [numeric](1
 GO
