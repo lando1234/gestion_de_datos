@@ -16,6 +16,16 @@ INSERT INTO [NO_SRTA_E_GATOREI].[DIRECCIONES]
 	GROUP BY Cli_Direccion, Cli_Ciudad 
 GO
 
+INSERT INTO [NO_SRTA_E_GATOREI].[DIRECCIONES]
+           ([DIRECCION]
+           ,[CIUDAD]
+           ,[CODIGO_POSTAL])
+    SELECT Provee_Dom, Provee_Ciudad , NULL 
+    FROM [gd_esquema].[Maestra]
+	WHERE Provee_Dom IS NOT NULL
+	GROUP BY Provee_Dom, Provee_Ciudad 
+GO
+
 
 INSERT INTO [NO_SRTA_E_GATOREI].[CLIENTES]
            ([DNI]
@@ -40,8 +50,26 @@ INSERT INTO [NO_SRTA_E_GATOREI].[PROVEEDORES]
            ,[TELEFONO]
            ,[USUARIO_ID]
            ,[DIRECCION_ID])
-    SELECT m.Provee_CUIT, m.Provee_RS, NULL, m.Provee_Rubro,NULL, m.Provee_Telefono, NULL, d.DIRECCION_ID
+    SELECT m.Provee_CUIT, m.Provee_RS, NULL, m.Provee_Rubro,NULL, m.Provee_Telefono, NULL , d.DIRECCION_ID
 	FROM [gd_esquema].[Maestra] m LEFT JOIN [NO_SRTA_E_GATOREI].[DIRECCIONES] d ON m.Provee_Dom = d.DIRECCION
-    WHERE Provee_CUIT IS NOT NULL -- TODO revisar esto, sino trae la primer row null y rompe
+    WHERE Provee_CUIT IS NOT NULL -- TODO revisar esto, sino trae la primer row null y rompe, creo que es porque hay rows sin proveedores y las agrupa en null
 	GROUP BY Provee_CUIT, Provee_RS,Provee_Rubro, Provee_Telefono, d.DIRECCION_ID
+GO
+
+INSERT INTO [NO_SRTA_E_GATOREI].[OFERTAS]
+           ([PRECIO_LISTA]
+           ,[PRECIO_OFERTA]
+           ,[FECHA_PUBLICACION]
+           ,[FECHA_VENCIMIENDO]
+           ,[CANTIDAD]
+           ,[DESCRIPCION]
+           ,[FECHA_COMPRA]
+           ,[CODIGO]
+           ,[ENTREGADO])
+    SELECT Oferta_Precio, Oferta_Precio_Ficticio, Oferta_Fecha, Oferta_Fecha_Venc, Oferta_Cantidad, Oferta_Descripcion, 
+	Oferta_Fecha_Compra, Oferta_Codigo, NULL
+	FROM [gd_esquema].[Maestra]
+	WHERE Oferta_Codigo IS NOT NULL --mismo que arriba
+	GROUP BY Oferta_Precio, Oferta_Precio_Ficticio, Oferta_Fecha, Oferta_Fecha_Venc, Oferta_Cantidad, Oferta_Descripcion, 
+	Oferta_Fecha_Compra, Oferta_Codigo
 GO
