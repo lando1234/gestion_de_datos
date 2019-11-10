@@ -108,17 +108,16 @@ GO
 create table [NO_SRTA_E_GATOREI].[COMPRAS](
 	[COMPRA_ID] int IDENTITY(1,1) primary key,
 	[OFERTA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[OFERTAS](OFERTA_ID),
-	[CLIENTE_ID] int not null foreig,0)
-) ON [PRIMARY]
-GO
-create table [NO_SRTA_E_GATOREI].[FACTURAS_COMPRAS](
-	[FACTURA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[FACTURAS](FACTURA_ID),
-	[COMPRA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[COMPRAS](COMPRA_ID)
-) ON [PRIMARY] n key REFERENCES [NO_SRTA_E_GATOREI].[CLIENTES](CLIENTE_ID),
+	[CLIENTE_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[CLIENTES](CLIENTE_ID),
 	[FECHA_COMPRA] [datetime] not null
 ) ON [PRIMARY]
 GO
 create table [NO_SRTA_E_GATOREI].[FACTURAS](
 	[FACTURA_ID] int IDENTITY(1,1) primary key,
-	[IMPORTE] [numeric](1
+	[IMPORTE] [numeric](1,0) ) on [PRIMARY]
+GO
+create table [NO_SRTA_E_GATOREI].[FACTURAS_COMPRAS](
+	[FACTURA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[FACTURAS](FACTURA_ID),
+	[COMPRA_ID] int not null foreign key REFERENCES [NO_SRTA_E_GATOREI].[COMPRAS](COMPRA_ID)
+) ON [PRIMARY]
 GO
