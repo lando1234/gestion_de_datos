@@ -73,3 +73,16 @@ INSERT INTO [NO_SRTA_E_GATOREI].[OFERTAS]
 	GROUP BY Oferta_Precio, Oferta_Precio_Ficticio, Oferta_Fecha, Oferta_Fecha_Venc, Oferta_Cantidad, Oferta_Descripcion, 
 	Oferta_Fecha_Compra, Oferta_Codigo
 GO
+
+
+INSERT INTO [NO_SRTA_E_GATOREI].[COMPRAS]
+           ([OFERTA_ID]
+           ,[CLIENTE_ID]
+           ,[FECHA_COMPRA])
+    SELECT o.OFERTA_ID, c.CLIENTE_ID,  o.FECHA_COMPRA 
+	FROM [gd_esquema].[Maestra] m JOIN [NO_SRTA_E_GATOREI].[OFERTAS] o ON m.Oferta_Codigo = o.CODIGO 
+	JOIN [NO_SRTA_E_GATOREI].[CLIENTEs] c ON m.Cli_Dni = c.DNI
+	 
+GO
+		   
+		   
