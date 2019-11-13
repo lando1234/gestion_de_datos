@@ -68,6 +68,7 @@
     <Compile Include="ComprarOferta\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Connectors\OfertasDB.cs" />
     <Compile Include="CragaCredito\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +81,10 @@
     <Compile Include="CrearOferta\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Excepciones\CancelException.cs" />
+    <Compile Include="Excepciones\UnavailableException.cs" />
+    <Compile Include="Excepciones\PasswordMismatchExceptions.cs" />
+    <Compile Include="Excepciones\NoResultsException.cs" />
     <Compile Include="Facturar\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

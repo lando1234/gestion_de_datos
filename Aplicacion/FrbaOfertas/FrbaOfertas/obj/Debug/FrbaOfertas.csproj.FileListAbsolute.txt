@@ -7,3 +7,6 @@ C:\Users\matias\Downloads\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfert
 C:\Users\matias\Downloads\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
 C:\Users\matias\Downloads\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
 C:\Users\matias\Downloads\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Users\ndeberuti\Documents\UTN\GDD\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\ndeberuti\Documents\UTN\GDD\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
+C:\Users\ndeberuti\Documents\UTN\GDD\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
