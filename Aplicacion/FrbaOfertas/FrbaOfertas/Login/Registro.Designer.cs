@@ -1,6 +1,6 @@
-﻿namespace FrbaOfertas.AbmRol
+﻿namespace FrbaOfertas.Login
 {
-    partial class Form1
+    partial class Registro
     {
         /// <summary>
         /// Required designer variable.
