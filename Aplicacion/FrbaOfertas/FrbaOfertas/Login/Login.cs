@@ -17,15 +17,6 @@ namespace FrbaOfertas
             InitializeComponent();
         }
 
-        private void ButtonLoginClick(object sender, EventArgs e)
-        {
-            if (FrbaOfertas.Utils.ProtocoloLogin.protocoloLogin(textBoxLoginUser.Text, textBoxLoginPassword.Text))
-            {
-                FrbaOfertas.Modelo.Usuario.IngresoUsuario(textBoxLoginUser.Text, textBoxLoginPassword.Text);
-
-            }
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -44,6 +35,17 @@ namespace FrbaOfertas
         private void labelIniciarSesion_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+
+            Console.WriteLine("LOGIN BUTTON CLICK");
+
+            if (FrbaOfertas.Utils.ProtocoloLogin.protocoloLogin(textBoxLoginUser.Text, textBoxLoginPassword.Text))
+            {
+               FrbaOfertas.Modelo.Usuario.IngresoUsuario(textBoxLoginUser.Text, textBoxLoginPassword.Text);
+            }
         }
     }
 }

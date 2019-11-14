@@ -14,7 +14,7 @@ namespace FrbaOfertas.ConectorDB
         {
             SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
 
-            return 1;
+            return -1;
 
         }
         public static void resetearCant_login_Fallido(string username)

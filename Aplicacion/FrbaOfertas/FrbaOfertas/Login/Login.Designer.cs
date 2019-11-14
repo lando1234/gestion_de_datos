@@ -63,7 +63,7 @@
             this.labelIniciarSesion.Location = new System.Drawing.Point(130, 70);
             this.labelIniciarSesion.Name = "labelIniciarSesion";
             this.labelIniciarSesion.Size = new System.Drawing.Size(70, 13);
-            this.labelIniciarSesion.TabIndex = 9;
+            this.labelIniciarSesion.TabIndex = 0;
             this.labelIniciarSesion.Text = "Iniciar Sesion";
             this.labelIniciarSesion.Click += new System.EventHandler(this.labelIniciarSesion_Click);
             // 
@@ -104,6 +104,7 @@
             this.buttonLogin.TabIndex = 3;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // textBoxLoginPassword
             // 
@@ -111,7 +112,7 @@
             this.textBoxLoginPassword.Name = "textBoxLoginPassword";
             this.textBoxLoginPassword.PasswordChar = '*';
             this.textBoxLoginPassword.Size = new System.Drawing.Size(200, 20);
-            this.textBoxLoginPassword.TabIndex = 14;
+            this.textBoxLoginPassword.TabIndex = 2;
             // 
             // Login
             // 
