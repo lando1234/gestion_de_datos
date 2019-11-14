@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FrbaOfertas
+namespace FrbaOfertas.AbmRol
 {
-    public partial class Form1 : Form
+    public partial class ModificacionRol : Form
     {
-        public Form1()
+        public ModificacionRol()
         {
             InitializeComponent();
         }

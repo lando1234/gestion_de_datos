@@ -56,23 +56,59 @@
     <Compile Include="AbmProveedor\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\Form1.cs">
+    <Compile Include="AbmRol\AltaRol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmRol\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmRol\AltaRol.Designer.cs">
+      <DependentUpon>AltaRol.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmRol\BajaRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\BajaRol.Designer.cs">
+      <DependentUpon>BajaRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\ModificacionRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ModificacionRol.Designer.cs">
+      <DependentUpon>ModificacionRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\ListaRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ListaRoles.Designer.cs">
+      <DependentUpon>ListaRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\MenuRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\MenuRol.Designer.cs">
+      <DependentUpon>MenuRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDeDatos\Conexion.cs" />
+    <Compile Include="ConectorDB\FuncionesCliente.cs" />
+    <Compile Include="ConectorDB\FuncionesProvedores.cs" />
+    <Compile Include="ConectorDB\FuncionesUsername.cs" />
+    <Compile Include="Config\configurationsDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>configurationsDb.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Roles\Provedor.cs" />
+    <Compile Include="Modelo\Roles\Cliente.cs" />
+    <Compile Include="Modelo\Roles\Rol.cs" />
+    <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="ComprarOferta\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ComprarOferta\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Connectors\OfertasDB.cs" />
-    <Compile Include="CragaCredito\Form1.cs">
+    <Compile Include="CargarCredito\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CragaCredito\Form1.Designer.cs">
+    <Compile Include="CargarCredito\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="CrearOferta\Form1.cs">
@@ -91,11 +127,11 @@
     <Compile Include="Facturar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="LoginForm\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="LoginForm\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="ListadoEstadistico\Form1.cs">
       <SubType>Form</SubType>
@@ -105,6 +141,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Validador.cs" />
+    <Compile Include="Utils\ProtocoloLogin.cs" />
+    <EmbeddedResource Include="AbmCliente\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\AltaRol.resx">
+      <DependentUpon>AltaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\BajaRol.resx">
+      <DependentUpon>BajaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\ModificacionRol.resx">
+      <DependentUpon>ModificacionRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\ListaRoles.resx">
+      <DependentUpon>ListaRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\MenuRol.resx">
+      <DependentUpon>MenuRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -114,6 +173,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Config\configurationsDb.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>configurationsDb.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -128,7 +191,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
