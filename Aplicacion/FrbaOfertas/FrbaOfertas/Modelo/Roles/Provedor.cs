@@ -36,7 +36,7 @@ namespace FrbaOfertas.Modelo.Roles
 
         public override void Instertar()
         {
-            FrbaOfertas.ConectorDB.FuncionesProveedor.altaProveedor(this);
+            //FrbaOfertas.ConectorDB.FuncionesProveedor.altaProveedor(this);
         }
         public override void Modificar()
         {

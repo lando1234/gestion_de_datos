@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas
 {
-    public partial class Login : Form
+    public partial class LoginForm : Form
     {
-        public Login()
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -46,6 +46,12 @@ namespace FrbaOfertas
             {
                FrbaOfertas.Modelo.Usuario.IngresoUsuario(textBoxLoginUser.Text, textBoxLoginPassword.Text);
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrbaOfertas.RegistroForm.Registro dialog = new FrbaOfertas.RegistroForm.Registro();
+            dialog.ShowDialog(this);
         }
     }
 }

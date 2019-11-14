@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FrbaOfertas.Login
+namespace FrbaOfertas.RegistroForm
 {
     public partial class Registro : Form
     {
         public Registro()
         {
             InitializeComponent();
+        }
+
+        private void botonCancelar(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -35,7 +35,7 @@ namespace FrbaOfertas.Modelo.Roles
         }
         public override void Instertar()
         {
-            FrbaOfertas.ConectorDB.FuncionesCliente.altaCliente(this);
+            //FrbaOfertas.ConectorDB.FuncionesCliente.altaCliente(this);
 
         }
 

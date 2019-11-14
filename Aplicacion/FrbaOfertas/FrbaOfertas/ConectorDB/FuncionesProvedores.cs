@@ -43,12 +43,9 @@ namespace FrbaOfertas.ConectorDB
 
         }
             
-        }
 
         public static void crearRubro(string Rubro)
         {
-
-
         }
 
         public static Boolean existeRubro(string rubro)

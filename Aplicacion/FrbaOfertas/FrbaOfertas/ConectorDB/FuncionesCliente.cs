@@ -46,7 +46,7 @@ namespace FrbaOfertas.ConectorDB
 
         }
            
-        }
+        
         public static Cliente traerCliente(int id)
         {
             return null;

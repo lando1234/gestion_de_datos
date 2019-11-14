@@ -1,4 +1,4 @@
-﻿namespace FrbaOfertas.Login
+﻿namespace FrbaOfertas.RegistroForm
 {
     partial class Registro
     {
@@ -61,6 +61,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(204, 85);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(171, 20);
             this.textBox2.TabIndex = 2;
             // 
@@ -68,6 +69,7 @@
             // 
             this.textBox3.Location = new System.Drawing.Point(204, 110);
             this.textBox3.Name = "textBox3";
+            this.textBox3.PasswordChar = '*';
             this.textBox3.Size = new System.Drawing.Size(171, 20);
             this.textBox3.TabIndex = 3;
             // 
@@ -123,6 +125,7 @@
             this.button1.TabIndex = 28;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.botonCancelar);
             // 
             // button2
             // 

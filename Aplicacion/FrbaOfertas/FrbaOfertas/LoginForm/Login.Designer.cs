@@ -1,6 +1,6 @@
 ﻿namespace FrbaOfertas
 {
-    partial class Login
+    partial class LoginForm
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.textBoxLoginPassword = new System.Windows.Forms.TextBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // labelBienvenida
@@ -98,7 +99,7 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(206, 202);
+            this.buttonLogin.Location = new System.Drawing.Point(182, 184);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(75, 23);
             this.buttonLogin.TabIndex = 3;
@@ -114,11 +115,24 @@
             this.textBoxLoginPassword.Size = new System.Drawing.Size(200, 20);
             this.textBoxLoginPassword.TabIndex = 2;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkColor = System.Drawing.Color.Black;
+            this.linkLabel1.Location = new System.Drawing.Point(14, 240);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(60, 13);
+            this.linkLabel1.TabIndex = 14;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Registrarse";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 262);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.textBoxLoginPassword);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelLoginPassword);
@@ -143,6 +157,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.TextBox textBoxLoginPassword;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
