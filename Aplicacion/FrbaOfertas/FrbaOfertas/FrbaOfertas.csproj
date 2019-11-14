@@ -137,7 +137,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RegistroForm\Registro.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+      <DependentUpon>Registro.cs</DependentUpon>
     </Compile>
     <Compile Include="ListadoEstadistico\Form1.cs">
       <SubType>Form</SubType>
