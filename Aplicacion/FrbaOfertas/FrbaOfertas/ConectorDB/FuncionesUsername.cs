@@ -5,17 +5,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using FrbaOfertas.BaseDeDatos;
-
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesUsername
     {
         public static int validLogin(string username, string password)
         {
-            SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            SqlCommand cmd = new SqlCommand("LOGIN", con);
+            cmd.CommandType = CommandType.StoredProcedure;
 
-            return -1;
+            cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = username;
+            cmd.Parameters.Add("@PASSWORD", SqlDbType.VarChar).Value = password;
 
+            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+
+            int result = (int)returnParameter.Value;
+
+            return result;
         }
         public static void resetearCant_login_Fallido(string username)
         {
