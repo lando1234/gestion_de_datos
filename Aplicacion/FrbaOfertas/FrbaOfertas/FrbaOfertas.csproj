@@ -86,6 +86,19 @@
     <Compile Include="AbmRol\MenuRol.Designer.cs">
       <DependentUpon>MenuRol.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseDeDatos\Conexion.cs" />
+    <Compile Include="ConectorDB\FuncionesCliente.cs" />
+    <Compile Include="ConectorDB\FuncionesProvedores.cs" />
+    <Compile Include="ConectorDB\FuncionesUsername.cs" />
+    <Compile Include="Config\configurationsDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>configurationsDb.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Roles\Provedor.cs" />
+    <Compile Include="Modelo\Roles\Cliente.cs" />
+    <Compile Include="Modelo\Roles\Rol.cs" />
+    <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="ComprarOferta\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +137,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Validador.cs" />
+    <Compile Include="Utils\ProtocoloLogin.cs" />
     <EmbeddedResource Include="AbmCliente\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +157,9 @@
     <EmbeddedResource Include="AbmRol\MenuRol.resx">
       <DependentUpon>MenuRol.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -151,6 +169,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Config\configurationsDb.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>configurationsDb.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

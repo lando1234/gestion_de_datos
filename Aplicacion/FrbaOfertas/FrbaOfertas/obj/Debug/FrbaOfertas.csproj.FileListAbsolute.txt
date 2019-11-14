@@ -12,3 +12,4 @@ C:\Users\hp\Desktop\KEVIN\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\bi
 C:\Users\hp\Desktop\KEVIN\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.pdb
 C:\Users\hp\Desktop\KEVIN\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
 C:\Users\hp\Desktop\KEVIN\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Users\hp\Desktop\KEVIN\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Login.resources

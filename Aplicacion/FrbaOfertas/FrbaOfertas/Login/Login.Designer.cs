@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.labelBienvenida = new System.Windows.Forms.Label();
-            this.textBoxLoginPassword = new System.Windows.Forms.TextBox();
             this.textBoxLoginUser = new System.Windows.Forms.TextBox();
             this.labelIniciarSesion = new System.Windows.Forms.Label();
-            this.buttonLogin = new System.Windows.Forms.Button();
             this.labelLoginUser = new System.Windows.Forms.Label();
             this.labelLoginPassword = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonLogin = new System.Windows.Forms.Button();
+            this.textBoxLoginPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelBienvenida
@@ -48,19 +48,12 @@
             this.labelBienvenida.TabIndex = 2;
             this.labelBienvenida.Text = "Bienvenido a Ofertas FRBA";
             // 
-            // textBoxLoginPassword
-            // 
-            this.textBoxLoginPassword.Location = new System.Drawing.Point(133, 158);
-            this.textBoxLoginPassword.Name = "textBoxLoginPassword";
-            this.textBoxLoginPassword.PasswordChar = '*';
-            this.textBoxLoginPassword.Size = new System.Drawing.Size(200, 20);
-            this.textBoxLoginPassword.TabIndex = 2;
-            this.textBoxLoginPassword.TextChanged += new System.EventHandler(this.textBoxLoginPassword_TextChanged);
-            // 
             // textBoxLoginUser
             // 
+            this.textBoxLoginUser.ForeColor = System.Drawing.SystemColors.ControlText;
             this.textBoxLoginUser.Location = new System.Drawing.Point(133, 120);
             this.textBoxLoginUser.Name = "textBoxLoginUser";
+            this.textBoxLoginUser.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxLoginUser.Size = new System.Drawing.Size(200, 20);
             this.textBoxLoginUser.TabIndex = 1;
             // 
@@ -73,15 +66,6 @@
             this.labelIniciarSesion.TabIndex = 9;
             this.labelIniciarSesion.Text = "Iniciar Sesion";
             this.labelIniciarSesion.Click += new System.EventHandler(this.labelIniciarSesion_Click);
-            // 
-            // buttonLogin
-            // 
-            this.buttonLogin.Location = new System.Drawing.Point(206, 202);
-            this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(75, 23);
-            this.buttonLogin.TabIndex = 3;
-            this.buttonLogin.Text = "Login";
-            this.buttonLogin.UseVisualStyleBackColor = true;
             // 
             // labelLoginUser
             // 
@@ -112,19 +96,36 @@
             this.label1.Text = "Bienvenido a FRBA Ofertas";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // FormLogin
+            // buttonLogin
+            // 
+            this.buttonLogin.Location = new System.Drawing.Point(206, 202);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(75, 23);
+            this.buttonLogin.TabIndex = 3;
+            this.buttonLogin.Text = "Login";
+            this.buttonLogin.UseVisualStyleBackColor = true;
+            // 
+            // textBoxLoginPassword
+            // 
+            this.textBoxLoginPassword.Location = new System.Drawing.Point(133, 158);
+            this.textBoxLoginPassword.Name = "textBoxLoginPassword";
+            this.textBoxLoginPassword.PasswordChar = '*';
+            this.textBoxLoginPassword.Size = new System.Drawing.Size(200, 20);
+            this.textBoxLoginPassword.TabIndex = 14;
+            // 
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 262);
+            this.Controls.Add(this.textBoxLoginPassword);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelLoginPassword);
             this.Controls.Add(this.labelLoginUser);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.labelIniciarSesion);
             this.Controls.Add(this.textBoxLoginUser);
-            this.Controls.Add(this.textBoxLoginPassword);
-            this.Name = "FormLogin";
+            this.Name = "Login";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -134,13 +135,13 @@
 
         #endregion
         private System.Windows.Forms.Label labelBienvenida;
-        private System.Windows.Forms.TextBox textBoxLoginPassword;
         private System.Windows.Forms.TextBox textBoxLoginUser;
         private System.Windows.Forms.Label labelIniciarSesion;
-        private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.Label labelLoginUser;
         private System.Windows.Forms.Label labelLoginPassword;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.TextBox textBoxLoginPassword;
     }
 }
 

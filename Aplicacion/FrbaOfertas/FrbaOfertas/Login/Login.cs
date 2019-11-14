@@ -17,6 +17,15 @@ namespace FrbaOfertas
             InitializeComponent();
         }
 
+        private void ButtonLoginClick(object sender, EventArgs e)
+        {
+            if (FrbaOfertas.Utils.ProtocoloLogin.protocoloLogin(textBoxLoginUser.Text, textBoxLoginPassword.Text))
+            {
+                FrbaOfertas.Modelo.Usuario.IngresoUsuario(textBoxLoginUser.Text, textBoxLoginPassword.Text);
+
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
