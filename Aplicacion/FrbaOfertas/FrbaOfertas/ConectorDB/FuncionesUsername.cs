@@ -15,6 +15,7 @@ namespace FrbaOfertas.ConectorDB
         public static int validLogin(string username, string password)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
             SqlCommand cmd = new SqlCommand("LOGIN", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -25,7 +26,7 @@ namespace FrbaOfertas.ConectorDB
             returnParameter.Direction = ParameterDirection.ReturnValue;
 
 
-            con.Open();
+            
             cmd.ExecuteNonQuery();
 
             int result = (int)returnParameter.Value;

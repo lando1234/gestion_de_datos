@@ -55,13 +55,14 @@ namespace FrbaOfertas.ConectorDB
         public static void invertirBajaLogicaRol(int rolID)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
             SqlCommand cmd = new SqlCommand("INVERTIR_BAJA_LOGICA_ROL", con);
 
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@ROL_ID", SqlDbType.VarChar).Value = rolID;
 
-            con.Open();
+            
             cmd.ExecuteNonQuery();
         }
         public static string ObtenerDetalleRol(int Id)

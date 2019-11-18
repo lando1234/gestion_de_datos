@@ -15,6 +15,7 @@ namespace FrbaOfertas.ConectorDB
         public static int altaProveedor(Proveedor proveedor, String username, String password)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
             SqlCommand cmd = new SqlCommand("CREAR_USUARIO_PROVEEDOR", con);
             
             cmd.CommandType = CommandType.StoredProcedure;
@@ -35,7 +36,7 @@ namespace FrbaOfertas.ConectorDB
             returnParameter.Direction = ParameterDirection.ReturnValue;
 
 
-            con.Open();
+            
             cmd.ExecuteNonQuery();
 
             int result = (int)returnParameter.Value;
@@ -43,7 +44,7 @@ namespace FrbaOfertas.ConectorDB
             return result;
 
         }
-
+/*
         public static Boolean facturarProveedor(int proveedorID, DateTime fechaDesde, DateTime fechaHasta ,Factura factura)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
@@ -62,19 +63,21 @@ namespace FrbaOfertas.ConectorDB
 
             return false;
         }
+ */
         public static void BajaLogicaProveedor(int proveedorID)
         { 
         }
         public static void invertirBajaLogicaProveedor(int proveedorID)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
             SqlCommand cmd = new SqlCommand("INVERTIR_BAJA_LOGICA_PROVEEDOR", con);
 
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@PROVEEDOR_ID", SqlDbType.VarChar).Value = proveedorID;
 
-            con.Open();
+            
             cmd.ExecuteNonQuery();
         }
     
