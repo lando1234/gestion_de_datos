@@ -16,11 +16,11 @@ namespace FrbaOfertas.ConectorDB
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("LOGIN", con);
+            SqlCommand cmd = new SqlCommand("LOGIN_USUARIO", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = username;
-            cmd.Parameters.Add("@PASSWORD", SqlDbType.VarChar).Value = password;
+            cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = password;
 
             var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
             returnParameter.Direction = ParameterDirection.ReturnValue;
@@ -31,31 +31,42 @@ namespace FrbaOfertas.ConectorDB
 
             int result = (int)returnParameter.Value;
 
+            
+
             return result;
         }
         public static void resetearCant_login_Fallido(string username)
         {
-            //SqlConnection conn = new SqlConnection(Conexion.getStringConnection());
-            //SqlCommand command = conn.CreateCommand();
-            //command.CommandText = "HPBC.pr_resetear_cant_login_fallido";
-            //command.CommandType = CommandType.StoredProcedure;
-            //command.Parameters.AddWithValue("@username", SqlDbType.VarChar).Value = username;
-            //command.Connection = conn;
-            //command.Connection.Open();
-            //command.ExecuteNonQuery();
-            //command.Connection.Close();
-            //conn.Close();
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE USUARIOS SET LOGIN_FALLIDO = 0 WHERE USERNAME ="+ username, con);
+            cmd.ExecuteNonQuery();
+
 
         }
         public static void aumentarCant_login_Fallido(string username)
         {
-           
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE USUARIOS SET LOGIN_FALLIDO = LOGIN_FALLIDO + 1 WHERE USERNAME =" + username, con);
+            cmd.ExecuteNonQuery();
 
         }
 
-        public static void recuperar_usuario_id(string username, string pass)
+        public static int recuperar_usuario_id(string username, string pass)
         {
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM USUARIOS WHERE USERNAME =" + username + " AND PASS =" + pass, con);
 
+            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+
+            cmd.ExecuteNonQuery();
+
+            int result = (int)returnParameter.Value;
+
+            return result;
             
         }
 

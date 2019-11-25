@@ -51,18 +51,17 @@ namespace FrbaOfertas.ConectorDB
         public static void BajaLogicaRol(int idRol)
         {
 
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE ROLES SET BAJA_LOGICA = 1 WHERE ROL_ID =" + idRol, con);
+            cmd.ExecuteNonQuery();
+
         }
         public static void invertirBajaLogicaRol(int rolID)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("INVERTIR_BAJA_LOGICA_ROL", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.Add("@ROL_ID", SqlDbType.VarChar).Value = rolID;
-
-            
+            SqlCommand cmd = new SqlCommand("UPDATE ROLES SET BAJA_LOGICA = 0 WHERE ROL_ID =" + rolID, con);
             cmd.ExecuteNonQuery();
         }
         public static string ObtenerDetalleRol(int Id)

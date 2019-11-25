@@ -65,7 +65,11 @@ namespace FrbaOfertas.ConectorDB
         }
  */
         public static void BajaLogicaProveedor(int proveedorID)
-        { 
+        {
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE PROVEEDORES SET LOGIN_FALLIDO = 1 WHERE PROVEEDOR_ID =" + proveedorID, con);
+            cmd.ExecuteNonQuery();
         }
         public static void invertirBajaLogicaProveedor(int proveedorID)
         {

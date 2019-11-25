@@ -88,7 +88,12 @@ namespace FrbaOfertas.ConectorDB
 
         }
         public static void BajaLogicaCliente(int clienteID)
-        { }
+        {
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE CLIENTES SET BAJA_LOGICA = 1 WHERE CLIENTE_ID =" + clienteID, con);
+            cmd.ExecuteNonQuery();
+        }
         public static void invertirBajaLogicaCliente(int clienteID)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
