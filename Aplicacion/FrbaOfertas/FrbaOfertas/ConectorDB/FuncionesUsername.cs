@@ -39,7 +39,7 @@ namespace FrbaOfertas.ConectorDB
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE USUARIOS SET LOGIN_FALLIDO = 0 WHERE USERNAME ="+ username, con);
+            SqlCommand cmd = new SqlCommand("UPDATE USUARIOS SET LOGIN_FALLIDO = 0 WHERE USERNAME ='"+ username +"'", con);
             cmd.ExecuteNonQuery();
 
 
@@ -48,24 +48,38 @@ namespace FrbaOfertas.ConectorDB
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE USUARIOS SET LOGIN_FALLIDO = LOGIN_FALLIDO + 1 WHERE USERNAME =" + username, con);
+            SqlCommand cmd = new SqlCommand("UPDATE USUARIOS SET LOGIN_FALLIDO = LOGIN_FALLIDO + 1 WHERE USERNAME ='" + username +"'", con);
             cmd.ExecuteNonQuery();
 
         }
 
         public static int recuperar_usuario_id(string username, string pass)
         {
+            int result = 0;
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM USUARIOS WHERE USERNAME =" + username + " AND PASS =" + pass, con);
-
+            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].USUARIOS WHERE USERNAME ='" + username + "' AND PASS ='" + pass + "'", con);
+            
+            
+            /*
             var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
-            returnParameter.Direction = ParameterDirection.ReturnValue;
+            returnParameter.Direction = ParameterDirection.ReturnValue;*/
 
-            cmd.ExecuteNonQuery();
+            SqlDataReader registros = cmd.ExecuteReader();
+            if (registros.HasRows)
+            {
+                while (registros.Read())
+                {
+                    result = registros.GetInt32(0);
 
-            int result = (int)returnParameter.Value;
+                }
 
+            }
+            else {
+                Console.WriteLine("EL usuario no existe");
+            }
+            //int result = (int)returnParameter.Value;
+            registros.Close();
             return result;
             
         }
@@ -77,12 +91,35 @@ namespace FrbaOfertas.ConectorDB
         }
         public static Boolean existeUsername(string username)
         {
-            return false;
+           SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].USUARIOS WHERE USERNAME ='" + username + "'", con);
+            
+            
+            /*
+            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;*/
+
+            SqlDataReader registros = cmd.ExecuteReader();
+            
+            return registros.HasRows;
+            
+            
         }
 
         public static void GuardarUsuario(String usuario, String pass)
-        {
-            
+        {/*
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("LOGIN_USUARIO", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = usuario;
+            cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = pass;
+
+            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            */
         }
 
         public static void insertarRolxUsuario(string Rol, string usuario)

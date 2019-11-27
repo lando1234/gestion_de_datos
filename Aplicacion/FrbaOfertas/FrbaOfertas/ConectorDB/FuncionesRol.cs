@@ -39,7 +39,18 @@ namespace FrbaOfertas.ConectorDB
         }
         public static Boolean existeRol(string rol)
         {
-            return false;
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].ROLES WHERE NOMBRE ='" + rol + "'", con);
+
+
+            /*
+            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;*/
+
+            SqlDataReader registros = cmd.ExecuteReader();
+
+            return registros.HasRows;
 
         }
 

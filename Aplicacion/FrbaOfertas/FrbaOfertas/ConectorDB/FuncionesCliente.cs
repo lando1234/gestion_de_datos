@@ -78,20 +78,42 @@ namespace FrbaOfertas.ConectorDB
 
         public static Boolean existeDNI(string dni)
         {
-            return false;
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE DNI ='" + dni + "'", con);
+
+
+            /*
+            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;*/
+
+            SqlDataReader registros = cmd.ExecuteReader();
+
+            return registros.HasRows;
 
         }
 
         public static Boolean existeMail(string mail)
         {
-            return false;
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE MAIL ='" + mail + "'", con);
+
+
+            /*
+            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;*/
+
+            SqlDataReader registros = cmd.ExecuteReader();
+
+            return registros.HasRows;
 
         }
         public static void BajaLogicaCliente(int clienteID)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE CLIENTES SET BAJA_LOGICA = 1 WHERE CLIENTE_ID =" + clienteID, con);
+            SqlCommand cmd = new SqlCommand("UPDATE CLIENTES SET BAJA_LOGICA = 1 WHERE CLIENTE_ID ='" + clienteID + "'", con);
             cmd.ExecuteNonQuery();
         }
         public static void invertirBajaLogicaCliente(int clienteID)
