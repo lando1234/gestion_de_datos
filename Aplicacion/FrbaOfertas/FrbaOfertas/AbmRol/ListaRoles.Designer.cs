@@ -91,8 +91,6 @@
             // checkBoxHabilitado
             // 
             this.checkBoxHabilitado.AutoSize = true;
-            this.checkBoxHabilitado.Checked = true;
-            this.checkBoxHabilitado.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxHabilitado.Location = new System.Drawing.Point(289, 58);
             this.checkBoxHabilitado.Name = "checkBoxHabilitado";
             this.checkBoxHabilitado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -151,7 +149,7 @@
             this.textId.Size = new System.Drawing.Size(185, 20);
             this.textId.TabIndex = 0;
             // 
-            // Form1
+            // ListaRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -160,7 +158,7 @@
             this.Controls.Add(this.buttonBuscar);
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "ListaRoles";
             this.Text = "Listar Roles";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRol1)).EndInit();
             this.groupBox1.ResumeLayout(false);

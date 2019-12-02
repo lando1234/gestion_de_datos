@@ -16,5 +16,6 @@ namespace FrbaOfertas.AbmRol
         {
             InitializeComponent();
         }
+
     }
 }
