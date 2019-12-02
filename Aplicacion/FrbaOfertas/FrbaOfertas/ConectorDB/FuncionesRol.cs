@@ -43,12 +43,10 @@ namespace FrbaOfertas.ConectorDB
                 lista.Add(reader["PERMISO_DESC"].ToString());
 
             }
+
             return lista;
 
         }
-
-       
-      
 
         public static Boolean existeRol(string rol)
         {

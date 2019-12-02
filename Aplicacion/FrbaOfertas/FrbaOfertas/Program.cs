@@ -20,20 +20,9 @@ namespace FrbaOfertas
         [STAThread]
         static void Main()
         {
-          Application.EnableVisualStyles();
-          Application.SetCompatibleTextRenderingDefault(false);
-        //  Application.Run(new LoginForm());
-          
-             List<String> lista = new List<String>();
-
-
-             lista = FuncionesRol.ObtenerFuncionalidades();
-          Console.WriteLine("Element[{0}]",lista[0]);
-            
-        
-           
-
-
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new AbmRol.AltaRol());
         }
     }
 }

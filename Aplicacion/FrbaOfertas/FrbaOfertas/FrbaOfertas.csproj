@@ -89,6 +89,7 @@
     <Compile Include="BaseDeDatos\Conexion.cs" />
     <Compile Include="ConectorDB\FuncionesCliente.cs" />
     <Compile Include="ConectorDB\FuncionesProvedores.cs" />
+    <Compile Include="ConectorDB\FuncionesRol.cs" />
     <Compile Include="ConectorDB\FuncionesUsername.cs" />
     <Compile Include="Config\configurationsDb.Designer.cs">
       <AutoGen>True</AutoGen>

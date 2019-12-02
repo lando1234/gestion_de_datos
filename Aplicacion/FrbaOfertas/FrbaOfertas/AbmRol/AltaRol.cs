@@ -19,12 +19,30 @@ namespace FrbaOfertas.AbmRol
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.cargarComboFunciones();
         }
 
-        private void labelFuncionalidad_Click(object sender, EventArgs e)
+        private void cargarComboFunciones()
         {
+            input_funcionalidades.Items.Clear();
+            foreach (String listing in FrbaOfertas.ConectorDB.FuncionesRol.ObtenerFuncionalidades())
+            {
+                input_funcionalidades.Items.Add(listing);
+            }
+        }
 
+        private void guardar(object sender, EventArgs e)
+        {
+            List<String> funcionalidadesSeleccionadas = new List<string>();
+
+            for (int i = 0; i < input_funcionalidades.Items.Count; i++){
+                if (input_funcionalidades.GetItemChecked(i)){
+                    string str = (string)input_funcionalidades.Items[i];
+                    funcionalidadesSeleccionadas.Add(str);
+                }
+            }
+
+            ConectorDB.FuncionesRol.GuardarRol(input_nombre.Text, funcionalidadesSeleccionadas);
         }
     }
 }
