@@ -28,18 +28,42 @@ namespace FrbaOfertas.ConectorDB
 
 
         }
-        public static List<String> ObtenerRolesRegistrables()
+        public static List<String> ObtenerFuncionalidades()
         {
-            List<String> lista = new List<string>();
-            lista.Add("Proveedor");
-            lista.Add("Cliente");
-            lista.Add("Administrativo");
+            List<String> lista = new List<String>();
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT PERMISO_DESC FROM [NO_SRTA_E_GATOREI].PERMISOS", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                lista.Add(reader["PERMISO_DESC"].ToString());
+
+            }
             return lista;
 
         }
+
+       
+      
+
         public static Boolean existeRol(string rol)
         {
-            return false;
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].ROLES WHERE NOMBRE ='" + rol + "'", con);
+
+
+            /*
+            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;*/
+
+            SqlDataReader registros = cmd.ExecuteReader();
+
+            return registros.HasRows;
 
         }
 
@@ -51,17 +75,17 @@ namespace FrbaOfertas.ConectorDB
         public static void BajaLogicaRol(int idRol)
         {
 
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE ROLES SET BAJA_LOGICA = 1 WHERE ROL_ID =" + idRol, con);
+            cmd.ExecuteNonQuery();
+
         }
         public static void invertirBajaLogicaRol(int rolID)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
-            SqlCommand cmd = new SqlCommand("INVERTIR_BAJA_LOGICA_ROL", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.Add("@ROL_ID", SqlDbType.VarChar).Value = rolID;
-
             con.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE ROLES SET BAJA_LOGICA = 0 WHERE ROL_ID =" + rolID, con);
             cmd.ExecuteNonQuery();
         }
         public static string ObtenerDetalleRol(int Id)

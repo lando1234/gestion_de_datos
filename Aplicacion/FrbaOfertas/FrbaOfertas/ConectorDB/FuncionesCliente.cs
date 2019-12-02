@@ -16,6 +16,7 @@ namespace FrbaOfertas.ConectorDB
          public static int altaCliente(Cliente cliente, String username, String password, String rol, Decimal cp)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
             SqlCommand cmd = new SqlCommand("CREAR_USUARIO_CLIENTE", con);
 
             cmd.CommandType = CommandType.StoredProcedure;
@@ -37,7 +38,7 @@ namespace FrbaOfertas.ConectorDB
             var returnParameter = cmd.Parameters.Add("@RESULT", SqlDbType.Int);
             returnParameter.Direction = ParameterDirection.ReturnValue;
 
-            con.Open();
+           
             cmd.ExecuteNonQuery();
 
             int result = (int)returnParameter.Value;
@@ -49,6 +50,7 @@ namespace FrbaOfertas.ConectorDB
          public static int cargarCreditoCliente(int clienteID, String tipoPago, Decimal monto, String nombre, String fechaVencimiento, String numero)
          {
              SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+             con.Open();
              SqlCommand cmd = new SqlCommand("CARGAR_CREDITO", con);
 
              cmd.CommandType = CommandType.StoredProcedure;
@@ -61,7 +63,7 @@ namespace FrbaOfertas.ConectorDB
              cmd.Parameters.Add("@FECHA_VENCIMIENTO", SqlDbType.VarChar).Value = fechaVencimiento;
              cmd.Parameters.Add("@NUMERO", SqlDbType.VarChar).Value = numero;
 
-             con.Open();
+             
              cmd.ExecuteNonQuery();
              
              //VER RETORNO SIN PARAMETRO DE SALIDA
@@ -76,27 +78,55 @@ namespace FrbaOfertas.ConectorDB
 
         public static Boolean existeDNI(string dni)
         {
-            return false;
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE DNI ='" + dni + "'", con);
+
+
+            /*
+            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;*/
+
+            SqlDataReader registros = cmd.ExecuteReader();
+
+            return registros.HasRows;
 
         }
 
         public static Boolean existeMail(string mail)
         {
-            return false;
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE MAIL ='" + mail + "'", con);
+
+
+            /*
+            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;*/
+
+            SqlDataReader registros = cmd.ExecuteReader();
+
+            return registros.HasRows;
 
         }
         public static void BajaLogicaCliente(int clienteID)
-        { }
+        {
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE CLIENTES SET BAJA_LOGICA = 1 WHERE CLIENTE_ID ='" + clienteID + "'", con);
+            cmd.ExecuteNonQuery();
+        }
         public static void invertirBajaLogicaCliente(int clienteID)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
             SqlCommand cmd = new SqlCommand("INVERTIR_BAJA_LOGICA_CLIENTE", con);
 
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@CLIENTE_ID", SqlDbType.VarChar).Value = clienteID;
             
-            con.Open();
+           
             cmd.ExecuteNonQuery();
         }
         public static void UpdateCliente(Cliente cliente)
