@@ -91,6 +91,8 @@
             // checkBoxHabilitado
             // 
             this.checkBoxHabilitado.AutoSize = true;
+            this.checkBoxHabilitado.Checked = true;
+            this.checkBoxHabilitado.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxHabilitado.Location = new System.Drawing.Point(289, 58);
             this.checkBoxHabilitado.Name = "checkBoxHabilitado";
             this.checkBoxHabilitado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
