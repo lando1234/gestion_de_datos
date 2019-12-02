@@ -12,17 +12,44 @@ namespace FrbaOfertas.ConectorDB
 {
     class FuncionesRol
     {
-        public static List<String> ObtenerFuncionalidadesDeUnRol(string nombreRol)
+        public static List<String> ObtenerFuncionalidadesDeUnRol(String nombreRol)
         {
-            List<String> lista = new List<string>();
+            List<String> lista = new List<String>();
 
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT p.PERMISO_DESC FROM [NO_SRTA_E_GATOREI].ROLES r" +
+            " INNER JOIN [NO_SRTA_E_GATOREI].PERMISOS_ROLES pr ON  r.ROL_ID = pr.ROL_ID"+
+            " INNER JOIN [NO_SRTA_E_GATOREI].PERMISOS p ON pr.PERMISO_ID = p.PERMISO_ID WHERE r.NOMBRE ='" + nombreRol + "'", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                lista.Add(reader["PERMISO_DESC"].ToString());
+
+            }
             return lista;
 
         }
 
-        public static List<String> ObtenerRolesDeUnUsuario(int id_usuario)
+        public static List<String> ObtenerRolesDeUnUsuario(int idUsuario)
         {
-            List<String> lista = new List<string>();
+            List<String> lista = new List<String>();
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT r.NOMBRE FROM [NO_SRTA_E_GATOREI].USUARIOS u" +
+            " INNER JOIN [NO_SRTA_E_GATOREI].USUARIOS_ROLES ur ON  u.USUARIO_ID = ur.USUARIO_ID" +
+            " INNER JOIN [NO_SRTA_E_GATOREI].ROLES r ON ur.ROL_ID = r.ROL_ID WHERE u.USUARIO_ID ='" + idUsuario + "'", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                
+                lista.Add(reader["NOMBRE"].ToString());
+
+            }
             return lista;
 
 
@@ -50,7 +77,7 @@ namespace FrbaOfertas.ConectorDB
        
       
 
-        public static Boolean existeRol(string rol)
+        public static Boolean ExisteRol(string rol)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
@@ -67,9 +94,9 @@ namespace FrbaOfertas.ConectorDB
 
         }
 
-        public static void GuardarRol(String Rol, List<String> listaFunciones)
+        public static void GuardarRol(String Rol, List<String> listaFuncionalidades)
         {
-
+          //ver  
         }
 
         public static void BajaLogicaRol(int idRol)
@@ -81,6 +108,43 @@ namespace FrbaOfertas.ConectorDB
             cmd.ExecuteNonQuery();
 
         }
+
+        public static List<String> ObtenerRolesRegistrables() 
+        {
+            List<String> lista = new List<String>();
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT NOMBRE FROM [NO_SRTA_E_GATOREI].ROLES WHERE NOMBRE <> 'ADMINISTRATIVO'", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                lista.Add(reader["NOMBRE"].ToString());
+
+            }
+            return lista;
+        }
+
+        public static List<String> ObtenerRolesRegistrables()
+        {
+            List<String> lista = new List<String>();
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT NOMBRE FROM [NO_SRTA_E_GATOREI].ROLES", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                lista.Add(reader["NOMBRE"].ToString());
+
+            }
+            return lista;
+        }
+
         public static void invertirBajaLogicaRol(int rolID)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
@@ -88,19 +152,31 @@ namespace FrbaOfertas.ConectorDB
             SqlCommand cmd = new SqlCommand("UPDATE ROLES SET BAJA_LOGICA = 0 WHERE ROL_ID =" + rolID, con);
             cmd.ExecuteNonQuery();
         }
-        public static string ObtenerDetalleRol(int Id)
+        public static string ObtenerDetalleRol(int idRol)
         {
-            return "Error";
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT NOMBRE FROM [NO_SRTA_E_GATOREI].ROLES WHERE ROL_ID=" + idRol, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            return reader["NOMBRE"].ToString();
 
         }
-        public static Boolean ObtenerEstadoRol(int Id)
+
+
+        public static Boolean ObtenerEstadoRol(int idRol)
         {
-            return false;
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT BAJA_LOGICA FROM [NO_SRTA_E_GATOREI].ROLES WHERE ROL_ID=" + idRol, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            return reader.GetInt16(reader.GetOrdinal("BAJA_LOGICA")) == 0;
         }
 
         public static void UpdatearRol(String RolNuevo, String Rol, bool habilitado, List<String> listaFunciones)
         {
-
+            //TODO
         }
     }
 }
