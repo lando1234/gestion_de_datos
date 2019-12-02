@@ -28,15 +28,28 @@ namespace FrbaOfertas.ConectorDB
 
 
         }
-        public static List<String> ObtenerRolesRegistrables()
+        public static List<String> ObtenerFuncionalidades()
         {
-            List<String> lista = new List<string>();
-            lista.Add("Proveedor");
-            lista.Add("Cliente");
-            lista.Add("Administrativo");
+            List<String> lista = new List<String>();
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT PERMISO_DESC FROM [NO_SRTA_E_GATOREI].PERMISOS", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                lista.Add(reader["PERMISO_DESC"].ToString());
+
+            }
             return lista;
 
         }
+
+       
+      
+
         public static Boolean existeRol(string rol)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
