@@ -12,7 +12,7 @@ namespace FrbaOfertas.ConectorDB
 {
     class FuncionesUsername
     {
-        public static int validLogin(string username, string password)
+        public static int validarLogin(string username, string password)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
@@ -35,16 +35,16 @@ namespace FrbaOfertas.ConectorDB
 
             return result;
         }
-        public static void resetearCant_login_Fallido(string username)
+        public static void resetearCantidadDeLoginFallido(string username)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE USUARIOS SET LOGIN_FALLIDO = 0 WHERE USERNAME ='"+ username +"'", con);
+            SqlCommand cmd = new SqlCommand("UPDATE [NO_SRTA_E_GATOREI].USUARIOS SET LOGIN_FALLIDO = 0 WHERE USERNAME ='" + username + "'", con);
             cmd.ExecuteNonQuery();
 
 
         }
-        public static void aumentarCant_login_Fallido(string username)
+        public static void aumentarCantidadDeLoginFallido(string username)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
@@ -53,7 +53,7 @@ namespace FrbaOfertas.ConectorDB
 
         }
 
-        public static int recuperar_usuario_id(string username, string pass)
+        public static int recuperarUsuarioId(string username, string pass)
         {
             int result = 0;
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
@@ -86,7 +86,25 @@ namespace FrbaOfertas.ConectorDB
 
         public static List<String> ObtenerFuncionalidadesDeUnUsuario(string username)
         {
-            return null;
+            List<String> lista = new List<String>();
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT r.NOMBRE FROM [NO_SRTA_E_GATOREI].USUARIOS u" +
+            " INNER JOIN [NO_SRTA_E_GATOREI].USUARIOS_ROLES ur ON  u.USUARIO_ID = ur.USUARIO_ID" +
+            " INNER JOIN [NO_SRTA_E_GATOREI].ROLES r ON ur.ROL_ID = r.ROL_ID WHERE u.USERNAME ='" + username + "'", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            
+
+            while (reader.Read())
+            {
+
+               lista.AddRange(FuncionesRol.ObtenerFuncionalidadesDeUnRol(reader["NOMBRE"].ToString()));
+
+            }
+            return lista;
+
 
         }
         public static Boolean existeUsername(string username)
@@ -122,7 +140,7 @@ namespace FrbaOfertas.ConectorDB
             */
         }
 
-        public static void insertarRolxUsuario(string Rol, string usuario)
+        public static void insertarRolxUsuario( String username , String rol)
         {
            
         }
@@ -132,19 +150,30 @@ namespace FrbaOfertas.ConectorDB
            
         }
 
-        public static int get_id(string username)
+        public static int getId(String username)
         {
-            return -1;
+            int id =0;
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].USUARIOS WHERE USERNAME ='" + username + "'", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+               id = reader.GetInt32(0);
+
+            }
+            return id;
         }
 
-        public static void desbloquearUsuario(int id)
-        {
-           
-        }
 
-        public static void BajaLogicaUsuario(int id)
+        public static void BajaLogicaUsuario(int idUsuario)
         {
-
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE [NO_SRTA_E_GATOREI].USUARIOS SET BAJA_LOGICA = 1 WHERE USUARIO_ID =" + idUsuario, con);
+            cmd.ExecuteNonQuery();
         }
 
     }

@@ -104,7 +104,7 @@ namespace FrbaOfertas.ConectorDB
 
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE ROLES SET BAJA_LOGICA = 1 WHERE ROL_ID =" + idRol, con);
+            SqlCommand cmd = new SqlCommand("UPDATE [NO_SRTA_E_GATOREI].ROLES SET BAJA_LOGICA = 1 WHERE ROL_ID =" + idRol, con);
             cmd.ExecuteNonQuery();
 
         }
@@ -127,7 +127,7 @@ namespace FrbaOfertas.ConectorDB
             return lista;
         }
 
-        public static List<String> ObtenerRolesRegistrables()
+        public static List<String> ObtenerRoles()
         {
             List<String> lista = new List<String>();
 
@@ -149,7 +149,7 @@ namespace FrbaOfertas.ConectorDB
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE ROLES SET BAJA_LOGICA = 0 WHERE ROL_ID =" + rolID, con);
+            SqlCommand cmd = new SqlCommand("UPDATE [NO_SRTA_E_GATOREI].ROLES SET BAJA_LOGICA = 0 WHERE ROL_ID =" + rolID, con);
             cmd.ExecuteNonQuery();
         }
         public static string ObtenerDetalleRol(int idRol)

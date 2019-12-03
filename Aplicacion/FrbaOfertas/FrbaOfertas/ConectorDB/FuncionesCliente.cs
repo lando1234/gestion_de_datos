@@ -113,7 +113,7 @@ namespace FrbaOfertas.ConectorDB
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE CLIENTES SET BAJA_LOGICA = 1 WHERE CLIENTE_ID ='" + clienteID + "'", con);
+            SqlCommand cmd = new SqlCommand("UPDATE [NO_SRTA_E_GATOREI].CLIENTES SET BAJA_LOGICA = 1 WHERE CLIENTE_ID ='" + clienteID + "'", con);
             cmd.ExecuteNonQuery();
         }
         public static void invertirBajaLogicaCliente(int clienteID)
@@ -131,7 +131,13 @@ namespace FrbaOfertas.ConectorDB
         }
         public static void UpdateCliente(Cliente cliente)
         {
-
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("INSERT INTO [NO_SRTA_E_GATOREI].[CLIENTES] ([DNI],[NOMBRE],[APELLIDO],[MAIL],[TELEFONO],[FECHA_NACIMIENTO]"+
+           ",[BAJA_LOGICA],[USUARIO_ID],[DIRECCION_ID]) VALUES(" + cliente.documento+ "," + cliente.nombre + "," + cliente.apellido + "," + cliente.mail +
+           "," + cliente.telefono + "," + cliente.fecha_nacimiento + ")", con);
+            cmd.ExecuteNonQuery();
+        }
            
         }
 

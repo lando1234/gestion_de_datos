@@ -66,19 +66,9 @@ namespace FrbaOfertas.ConectorDB
  */
         public static void BajaLogicaProveedor(int proveedorID)
         {
-            /*SqlConnection con = new SqlConnection(Conexion.getStringConnection());
-            con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE PROVEEDORES SET LOGIN_FALLIDO = 1 WHERE PROVEEDOR_ID =" + proveedorID, con);
-            cmd.ExecuteNonQuery();*/
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("INVERTIR_BAJA_LOGICA_PROVEEDOR", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.Add("@PROVEEDOR_ID", SqlDbType.VarChar).Value = proveedorID;
-
-
+            SqlCommand cmd = new SqlCommand("UPDATE PROVEEDORES SET BAJA_LOGICA = 1 WHERE PROVEEDOR_ID =" + proveedorID, con);
             cmd.ExecuteNonQuery();
 
         }
@@ -99,6 +89,7 @@ namespace FrbaOfertas.ConectorDB
 
         public static void crearRubro(string Rubro)
         {
+
         }
 
         public static Boolean existeRubro(string rubro)
