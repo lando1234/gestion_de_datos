@@ -12,61 +12,104 @@ namespace FrbaOfertas.ConectorDB
 {
     class FuncionesRol
     {
-        public static List<String> ObtenerFuncionalidadesDeUnRol(string nombreRol)
+        public static List<Rol> obtenerRoles()
         {
-            List<String> lista = new List<string>();
+            List<Rol> lista = new List<Rol>();
 
-            return lista;
-
-        }
-
-        public static List<String> ObtenerRolesDeUnUsuario(int id_usuario)
-        {
-            List<String> lista = new List<string>();
-            return lista;
-
-
-
-        }
-        public static List<String> ObtenerFuncionalidades()
-        {
-            List<String> lista = new List<String>();
 
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT PERMISO_DESC FROM [NO_SRTA_E_GATOREI].PERMISOS", con);
+            string sql = "SELECT R.*,P.* ";
+                   sql += "FROM [NO_SRTA_E_GATOREI].ROLES R JOIN [NO_SRTA_E_GATOREI].PERMISOS_ROLES PR ";
+                   sql += "ON R.ROL_ID = PR.ROL_ID ";
+                   sql += "JOIN [NO_SRTA_E_GATOREI].PERMISOS P ON P.PERMISO_ID = PR.PERMISO_ID";
+                   sql += "ORDER BY R.ROL_ID ASC";
+
+                   SqlCommand cmd = new SqlCommand(sql);
+                   SqlDataReader reader = cmd.ExecuteReader();
+                   
+                   reader.Read();
+            
+                   int rolId = (int) reader["ROL_ID"];       
+                   Rol rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>()); 
+                    
+                   while (reader.Read())
+                   {
+                       int nextId = (int) reader["ROL_ID"];
+                       if (nextId != rolId)
+                       {
+                           lista.Add(rol);
+                           rol = new Rol(nextId, reader["NOMBRE"].ToString(), new List<Permiso>()); 
+                       }
+
+                       rol.permisos.Add(new Permiso((int)reader["PERMISO_ID"], reader["PERMISO_DESC"].ToString(), reader["PERMISO_CLAVE"].ToString()));  
+
+                   }
+                   con.Close();
+            return lista;
+
+        }
+
+        public Rol obtenerRol(int rolId)
+        {
+            Rol rol = null;
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            string sql = "SELECT R.*,P.* ";
+            sql += "FROM [NO_SRTA_E_GATOREI].ROLES R JOIN [NO_SRTA_E_GATOREI].PERMISOS_ROLES PR ";
+            sql += "ON R.ROL_ID = PR.ROL_ID ";
+            sql += "JOIN [NO_SRTA_E_GATOREI].PERMISOS P ON P.PERMISO_ID = PR.PERMISO_ID";
+            sql += "WHERE R.ROL_ID = @ROL";
+
+
+            SqlCommand cmd = new SqlCommand(sql);
+            cmd.Parameters.Add(new SqlParameter("@ROL",rolId));
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read()) {
+                rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>());
+
+            
+            while (reader.Read())
+            {
+                rol.permisos.Add(new Permiso((int)reader["PERMISO_ID"], reader["PERMISO_DESC"].ToString(), reader["PERMISO_CLAVE"].ToString()));
+
+            }
+
+            }
+            con.Close();
+            return rol;
+        }
+
+        public static List<Permiso> ObtenerFuncionalidades()
+        {
+            List<Permiso> lista = new List<Permiso>();
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [NO_SRTA_E_GATOREI].PERMISOS", con);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
 
-                lista.Add(reader["PERMISO_DESC"].ToString());
-
+                   lista.Add(new Permiso((int) reader["PERMISO_ID"], reader["PERMISO_DESC"].ToString(),reader["PERMISO_CLAVE"].ToString()));
             }
-
+            con.Close();
             return lista;
 
         }
 
-        public static Boolean existeRol(string rol)
+
+        public static void GuardarRol(Rol rol)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].ROLES WHERE NOMBRE ='" + rol + "'", con);
-
-
-            /*
-            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
-            returnParameter.Direction = ParameterDirection.ReturnValue;*/
-
-            SqlDataReader registros = cmd.ExecuteReader();
-
-            return registros.HasRows;
-
-        }
-
-        public static void GuardarRol(String Rol, List<String> listaFunciones)
-        {
+            SqlCommand cmd = new SqlCommand("CREAR_ROL", con);
+            cmd.Parameters.AddWithValue("@ROL_DESC", rol.nombre);
+            cmd.Parameters.AddWithValue("@Permisos", rol.getPermisos()
+            cmd.ExecuteNonQuery();
+            con.Close();
 
         }
 
@@ -77,23 +120,15 @@ namespace FrbaOfertas.ConectorDB
             con.Open();
             SqlCommand cmd = new SqlCommand("UPDATE ROLES SET BAJA_LOGICA = 1 WHERE ROL_ID =" + idRol, con);
             cmd.ExecuteNonQuery();
-
+            con.Close();
         }
-        public static void invertirBajaLogicaRol(int rolID)
+        public static void reactivarRol(int rolID)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
             SqlCommand cmd = new SqlCommand("UPDATE ROLES SET BAJA_LOGICA = 0 WHERE ROL_ID =" + rolID, con);
             cmd.ExecuteNonQuery();
-        }
-        public static string ObtenerDetalleRol(int Id)
-        {
-            return "Error";
-
-        }
-        public static Boolean ObtenerEstadoRol(int Id)
-        {
-            return false;
+            con.Close();
         }
 
         public static void UpdatearRol(String RolNuevo, String Rol, bool habilitado, List<String> listaFunciones)

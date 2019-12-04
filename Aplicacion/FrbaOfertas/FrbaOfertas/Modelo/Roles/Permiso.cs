@@ -11,6 +11,14 @@ namespace FrbaOfertas.Modelo.Roles
         public int id { get; set; }
         public string descripcion { get; set; }
         public string clave { get; set; }
-        
+
+        public Permiso(int id, string descripcion, string clave)
+        {
+            this.id = id;
+            this.descripcion = descripcion;
+            this.clave = clave;
+        }
+
     }
+
 }
