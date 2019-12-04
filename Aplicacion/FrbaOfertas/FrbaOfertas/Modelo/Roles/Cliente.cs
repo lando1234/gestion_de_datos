@@ -9,24 +9,36 @@ namespace FrbaOfertas.Modelo.Roles
     public class Cliente : Rol
     {
         public int id { get; set; }
+        public int dni { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
-        public string documento { get; set; }
         public string mail { get; set; }
-        public string telefono { get; set; }
-        public DateTime fecha_nacimiento { get; set; }
-        public string Ciudad { get; set; }
-        public string Calle { get; set; }
-        public string Piso { get; set; }
-        public string Dpto { get; set; }
-        public string Localidad { get; set; }
-        public string monto { get; set; }
+        public int telefono { get; set; }
+        public string fecha_nacimiento { get; set; }
         public Boolean habilitado { get; set; }
+        public int usuarioId { get; set; }
+        public int direccionId { get; set; }
 
 
-        public override string getIdentificadorPrincipal()
+        public Cliente(int id, int dni, string nombre, string apellido, string mail, int telefono,
+            string fecha_nacimiento, Boolean habilitado, int usuarioId, int direccionId)
         {
-            return this.documento;
+            this.id = id;
+            this.dni = dni;
+            this.apellido = apellido;
+            this.mail = mail;
+            this.telefono = telefono;
+            this.fecha_nacimiento = fecha_nacimiento;
+            this.habilitado = habilitado;
+            this.usuarioId = usuarioId;
+            this.direccionId = direccionId;
+            
+        }
+
+
+        public override int getIdentificadorPrincipal()
+        {
+            return this.dni;
 
         }
         public override string getName()

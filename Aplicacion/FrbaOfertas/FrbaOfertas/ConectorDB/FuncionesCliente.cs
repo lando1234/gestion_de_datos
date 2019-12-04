@@ -70,22 +70,45 @@ namespace FrbaOfertas.ConectorDB
              return 1;
          }
         
-        public static Cliente traerCliente(int id)
+        public static Cliente traerCliente(int clienteId)
         {
-            return null;
+           Cliente cliente = null;
+
+           SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+           con.Open();
+           String sql = "SELECT * FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE CLIENTE_ID = @CLIENTE_ID ";
+           SqlCommand cmd = new SqlCommand(sql, con);
+
+           cmd.Parameters.Add(new SqlParameter("@CLIENTE_ID", clienteId));
+
+           SqlDataReader registros = cmd.ExecuteReader();
+
+           if (registros.Read())
+           {
+               cliente = new Cliente(clienteId,
+                   registros.GetInt16(registros.GetOrdinal("DNI")),
+                   registros["NOMBRE"].ToString(),
+                   registros["APELLIDO"].ToString(),
+                   registros["MAIL"].ToString(),
+                   registros.GetInt16(registros.GetOrdinal("TELEFONO")),
+                   registros["FECHA_NACIMIENTO"].ToString(),
+                   registros.GetBoolean(registros.GetOrdinal("BAJA_LOGICA")),
+                   registros.GetInt64(registros.GetOrdinal("USUARIO_ID")),
+                   registros.GetInt64(registros.GetOrdinal("DIRECCION_ID")));
+           }
+           return cliente;
         }
 
 
         public static Boolean existeDNI(string dni)
         {
+           
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE DNI ='" + dni + "'", con);
+            String sql = "SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE DNI = @DNI ";
+            SqlCommand cmd = new SqlCommand(sql, con);
 
-
-            /*
-            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
-            returnParameter.Direction = ParameterDirection.ReturnValue;*/
+            cmd.Parameters.Add(new SqlParameter("@DNI", dni));
 
             SqlDataReader registros = cmd.ExecuteReader();
 
@@ -97,12 +120,10 @@ namespace FrbaOfertas.ConectorDB
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE MAIL ='" + mail + "'", con);
+            String sql = "SELECT USUARIO_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE MAIL = @MAIL ";
+            SqlCommand cmd = new SqlCommand(sql, con);
 
-
-            /*
-            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
-            returnParameter.Direction = ParameterDirection.ReturnValue;*/
+            cmd.Parameters.Add(new SqlParameter("@MAIL", mail));
 
             SqlDataReader registros = cmd.ExecuteReader();
 
