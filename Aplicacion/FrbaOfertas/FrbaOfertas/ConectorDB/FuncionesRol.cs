@@ -107,7 +107,7 @@ namespace FrbaOfertas.ConectorDB
             con.Open();
             SqlCommand cmd = new SqlCommand("CREAR_ROL", con);
             cmd.Parameters.AddWithValue("@ROL_DESC", rol.nombre);
-            cmd.Parameters.AddWithValue("@Permisos", rol.getPermisos()
+            cmd.Parameters.AddWithValue("@Permisos", rol.getPermisos());
             cmd.ExecuteNonQuery();
             con.Close();
 
@@ -131,9 +131,17 @@ namespace FrbaOfertas.ConectorDB
             con.Close();
         }
 
-        public static void UpdatearRol(String RolNuevo, String Rol, bool habilitado, List<String> listaFunciones)
+        public static void UpdatearRol(Rol rol)
         {
-
+                        SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("ACTUALIZAR_ROL", con);
+            cmd.Parameters.AddWithValue("@ROL_ID", rol.id);
+            cmd.Parameters.AddWithValue("@ROL_DESC", rol.nombre);
+            cmd.Parameters.AddWithValue("@Permisos", rol.getPermisos());
+            cmd.ExecuteNonQuery();
+            con.Close();
+            
         }
     }
 }
