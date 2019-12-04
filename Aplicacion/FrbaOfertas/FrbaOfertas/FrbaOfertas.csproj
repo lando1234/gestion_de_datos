@@ -79,7 +79,7 @@
         <Compile Include="AbmCliente\AltaCliente.cs">
           <SubType>Form</SubType>
         </Compile>
-        <Compile Include="AbmCliente\ListaRoles.Designer.cs">
+        <Compile Include="AbmCliente\AltaCliente.Designer.cs">
           <DependentUpon>AltaCliente.cs</DependentUpon>
         </Compile>
 
