@@ -482,3 +482,6 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
+
+/Aplicacion/FrbaOfertas/FrbaOfertas
+/Aplicacion/FrbaOfertas/FrbaOfertas.*
