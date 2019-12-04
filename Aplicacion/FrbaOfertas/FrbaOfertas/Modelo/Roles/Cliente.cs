@@ -23,26 +23,5 @@ namespace FrbaOfertas.Modelo.Roles
         public string monto { get; set; }
         public Boolean habilitado { get; set; }
 
-
-        public override string getIdentificadorPrincipal()
-        {
-            return this.documento;
-
-        }
-        public override string getName()
-        {
-            return typeof(Cliente).Name;
-        }
-        public override void Instertar()
-        {
-            //FrbaOfertas.ConectorDB.FuncionesCliente.altaCliente(this);
-
-        }
-
-        public override void Modificar()
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

@@ -8,7 +8,7 @@ namespace FrbaOfertas.Modelo.Roles
 {
     public class Rol
     {
-        public IList<Permiso> permisos {get; set; };
+        public List<Permiso> permisos { get; set; }
         public String nombre { get; set; }
         public int id { get; set; }
 
