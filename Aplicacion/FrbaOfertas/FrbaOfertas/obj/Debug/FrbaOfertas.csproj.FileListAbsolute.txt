@@ -25,3 +25,4 @@ C:\Users\matias\Downloads\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfert
 C:\Users\ndeberuti\Documents\UTN\GDD\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
 C:\Users\ndeberuti\Documents\UTN\GDD\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
 C:\Users\ndeberuti\Documents\UTN\GDD\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
