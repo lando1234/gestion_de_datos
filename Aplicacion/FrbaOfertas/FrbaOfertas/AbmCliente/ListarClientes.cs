@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FrbaOfertas.AbmRol
+namespace FrbaOfertas.AbmCliente
 {
-    public partial class MenuRol : Form
+    public partial class ListarClientes : Form
     {
-        public MenuRol()
+        public ListarClientes()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

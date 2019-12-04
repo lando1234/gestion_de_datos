@@ -44,5 +44,14 @@ namespace FrbaOfertas.AbmRol
 
             ConectorDB.FuncionesRol.GuardarRol(input_nombre.Text, funcionalidadesSeleccionadas);
         }
+
+        private void buttonLimpiar_Click(object sender, EventArgs e)
+        {
+            input_nombre.Clear();
+
+            while (input_funcionalidades.CheckedIndices.Count > 0)
+                input_funcionalidades.SetItemChecked(input_funcionalidades.CheckedIndices[0], false);
+    
+         }
     }
 }

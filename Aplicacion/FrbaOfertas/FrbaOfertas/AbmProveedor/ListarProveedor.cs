@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FrbaOfertas.AbmRol
+namespace FrbaOfertas.AbmProveedor
 {
-    public partial class BajaRol : Form
+    public partial class ListarProveedor : Form
     {
-        public BajaRol()
+        public ListarProveedor()
         {
             InitializeComponent();
-        }
-
-        private void buttonGuardar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
