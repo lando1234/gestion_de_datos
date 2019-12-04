@@ -7,7 +7,7 @@ using FrbaOfertas.Modelo.Roles;
 
 namespace FrbaOfertas.Modelo
 {
-    static class Usuario
+    public class Usuario
     {
         public int id { get; set; }
         public string username { get; set; }

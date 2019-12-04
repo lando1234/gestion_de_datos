@@ -26,7 +26,6 @@ C:\Users\ndeberuti\Documents\UTN\GDD\gestion_de_datos\Aplicacion\FrbaOfertas\Frb
 C:\Users\ndeberuti\Documents\UTN\GDD\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
 C:\Users\ndeberuti\Documents\UTN\GDD\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
 C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
-C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
 C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.AltaCliente.resources
 C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.ListarClientes.resources
 C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.ModificarCliente.resources
@@ -38,3 +37,4 @@ C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\ob
 C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmRol.ListaRoles.resources
 C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
 C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config

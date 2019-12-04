@@ -31,7 +31,7 @@ namespace FrbaOfertas.ConectorDB
                    reader.Read();
             
                    int rolId = (int) reader["ROL_ID"];       
-                   Rol rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>()); 
+                   Rol rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(),reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"))); 
                     
                    while (reader.Read())
                    {
@@ -39,7 +39,7 @@ namespace FrbaOfertas.ConectorDB
                        if (nextId != rolId)
                        {
                            lista.Add(rol);
-                           rol = new Rol(nextId, reader["NOMBRE"].ToString(), new List<Permiso>()); 
+                           rol = new Rol(nextId, reader["NOMBRE"].ToString(), new List<Permiso>(), reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"))); 
                        }
 
                        rol.permisos.Add(new Permiso((int)reader["PERMISO_ID"], reader["PERMISO_DESC"].ToString(), reader["PERMISO_CLAVE"].ToString()));  
@@ -67,7 +67,7 @@ namespace FrbaOfertas.ConectorDB
             cmd.Parameters.Add(new SqlParameter("@ROL",rolId));
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read()) {
-                rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>());
+                rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(), reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA")));
 
             
             while (reader.Read())

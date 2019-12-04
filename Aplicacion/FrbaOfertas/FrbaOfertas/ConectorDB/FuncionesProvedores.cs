@@ -18,7 +18,7 @@ namespace FrbaOfertas.ConectorDB
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
             SqlCommand cmd = new SqlCommand("CREAR_USUARIO_PROVEEDOR", con);
-            
+
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = usuario.username;
@@ -37,7 +37,7 @@ namespace FrbaOfertas.ConectorDB
             returnParameter.Direction = ParameterDirection.ReturnValue;
 
 
-            
+
             cmd.ExecuteNonQuery();
 
             int result = (int)returnParameter.Value;
@@ -84,7 +84,7 @@ namespace FrbaOfertas.ConectorDB
             
             SqlCommand cmd = new SqlCommand("CREAR_PROVEEDOR", con);
 
-            string sql = "UPDATE [NO_SRTA_E_GATOREI].[PROVEEDORES] "
+            string sql = "UPDATE [NO_SRTA_E_GATOREI].[PROVEEDORES] ";
                    sql += "SET [CUIT] = @CUIT ";
                    sql += ",[RAZON_SOCIAL] = @RS ";
                    sql += ",[NOMBRE_CONTACTO] = @NOMBRE_CONTACTO ";
@@ -109,7 +109,7 @@ namespace FrbaOfertas.ConectorDB
 
         }
 
-        
+
         public static void invertirBajaLogicaProveedor(Proveedor proveedor)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
@@ -120,11 +120,11 @@ namespace FrbaOfertas.ConectorDB
 
             cmd.Parameters.Add("@PROVEEDOR_ID", SqlDbType.VarChar).Value = proveedor.id;
 
-            
+
             cmd.ExecuteNonQuery();
             con.Close();
         }
-    
+
 
         public static void crearRubro(string Rubro)
         {
@@ -139,4 +139,5 @@ namespace FrbaOfertas.ConectorDB
             con.Close();
         }
 
+    }
 }
