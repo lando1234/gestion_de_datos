@@ -31,12 +31,12 @@
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.listBoxFuncionalidades = new System.Windows.Forms.CheckedListBox();
             this.labelFuncionalidad = new System.Windows.Forms.Label();
             this.labelNombre = new System.Windows.Forms.Label();
             this.textNombre = new System.Windows.Forms.TextBox();
             this.checkBoxHabilitado = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.listBoxFuncionalidades = new System.Windows.Forms.CheckedListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +73,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos Rol";
             // 
+            // listBoxFuncionalidades
+            // 
+            this.listBoxFuncionalidades.CheckOnClick = true;
+            this.listBoxFuncionalidades.FormattingEnabled = true;
+            this.listBoxFuncionalidades.Location = new System.Drawing.Point(175, 72);
+            this.listBoxFuncionalidades.Name = "listBoxFuncionalidades";
+            this.listBoxFuncionalidades.Size = new System.Drawing.Size(185, 94);
+            this.listBoxFuncionalidades.TabIndex = 6;
+            // 
             // labelFuncionalidad
             // 
             this.labelFuncionalidad.AutoSize = true;
@@ -101,8 +110,6 @@
             // checkBoxHabilitado
             // 
             this.checkBoxHabilitado.AutoSize = true;
-            this.checkBoxHabilitado.Checked = true;
-            this.checkBoxHabilitado.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxHabilitado.Location = new System.Drawing.Point(549, 114);
             this.checkBoxHabilitado.Name = "checkBoxHabilitado";
             this.checkBoxHabilitado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -119,15 +126,6 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // listBoxFuncionalidades
-            // 
-            this.listBoxFuncionalidades.CheckOnClick = true;
-            this.listBoxFuncionalidades.FormattingEnabled = true;
-            this.listBoxFuncionalidades.Location = new System.Drawing.Point(175, 72);
-            this.listBoxFuncionalidades.Name = "listBoxFuncionalidades";
-            this.listBoxFuncionalidades.Size = new System.Drawing.Size(185, 94);
-            this.listBoxFuncionalidades.TabIndex = 6;
             // 
             // ModificacionRol
             // 

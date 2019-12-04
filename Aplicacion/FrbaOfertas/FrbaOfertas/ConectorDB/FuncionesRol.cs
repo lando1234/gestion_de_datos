@@ -50,7 +50,7 @@ namespace FrbaOfertas.ConectorDB
 
         }
 
-        public Rol obtenerRol(int rolId)
+        public static Rol obtenerRol(Nullable<int> rolId)
         {
             Rol rol = null;
 

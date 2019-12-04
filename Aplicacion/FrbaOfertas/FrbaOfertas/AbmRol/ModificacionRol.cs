@@ -7,15 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrbaOfertas.Modelo.Roles;
 
 namespace FrbaOfertas.AbmRol
 {
     public partial class ModificacionRol : Form
     {
 
-        private String rolAModificar;
+        private Rol rolAModificar;
 
-        public ModificacionRol(String rol)
+        public ModificacionRol(Rol rol)
         {
             this.rolAModificar = rol;
             InitializeComponent();
@@ -33,16 +34,17 @@ namespace FrbaOfertas.AbmRol
                 }
             }
 
-            ConectorDB.FuncionesRol.UpdatearRol(textNombre.Text, rolAModificar, checkBoxHabilitado.Checked ,funcionalidadesSeleccionadas);
+            //ConectorDB.FuncionesRol.UpdatearRol(textNombre.Text, rolAModificar, checkBoxHabilitado.Checked ,funcionalidadesSeleccionadas);
         }
 
         private void ModificacionRol_Load(object sender, EventArgs e)
         {
-            textNombre.Text = rolAModificar;
+            textNombre.Text = rolAModificar.nombre;
+            checkBoxHabilitado.CheckState = rolAModificar.habilitado ? CheckState.Checked : CheckState.Unchecked;
             listBoxFuncionalidades.Items.Clear();
-            List<String> funcionalidadesDeRol = FrbaOfertas.ConectorDB.FuncionesRol.ObtenerFuncionalidadesDeUnRol(this.rolAModificar);
-            List<String> todasLasFuncionalidades = FrbaOfertas.ConectorDB.FuncionesRol.ObtenerFuncionalidades();
-            foreach (String listing in funcionalidadesDeRol)
+            List<Permiso> funcionalidadesDeRol = this.rolAModificar.permisos;
+            List<Permiso> todasLasFuncionalidades = FrbaOfertas.ConectorDB.FuncionesRol.ObtenerFuncionalidades();
+            foreach (Permiso listing in funcionalidadesDeRol)
             {
                 listBoxFuncionalidades.Items.Add(listing);
             }
@@ -50,8 +52,8 @@ namespace FrbaOfertas.AbmRol
             {
                 listBoxFuncionalidades.SetItemChecked(i, true);
             }
-            List<String> funcionalidadesAAgregar = todasLasFuncionalidades.Where(x => !funcionalidadesDeRol.Contains(x)).ToList();
-            foreach (String listing in funcionalidadesAAgregar)
+            List<Permiso> funcionalidadesAAgregar = todasLasFuncionalidades.Where(x => !funcionalidadesDeRol.Contains(x)).ToList();
+            foreach (Permiso listing in funcionalidadesAAgregar)
             {
                 listBoxFuncionalidades.Items.Add(listing);
             }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrbaOfertas.Modelo.Roles;
 
 namespace FrbaOfertas.AbmRol
 {
@@ -25,7 +26,7 @@ namespace FrbaOfertas.AbmRol
         private void cargarComboFunciones()
         {
             input_funcionalidades.Items.Clear();
-            foreach (String listing in FrbaOfertas.ConectorDB.FuncionesRol.ObtenerFuncionalidades())
+            foreach (Permiso listing in FrbaOfertas.ConectorDB.FuncionesRol.ObtenerFuncionalidades())
             {
                 input_funcionalidades.Items.Add(listing);
             }
@@ -33,16 +34,20 @@ namespace FrbaOfertas.AbmRol
 
         private void guardar(object sender, EventArgs e)
         {
-            List<String> funcionalidadesSeleccionadas = new List<string>();
+            List<Permiso> funcionalidadesSeleccionadas = new List<Permiso>();
 
-            for (int i = 0; i < input_funcionalidades.Items.Count; i++){
-                if (input_funcionalidades.GetItemChecked(i)){
-                    string str = (string)input_funcionalidades.Items[i];
+            for (int i = 0; i < input_funcionalidades.Items.Count; i++)
+            {
+                if (input_funcionalidades.GetItemChecked(i))
+                {
+                    Permiso str = (Permiso)input_funcionalidades.Items[i];
                     funcionalidadesSeleccionadas.Add(str);
                 }
             }
 
-            ConectorDB.FuncionesRol.GuardarRol(input_nombre.Text, funcionalidadesSeleccionadas);
+            Rol nuevoRol = new Rol(null, input_nombre.Text, funcionalidadesSeleccionadas);
+
+            ConectorDB.FuncionesRol.GuardarRol(nuevoRol);
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)

@@ -19,6 +19,11 @@ namespace FrbaOfertas.Modelo.Roles
             this.clave = clave;
         }
 
+        public override string ToString()
+        {
+            return descripcion;
+        }
+
     }
 
 }
