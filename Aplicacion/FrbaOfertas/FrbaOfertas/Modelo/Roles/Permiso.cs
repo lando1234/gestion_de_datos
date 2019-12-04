@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrbaOfertas.Modelo.Roles
 {
-    class Permiso
+    public class Permiso
     {
         public int id { get; set; }
         public string descripcion { get; set; }
@@ -17,6 +17,11 @@ namespace FrbaOfertas.Modelo.Roles
             this.id = id;
             this.descripcion = descripcion;
             this.clave = clave;
+        }
+
+        public override string ToString()
+        {
+            return descripcion;
         }
 
     }
