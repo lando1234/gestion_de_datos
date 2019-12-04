@@ -44,17 +44,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbmCliente\Form1.cs">
+    <Compile Include="AbmCliente\AltaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmCliente\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmCliente\AltaCliente.Designer.cs">
+      <DependentUpon>AltaCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmProveedor\Form1.cs">
+
+    <Compile Include="AbmProveedor\AltaProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmProveedor\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmProveedor\AltaProveedor.Designer.cs">
+      <DependentUpon>AltaProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmProveedor\ListarProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmProveedor\ListarProveedor.Designer.cs">
+      <DependentUpon>ListarProveedor.cs</DependentUpon>
+    </Compile>
+
+    <Compile Include="AbmProveedor\ModificarProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmProveedor\ModificarProveedor.Designer.cs">
+      <DependentUpon>ModificarProveedor.cs</DependentUpon>
     </Compile>
 
     <Compile Include="AbmRol\AltaRol.cs">
@@ -76,14 +90,6 @@
       <DependentUpon>ListaRoles.cs</DependentUpon>
     </Compile>
 
-        <Compile Include="AbmCliente\AltaCliente.cs">
-          <SubType>Form</SubType>
-        </Compile>
-        <Compile Include="AbmCliente\AltaCliente.Designer.cs">
-          <DependentUpon>AltaCliente.cs</DependentUpon>
-        </Compile>
-
-
     <Compile Include="BaseDeDatos\Conexion.cs" />
     <Compile Include="ConectorDB\FuncionesCliente.cs" />
     <Compile Include="ConectorDB\FuncionesProvedores.cs" />
@@ -96,6 +102,7 @@
     </Compile>
     <Compile Include="Modelo\Roles\Proveedor.cs" />
     <Compile Include="Modelo\Roles\Cliente.cs" />
+    <Compile Include="Modelo\Roles\Permiso.cs" />
     <Compile Include="Modelo\Roles\Rol.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="ComprarOferta\Form1.cs">
@@ -148,14 +155,29 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Validador.cs" />
     <Compile Include="Utils\ProtocoloLogin.cs" />
-    <EmbeddedResource Include="AbmCliente\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+
+    <EmbeddedResource Include="AbmCliente\AltaCliente.resx">
+      <DependentUpon>AltaCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\ListaClientes.resx">
+      <DependentUpon>ListaClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\ModificarCliente.resx">
+      <DependentUpon>ModificarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+
+    <EmbeddedResource Include="AbmProveedor\AltaProveedor.resx">
+      <DependentUpon>AltaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmProveedor\ListaProveedor.resx">
+      <DependentUpon>ListarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmProveedor\ModificarProveedor.resx">
+      <DependentUpon>ModificarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+
     <EmbeddedResource Include="AbmRol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AbmRol\BajaRol.resx">
-      <DependentUpon>BajaRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\ModificacionRol.resx">
       <DependentUpon>ModificacionRol.cs</DependentUpon>
@@ -163,9 +185,7 @@
     <EmbeddedResource Include="AbmRol\ListaRoles.resx">
       <DependentUpon>ListaRoles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmRol\MenuRol.resx">
-      <DependentUpon>MenuRol.cs</DependentUpon>
-    </EmbeddedResource>
+
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
