@@ -51,6 +51,20 @@
       <DependentUpon>AltaCliente.cs</DependentUpon>
     </Compile>
 
+    <Compile Include="AbmCliente\ListarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\ListarCliente.Designer.cs">
+      <DependentUpon>ListarCliente.cs</DependentUpon>
+    </Compile>
+
+    <Compile Include="AbmCliente\ModificarCliente.cs">
+         <SubType>Form</SubType>
+     </Compile>
+    <Compile Include="AbmCliente\ModificarCliente.Designer.cs">
+     <DependentUpon>ModificarCliente.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="AbmProveedor\AltaProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,8 +173,8 @@
     <EmbeddedResource Include="AbmCliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmCliente\ListaClientes.resx">
-      <DependentUpon>ListaClientes.cs</DependentUpon>
+    <EmbeddedResource Include="AbmCliente\ListarClientes.resx">
+      <DependentUpon>ListarClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmCliente\ModificarCliente.resx">
       <DependentUpon>ModificarCliente.cs</DependentUpon>
