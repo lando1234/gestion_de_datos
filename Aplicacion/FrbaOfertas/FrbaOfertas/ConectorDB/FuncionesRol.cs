@@ -31,7 +31,7 @@ namespace FrbaOfertas.ConectorDB
                    reader.Read();
             
                    int rolId = (int) reader["ROL_ID"];       
-                   Rol rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>()); 
+                   Rol rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(),reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"))); 
                     
                    while (reader.Read())
                    {
@@ -39,7 +39,7 @@ namespace FrbaOfertas.ConectorDB
                        if (nextId != rolId)
                        {
                            lista.Add(rol);
-                           rol = new Rol(nextId, reader["NOMBRE"].ToString(), new List<Permiso>()); 
+                           rol = new Rol(nextId, reader["NOMBRE"].ToString(), new List<Permiso>(), reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"))); 
                        }
 
                        rol.permisos.Add(new Permiso((int)reader["PERMISO_ID"], reader["PERMISO_DESC"].ToString(), reader["PERMISO_CLAVE"].ToString()));  
@@ -50,7 +50,7 @@ namespace FrbaOfertas.ConectorDB
 
         }
 
-        public Rol obtenerRol(int rolId)
+        public static Rol obtenerRol(Nullable<int> rolId)
         {
             Rol rol = null;
 
@@ -67,7 +67,7 @@ namespace FrbaOfertas.ConectorDB
             cmd.Parameters.Add(new SqlParameter("@ROL",rolId));
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read()) {
-                rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>());
+                rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(), reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA")));
 
             
             while (reader.Read())
@@ -107,7 +107,7 @@ namespace FrbaOfertas.ConectorDB
             con.Open();
             SqlCommand cmd = new SqlCommand("CREAR_ROL", con);
             cmd.Parameters.AddWithValue("@ROL_DESC", rol.nombre);
-            cmd.Parameters.AddWithValue("@Permisos", rol.getPermisos()
+            cmd.Parameters.AddWithValue("@Permisos", rol.getPermisos());
             cmd.ExecuteNonQuery();
             con.Close();
 
@@ -131,9 +131,17 @@ namespace FrbaOfertas.ConectorDB
             con.Close();
         }
 
-        public static void UpdatearRol(String RolNuevo, String Rol, bool habilitado, List<String> listaFunciones)
+        public static void UpdatearRol(Rol rol)
         {
-
+                        SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("ACTUALIZAR_ROL", con);
+            cmd.Parameters.AddWithValue("@ROL_ID", rol.id);
+            cmd.Parameters.AddWithValue("@ROL_DESC", rol.nombre);
+            cmd.Parameters.AddWithValue("@Permisos", rol.getPermisos());
+            cmd.ExecuteNonQuery();
+            con.Close();
+            
         }
     }
 }

@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas.AbmProveedor
 {
-    public partial class Form1 : Form
+    public partial class ModificarProveedor : Form
     {
-        public Form1()
+        public ModificarProveedor()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

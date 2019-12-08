@@ -7,7 +7,7 @@ using FrbaOfertas.BaseDeDatos;
 using System.Data.SqlClient;
 using System.Data;
 using FrbaOfertas.ConectorDB;
-
+using FrbaOfertas.Modelo.Roles;
 
 
 namespace FrbaOfertas
@@ -22,7 +22,13 @@ namespace FrbaOfertas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AbmRol.AltaRol());
+
+            Permiso permisotest = new Permiso(1, "aceptar", "clave");
+            List<Permiso> permisos = new List<Permiso>();
+            permisos.Add(permisotest);
+            Rol rolTest = new Rol(1, "admin", permisos, false);
+            
+            Application.Run(new AbmRol.ModificacionRol(rolTest));
         }
     }
 }

@@ -20,6 +20,7 @@ namespace FrbaOfertas.Modelo.Roles
         public int direccionId { get; set; }
 
 
+
         public Cliente(int id, int dni, string nombre, string apellido, string mail, int telefono,
             string fecha_nacimiento, Boolean habilitado, int usuarioId, int direccionId)
         {
@@ -55,6 +56,7 @@ namespace FrbaOfertas.Modelo.Roles
         {
             throw new NotImplementedException();
         }
+
 
     }
 }

@@ -8,17 +8,19 @@ namespace FrbaOfertas.Modelo.Roles
 {
     public class Rol
     {
-        public IList<Permiso> permisos {get; set; };
+        public List<Permiso> permisos { get; set; }
         public String nombre { get; set; }
-        public int id { get; set; }
+        public Nullable<int> id { get; set; }
+        public bool habilitado { get; set; }
 
         public Rol(){ }
 
-        public Rol(int id, string nombre, List<Permiso> permisos)
+        public Rol(Nullable<int> id, string nombre, List<Permiso> permisos, bool habilitado)
         {
             this.id = id;
             this.nombre = nombre;
             this.permisos = permisos;
+            this.habilitado = habilitado;
         }
 
         public void Instertar()
