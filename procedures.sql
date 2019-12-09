@@ -426,3 +426,27 @@ BEGIN
 	END
 END
 GO
+
+
+string sql = "select top 5 p.RAZON_SOCIAL,sum(o.PRECIO_OFERTA)/sum(o.PRECIO_LISTA*o.CANTIDAD) * 100 as porcentaje ";
+sql += "from NO_SRTA_E_GATOREI.PROVEEDORES p ";
+sql = "inner join NO_SRTA_E_GATOREI.OFERTAS o ";
+sql = "on p.PROVEEDOR_ID = o.PROVEDOR_ID ";
+sql = "group by p.RAZON_SOCIAL ";
+sql = "order by 2 desc; ";
+
+
+
+string sql = "select top 5 p.RAZON_SOCIAL, sum(f.importe) "; 
+sql = "from NO_SRTA_E_GATOREI.PROVEEDORES p ";
+sql = "inner join NO_SRTA_E_GATOREI.OFERTAS o ";
+sql = "on p.PROVEEDOR_ID = o.PROVEDOR_ID ";
+sql = "inner join NO_SRTA_E_GATOREI.COMPRAS c ";
+sql = "on o.OFERTA_ID = c.OFERTA_ID ";
+sql = "inner join NO_SRTA_E_GATOREI.FACTURAS_COMPRAS fc ";
+sql = "on c.COMPRA_ID = fc.COMPRA_ID ";
+sql = "inner join NO_SRTA_E_GATOREI.FACTURAS f ";
+sql = "on fc.FACTURA_ID = f.FACTURA_ID ";
+sql = "where f.FACTURA_ID is not null ";
+sql = "group by p.RAZON_SOCIAL ";
+sql = "order by 2 desc ";

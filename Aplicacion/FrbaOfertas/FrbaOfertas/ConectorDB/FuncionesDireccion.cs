@@ -9,7 +9,7 @@ using FrbaOfertas.BaseDeDatos;
 
 namespace FrbaOfertas.ConectorDB
 {
-    class FuncionesDireccion
+    public class FuncionesDireccion
     {
         public static Direccion extractDireccion(SqlDataReader reader)
         { 
@@ -29,7 +29,7 @@ namespace FrbaOfertas.ConectorDB
 
             SqlCommand cmd = new SqlCommand(sql, con);
 
-            cmd.Parameters.Add("@DIRECCION",direccion.Calle;
+            cmd.Parameters.Add("@DIRECCION",direccion.Calle);
             cmd.Parameters.Add("@CIUDAD",direccion.Ciudad);
             cmd.Parameters.Add("@CP",direccion.codigoPostal);
             cmd.Parameters.Add("@ID",direccion.id);
