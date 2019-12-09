@@ -173,6 +173,28 @@ namespace FrbaOfertas.ConectorDB
             return lista;
         }
 
+        public static Factura facturarProveedor(int proveedorId, DateTime fechaDesde, DateTime fechaHasta)
+        {
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("FACTURAR_PROVEEDOR", con);
+            cmd.Parameters.Add("@FECHA_DESDE",fechaDesde);
+            cmd.Parameters.Add("@FECHA_HASTA",fechaHasta);
+            cmd.Parameters.Add("@PROVEEDOR_ID",proveedorId);
+            cmd.Parameters.Add("@FECHA_FACTURACION",new DateTime());
+            cmd.Parameters.Add("@NUMERO", SqlDbType.BigInt).Direction = ParameterDirection.Output;
+            cmd.Parameters.Add("@IMPORTE", SqlDbType.Decimal).Direction = ParameterDirection.Output;
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.ExecuteNonQuery();
+            Factura f = new Factura((Int64)cmd.Parameters["@NUMERO"].Value, (double)cmd.Parameters["@IMPORTE"].Value);
+
+            con.Close();
+
+            return f;
+
+        }
     }
+
 
 }
