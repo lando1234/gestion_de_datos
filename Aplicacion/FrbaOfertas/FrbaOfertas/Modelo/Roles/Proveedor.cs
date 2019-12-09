@@ -16,7 +16,7 @@ namespace FrbaOfertas.Modelo.Roles
         public Direccion direccion { get; set; }
         public Rubro rubro { get; set; }
         public string nombreContacto { get; set; }
-        public int habilitado { get; set; }
+        public bool habilitado { get; set; }
 
     }
 }

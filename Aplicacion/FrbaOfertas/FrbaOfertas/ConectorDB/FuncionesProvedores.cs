@@ -138,6 +138,41 @@ namespace FrbaOfertas.ConectorDB
             cmd.ExecuteNonQuery();
             con.Close();
         }
+        public static IList<Proveedor> getProveedores()
+        {
+            String sql = "SELECT P.[PROVEEDOR_ID],P.[CUIT],P.[RAZON_SOCIAL],P.[NOMBRE_CONTACTO],P.[MAIL],P.[TELEFONO],P.[BAJA_LOGICA],R.*, D.* ";
+            sql += "FROM NO_SRTA_E_GATOREI.PROVEEDORES P ";
+            sql += "INNER JOIN NO_SRTA_E_GATOREI.RUBROS R ON P.RUBRO_ID = R.RUBRO_ID";
+            sql += "INNER JOIN NO_SRTA_E_GATOREI.DIRECCIONES D ON P.DIRECCION_ID = D.DIRECCION_ID";
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            IList<Proveedor> lista = new List<Proveedor>();
+
+             while (reader.Read())
+            {
+                Proveedor p = new Proveedor();
+                p.id = reader.GetInt16(reader.GetOrdinal("PROVEEDOR_ID"));
+                p.RazonSocial = reader.GetString(reader.GetOrdinal("RAZON_SOCIAL"));
+                p.cuit = reader.GetString(reader.GetOrdinal("CUIT"));
+                p.mail = reader.GetString(reader.GetOrdinal("MAIL"));
+                p.telefono = reader.GetString(reader.GetOrdinal("TELEFONO"));
+                p.direccion = FuncionesDireccion.extractDireccion(reader);
+                p.rubro = new Rubro(reader.GetInt16(reader.GetOrdinal("RUBRO_ID")), reader.GetString(reader.GetOrdinal("DESCRIPCION")));
+                p.nombreContacto = reader.GetString(reader.GetOrdinal("NOMBRE_CONTACTO"));
+                p.habilitado = reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"));
+                lista.Add(p);
+            }
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            return lista;
+        }
 
     }
+
 }
