@@ -13,7 +13,7 @@ namespace FrbaOfertas.ConectorDB
     class FuncionesCliente
     {
         
-         public static int altaCliente(Cliente cliente, String username, String password, String rol, Decimal cp)
+         public static int altaCliente(Cliente cliente, String username, String password, String rol, Decimal cp, String ciudad)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
@@ -26,12 +26,12 @@ namespace FrbaOfertas.ConectorDB
             cmd.Parameters.Add("@ROL", SqlDbType.VarChar).Value = rol;
             cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = cliente.nombre;
             cmd.Parameters.Add("@APELLIDO", SqlDbType.VarChar).Value = cliente.apellido;
-            cmd.Parameters.Add("@DNI", SqlDbType.VarChar).Value = cliente.documento;
+            cmd.Parameters.Add("@DNI", SqlDbType.VarChar).Value = cliente.dni;
             cmd.Parameters.Add("@MAIL", SqlDbType.VarChar).Value = cliente.mail;
             cmd.Parameters.Add("@TELEFONO", SqlDbType.VarChar).Value = cliente.telefono;
-            cmd.Parameters.Add("@DIRECCION", SqlDbType.VarChar).Value = cliente.Calle;
+            cmd.Parameters.Add("@DIRECCION", SqlDbType.VarChar).Value = cliente.direccionId;
             cmd.Parameters.Add("@CP", SqlDbType.VarChar).Value = cp;
-            cmd.Parameters.Add("@CIUDAD", SqlDbType.VarChar).Value = cliente.Localidad;
+            cmd.Parameters.Add("@CIUDAD", SqlDbType.VarChar).Value = ciudad;
             cmd.Parameters.Add("@FECHA_NACIMIENTO", SqlDbType.VarChar).Value = cliente.fecha_nacimiento;
             cmd.Parameters.Add("@FECHA_ACTUAL", SqlDbType.VarChar).Value = DateTime.Now;
 
@@ -93,8 +93,8 @@ namespace FrbaOfertas.ConectorDB
                    registros.GetInt16(registros.GetOrdinal("TELEFONO")),
                    registros["FECHA_NACIMIENTO"].ToString(),
                    registros.GetBoolean(registros.GetOrdinal("BAJA_LOGICA")),
-                   registros.GetInt64(registros.GetOrdinal("USUARIO_ID")),
-                   registros.GetInt64(registros.GetOrdinal("DIRECCION_ID")));
+                   registros.GetInt16(registros.GetOrdinal("USUARIO_ID")),
+                   registros.GetInt16(registros.GetOrdinal("DIRECCION_ID")));
            }
            return cliente;
         }
@@ -134,8 +134,13 @@ namespace FrbaOfertas.ConectorDB
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE CLIENTES SET BAJA_LOGICA = 1 WHERE CLIENTE_ID ='" + clienteID + "'", con);
+            String sql = "UPDATE CLIENTES SET BAJA_LOGICA = 1 WHERE CLIENTE_ID = @CLIENTE_ID";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.Add(new SqlParameter("@CLIENTE_ID", clienteID));
+
             cmd.ExecuteNonQuery();
+
         }
         public static void invertirBajaLogicaCliente(int clienteID)
         {
@@ -153,7 +158,38 @@ namespace FrbaOfertas.ConectorDB
         public static void UpdateCliente(Cliente cliente)
         {
 
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+
+            string sql = "UPDATE [NO_SRTA_E_GATOREI].[CLIENTES] ";
+            sql += "SET [DNI] = @DNI ";
+            sql += ",[NOMBRE] = @NOMBRE ";
+            sql += ",[APELLIDO] = @APELLIDO ";
+            sql += ",[FECHA_NACIMIENTO] = @FECHA_NACIMIENTO ";
+            sql += ",[USUARIO_ID] = @USUARIO_ID ";
+            sql += ",[DIRECCION_ID] = @DIRECCION_ID ";
+            sql += ",[MAIL] = @MAIL ";
+            sql += ",[TELEFONO] = @TELEFONO ";
+            sql += ",[BAJA_LOGICO] = @BAJA_LOGICO ";
+            sql += "WHERE CLIENTE_ID = @ID ";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            cmd.Parameters.Add("@DNI", cliente.dni);
+            cmd.Parameters.Add("@NOMBRE", cliente.nombre);
+            cmd.Parameters.Add("@APELLIDO", cliente.apellido);
+            cmd.Parameters.Add("@FECHA_NACIMIENTO", cliente.fecha_nacimiento);
+            cmd.Parameters.Add("@USUARIO_ID", cliente.usuarioId);
+            cmd.Parameters.Add("@DIRECCION_ID", cliente.direccionId);
+            cmd.Parameters.Add("@MAIL", cliente.mail);
+            cmd.Parameters.Add("@TELEFONO", cliente.telefono);
+            cmd.Parameters.Add("@BAJA_LOGICO", cliente.habilitado);
+            cmd.Parameters.Add("@ID", cliente.id);
            
+
+
+            cmd.ExecuteNonQuery();
+            con.Close(); 
         }
 
     }
