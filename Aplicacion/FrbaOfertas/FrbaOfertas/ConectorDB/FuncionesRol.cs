@@ -31,7 +31,7 @@ namespace FrbaOfertas.ConectorDB
                    reader.Read();
             
                    int rolId = (int) reader["ROL_ID"];       
-                   Rol rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>()); 
+                   Rol rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(), true); 
                     
                    while (reader.Read())
                    {
@@ -39,7 +39,7 @@ namespace FrbaOfertas.ConectorDB
                        if (nextId != rolId)
                        {
                            lista.Add(rol);
-                           rol = new Rol(nextId, reader["NOMBRE"].ToString(), new List<Permiso>()); 
+                           rol = new Rol(nextId, reader["NOMBRE"].ToString(), new List<Permiso>(), false); 
                        }
 
                        rol.permisos.Add(new Permiso((int)reader["PERMISO_ID"], reader["PERMISO_DESC"].ToString(), reader["PERMISO_CLAVE"].ToString()));  
@@ -48,6 +48,32 @@ namespace FrbaOfertas.ConectorDB
                    con.Close();
             return lista;
 
+        }
+
+        public static List<Rol> obtenerRolesMock() {
+            List<Rol> lista = new List<Rol>();
+
+                //MOCKE LISTA DE ROLES CON SUS DATOS INTERNOS
+                Permiso permisotest1 = new Permiso(1, "aceptar1", "clave");
+                List<Permiso> permisos = new List<Permiso>();
+                permisos.Add(permisotest1);
+                Rol rolTest = new Rol(1, "admin1", permisos, true);
+
+                Permiso permisotest2 = new Permiso(1, "aceptar2", "clave");
+                List<Permiso> permisos1 = new List<Permiso>();
+                permisos.Add(permisotest2);
+                Rol rolTest2 = new Rol(2, "admin2", permisos, true);
+
+                Permiso permisotest3 = new Permiso(1, "aceptar3", "clave");
+                List<Permiso> permisos3 = new List<Permiso>();
+                permisos.Add(permisotest3);
+                Rol rolTest3 = new Rol(3, "admin3", permisos, true);
+
+                lista.Add(rolTest);
+                lista.Add(rolTest2);
+                lista.Add(rolTest3);
+                //MOCKE LISTA DE ROLES CON SUS DATOS INTERNOS
+                return lista;
         }
 
         public static Rol obtenerRol(Nullable<int> rolId)
@@ -67,7 +93,7 @@ namespace FrbaOfertas.ConectorDB
             cmd.Parameters.Add(new SqlParameter("@ROL",rolId));
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read()) {
-                rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>());
+                rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(), true);
 
             
             while (reader.Read())

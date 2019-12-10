@@ -45,7 +45,7 @@ namespace FrbaOfertas.AbmRol
                 }
             }
 
-            Rol nuevoRol = new Rol(null, input_nombre.Text, funcionalidadesSeleccionadas);
+            Rol nuevoRol = new Rol(null, input_nombre.Text, funcionalidadesSeleccionadas, true);
 
             ConectorDB.FuncionesRol.GuardarRol(nuevoRol);
         }

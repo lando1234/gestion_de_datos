@@ -24,12 +24,12 @@ namespace FrbaOfertas.AbmRol
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            List<String> funcionalidadesSeleccionadas = new List<string>();
+            List<Permiso> funcionalidadesSeleccionadas = new List<Permiso>();
 
             for (int i = 0; i < listBoxFuncionalidades.Items.Count; i++)
             {
                 if (listBoxFuncionalidades.GetItemChecked(i)){
-                    string str = (string)listBoxFuncionalidades.Items[i];
+                    Permiso str = (Permiso)listBoxFuncionalidades.Items[i];
                     funcionalidadesSeleccionadas.Add(str);
                 }
             }
