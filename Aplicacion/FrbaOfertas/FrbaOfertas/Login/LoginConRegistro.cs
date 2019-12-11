@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas
 {
-    public partial class LoginForm : Form
+    public partial class LoginConRegistro : Form
     {
-        public LoginForm()
+        public LoginConRegistro()
         {
             InitializeComponent();
         }
