@@ -46,5 +46,17 @@ namespace FrbaOfertas.ConectorDB
             
 
         }
+
+        public static void spOferta(Oferta oferta)
+        {
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("OFERTA_SP", con);
+            cmd.Parameters.AddWithValue("@CLIENTE_ID", oferta.clienteId);
+            cmd.Parameters.AddWithValue("@OFERTA_ID", oferta.id);
+            cmd.Parameters.AddWithValue("@FECHA_OFERTA", oferta.fecha);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }
