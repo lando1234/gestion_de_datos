@@ -20,6 +20,7 @@ namespace FrbaOfertas.AbmProveedor
 
         private void botonGuardar_Click(object sender, EventArgs e)
         {
+            /*
             Proveedor proveedor = new Proveedor();
             proveedor.RazonSocial = txt_razonsocial.Text;
             proveedor.Calle = txt_calle.Text;
@@ -32,6 +33,7 @@ namespace FrbaOfertas.AbmProveedor
             proveedor.telefono = txt_tel.Text;
             proveedor.rubro = txt_rubro.Text;
             proveedor.nombreContacto = txt_nombreContacto.Text;
+             * */
         }
     }
 }

@@ -134,6 +134,12 @@
     <Compile Include="CrearOferta\CrearOfertaProveedor.Designer.cs">
       <DependentUpon>CrearOfertaProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListadoEstadistico\TopFive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoEstadistico\TopFive.Designer.cs">
+      <DependentUpon>TopFive.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\ProveedorValor.cs" />
     <Compile Include="Modelo\Roles\Factura.cs" />
     <Compile Include="Modelo\Roles\Direccion.cs" />
@@ -177,18 +183,15 @@
     <Compile Include="RegistroForm\Registro.Designer.cs">
       <DependentUpon>Registro.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListadoEstadistico\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ListadoEstadistico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Validador.cs" />
     <Compile Include="Utils\ProtocoloLogin.cs" />
     <EmbeddedResource Include="AbmCliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoEstadistico\TopFive.resx">
+      <DependentUpon>TopFive.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm\login.resx">
       <DependentUpon>Login.cs</DependentUpon>

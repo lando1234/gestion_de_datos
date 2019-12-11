@@ -22,16 +22,16 @@ namespace FrbaOfertas.ConectorDB
             string sql = "SELECT R.*,P.* ";
                    sql += "FROM [NO_SRTA_E_GATOREI].ROLES R JOIN [NO_SRTA_E_GATOREI].PERMISOS_ROLES PR ";
                    sql += "ON R.ROL_ID = PR.ROL_ID ";
-                   sql += "JOIN [NO_SRTA_E_GATOREI].PERMISOS P ON P.PERMISO_ID = PR.PERMISO_ID";
+                   sql += "JOIN [NO_SRTA_E_GATOREI].PERMISOS P ON P.PERMISO_ID = PR.PERMISO_ID ";
                    sql += "ORDER BY R.ROL_ID ASC";
 
-                   SqlCommand cmd = new SqlCommand(sql);
+                   SqlCommand cmd = new SqlCommand(sql,con);
                    SqlDataReader reader = cmd.ExecuteReader();
                    
                    reader.Read();
             
                    int rolId = (int) reader["ROL_ID"];       
-                   Rol rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(),reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"))); 
+                   Rol rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(),!reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"))); 
                     
                    while (reader.Read())
                    {
@@ -39,7 +39,7 @@ namespace FrbaOfertas.ConectorDB
                        if (nextId != rolId)
                        {
                            lista.Add(rol);
-                           rol = new Rol(nextId, reader["NOMBRE"].ToString(), new List<Permiso>(), reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"))); 
+                           rol = new Rol(nextId, reader["NOMBRE"].ToString(), new List<Permiso>(), !reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"))); 
                        }
 
                        rol.permisos.Add(new Permiso((int)reader["PERMISO_ID"], reader["PERMISO_DESC"].ToString(), reader["PERMISO_CLAVE"].ToString()));  
@@ -93,7 +93,7 @@ namespace FrbaOfertas.ConectorDB
             cmd.Parameters.Add(new SqlParameter("@ROL",rolId));
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read()) {
-                rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(), reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA")));
+                rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(), !reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA")));
 
             
             while (reader.Read())
