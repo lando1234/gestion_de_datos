@@ -7,12 +7,12 @@ using FrbaOfertas.Modelo.Roles;
 
 namespace FrbaOfertas.Modelo
 {
-    static class Usuario
+    public class Usuario
     {
-        public static int id { get; set; }
-        public static string username { get; set; }
-        public static string password { get; set; }
-        public static Rol rol { get; set; }
+        public int id { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public Rol rol { get; set; }
 
         public static void IngresoUsuario(string username, string pass)
         {
