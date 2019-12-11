@@ -22,7 +22,7 @@ namespace FrbaOfertas.ConectorDB
             cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = username;
             cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = password;
 
-            var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
+            var returnParameter = cmd.Parameters.Add("@RESULT", SqlDbType.Int);
             returnParameter.Direction = ParameterDirection.ReturnValue;
 
 
