@@ -50,6 +50,32 @@ namespace FrbaOfertas.ConectorDB
 
         }
 
+        public static List<Rol> obtenerRolesMock() {
+            List<Rol> lista = new List<Rol>();
+
+                //MOCKE LISTA DE ROLES CON SUS DATOS INTERNOS
+                Permiso permisotest1 = new Permiso(1, "aceptar1", "clave");
+                List<Permiso> permisos = new List<Permiso>();
+                permisos.Add(permisotest1);
+                Rol rolTest = new Rol(1, "admin1", permisos, true);
+
+                Permiso permisotest2 = new Permiso(1, "aceptar2", "clave");
+                List<Permiso> permisos1 = new List<Permiso>();
+                permisos.Add(permisotest2);
+                Rol rolTest2 = new Rol(2, "admin2", permisos, true);
+
+                Permiso permisotest3 = new Permiso(1, "aceptar3", "clave");
+                List<Permiso> permisos3 = new List<Permiso>();
+                permisos.Add(permisotest3);
+                Rol rolTest3 = new Rol(3, "admin3", permisos, true);
+
+                lista.Add(rolTest);
+                lista.Add(rolTest2);
+                lista.Add(rolTest3);
+                //MOCKE LISTA DE ROLES CON SUS DATOS INTERNOS
+                return lista;
+        }
+
         public static Rol obtenerRol(Nullable<int> rolId)
         {
             Rol rol = null;

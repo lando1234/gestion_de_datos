@@ -99,6 +99,24 @@
       <DependentUpon>ListaRoles.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseDeDatos\Conexion.cs" />
+    <Compile Include="CargaDeCredito\CargaTarjeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargaDeCredito\CargaTarjeta.Designer.cs">
+      <DependentUpon>CargaTarjeta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CargaDeCredito\RecargarCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargaDeCredito\RecargarCredito.Designer.cs">
+      <DependentUpon>RecargarCredito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComprarOferta\Cantidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComprarOferta\Cantidad.Designer.cs">
+      <DependentUpon>Cantidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConectorDB\ListadoEstadisticas.cs" />
     <Compile Include="ConectorDB\FuncionesDireccion.cs" />
     <Compile Include="ConectorDB\FuncionesCliente.cs" />
@@ -110,6 +128,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>configurationsDb.settings</DependentUpon>
     </Compile>
+    <Compile Include="CrearOferta\CrearOfertaProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearOferta\CrearOfertaProveedor.Designer.cs">
+      <DependentUpon>CrearOfertaProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\ProveedorValor.cs" />
     <Compile Include="Modelo\Roles\Factura.cs" />
     <Compile Include="Modelo\Roles\Direccion.cs" />
@@ -119,23 +143,17 @@
     <Compile Include="Modelo\Roles\Rol.cs" />
     <Compile Include="Modelo\Roles\Rubro.cs" />
     <Compile Include="Modelo\Usuario.cs" />
-    <Compile Include="ComprarOferta\Form1.cs">
+    <Compile Include="ComprarOferta\CompraDeOferta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ComprarOferta\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ComprarOferta\CompraDeOferta.Designer.cs">
+      <DependentUpon>CompraDeOferta.cs</DependentUpon>
     </Compile>
-    <Compile Include="CargarCredito\Form1.cs">
+    <Compile Include="CrearOferta\CrearOfertaAdministrativo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CargarCredito\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CrearOferta\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CrearOferta\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="CrearOferta\CrearOfertaAdministrativo.Designer.cs">
+      <DependentUpon>CrearOfertaAdministrativo.cs</DependentUpon>
     </Compile>
     <Compile Include="Excepciones\CancelException.cs" />
     <Compile Include="Excepciones\UnavailableException.cs" />
@@ -196,6 +214,24 @@
     <EmbeddedResource Include="AbmRol\ListaRoles.resx">
       <DependentUpon>ListaRoles.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CargaDeCredito\CargaTarjeta.resx">
+      <DependentUpon>CargaTarjeta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CargaDeCredito\RecargarCredito.resx">
+      <DependentUpon>RecargarCredito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComprarOferta\CompraDeOferta.resx">
+      <DependentUpon>CompraDeOferta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComprarOferta\Cantidad.resx">
+      <DependentUpon>Cantidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrearOferta\CrearOfertaAdministrativo.resx">
+      <DependentUpon>CrearOfertaAdministrativo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrearOferta\CrearOfertaProveedor.resx">
+      <DependentUpon>CrearOfertaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -205,6 +241,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegistroForm\Registro.resx">
+      <DependentUpon>Registro.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Config\configurationsDb.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>configurationsDb.Designer.cs</LastGenOutput>
@@ -222,6 +261,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
