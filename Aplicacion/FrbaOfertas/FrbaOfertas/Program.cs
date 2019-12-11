@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Data;
 using FrbaOfertas.ConectorDB;
 using FrbaOfertas.Modelo.Roles;
+using FrbaOfertas.AbmRol;
 
 namespace FrbaOfertas
 {

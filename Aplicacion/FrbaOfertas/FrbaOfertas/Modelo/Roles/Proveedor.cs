@@ -13,15 +13,10 @@ namespace FrbaOfertas.Modelo.Roles
         public string cuit { get; set; }
         public string mail { get; set; }
         public string telefono { get; set; }
-        public string Ciudad { get; set; }
-        public string Calle { get; set; }
-        public string codigoPostal { get; set; }
-        public string Piso { get; set; }
-        public string Dpto { get; set; }
-        public string Localidad { get; set; }
-        public string rubro { get; set; }
+        public Direccion direccion { get; set; }
+        public Rubro rubro { get; set; }
         public string nombreContacto { get; set; }
-        public int habilitado { get; set; }
+        public bool habilitado { get; set; }
 
     }
 }
