@@ -25,7 +25,6 @@ C:\Users\matias\Downloads\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfert
 C:\Users\ndeberuti\Documents\UTN\GDD\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
 C:\Users\ndeberuti\Documents\UTN\GDD\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
 C:\Users\ndeberuti\Documents\UTN\GDD\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
-C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
 C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.AltaCliente.resources
 C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.ListarClientes.resources
 C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmCliente.ModificarCliente.resources
@@ -38,3 +37,16 @@ C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\ob
 C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
 C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
 C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.LoginForm.resources
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.CargaDeCredito.CargaTarjeta.resources
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.CargaDeCredito.RecargarCredito.resources
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.CompraDeOferta.resources
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.ComprarOferta.Form1.resources
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.CrearOfertaAdministrativo.resources
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.CrearOferta.CrearOfertaProveedor.resources
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.RegistroForm.Registro.resources
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.ListadoEstadistico.TopFive.resources
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.pdb
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
+C:\Users\matias\Documents\gestion_de_datos\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb

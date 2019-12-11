@@ -1,6 +1,6 @@
 ﻿namespace FrbaOfertas
 {
-    partial class LoginForm
+    partial class LoginConRegistro
     {
         /// <summary>
         /// Variable del diseñador requerida.

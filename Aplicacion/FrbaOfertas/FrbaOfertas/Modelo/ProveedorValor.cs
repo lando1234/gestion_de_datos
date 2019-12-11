@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrbaOfertas.Modelo
 {
-    class ProveedorValor
+    public class ProveedorValor
     {
         public string razonSocial { get; set; }
         public double monto { get; set; }

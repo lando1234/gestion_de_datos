@@ -37,22 +37,22 @@ namespace FrbaOfertas.Modelo.Roles
         }
 
 
-        public override int getIdentificadorPrincipal()
+        public int getIdentificadorPrincipal()
         {
             return this.dni;
 
         }
-        public override string getName()
+        public string getName()
         {
             return typeof(Cliente).Name;
         }
-        public override void Instertar()
+        public void Instertar()
         {
             //FrbaOfertas.ConectorDB.FuncionesCliente.altaCliente(this);
 
         }
 
-        public override void Modificar()
+        public void Modificar()
         {
             throw new NotImplementedException();
         }
