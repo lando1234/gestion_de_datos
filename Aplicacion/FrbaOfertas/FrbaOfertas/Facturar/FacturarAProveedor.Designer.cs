@@ -1,6 +1,6 @@
 ﻿namespace FrbaOfertas.Facturar
 {
-    partial class Form1
+    partial class FacturarAProveedor
     {
         /// <summary>
         /// Required designer variable.

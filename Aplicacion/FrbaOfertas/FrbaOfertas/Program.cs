@@ -22,7 +22,7 @@ namespace FrbaOfertas
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new LoginConRegistro());
+            Application.Run(new MenuPrincipal.Menu());
         }
     }
 }
