@@ -10,11 +10,11 @@ namespace FrbaOfertas.ConectorDB
 {
     class FuncionesConsumoCupones
     {
-        public static void spCupon(Cupon cupon)
+        public static void consumirCupon(Cupon cupon)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("CUPON_SP", con);
+            SqlCommand cmd = new SqlCommand("CONSUMIR_CUPON", con);
             cmd.Parameters.AddWithValue("@CLIENTE_ID", cupon.clienteId);
             cmd.Parameters.AddWithValue("@PROVEEDOR_ID", cupon.proveedorId);
             cmd.Parameters.AddWithValue("@CODIGO_CUPON", cupon.codigoCupon);
