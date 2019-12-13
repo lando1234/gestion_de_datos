@@ -22,20 +22,29 @@ namespace FrbaOfertas.ConectorDB
 
             cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = username;
             cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = password;
+            cmd.Parameters.Add("@RESULT", SqlDbType.VarChar).Value = " ";
 
             var returnParameter = cmd.Parameters.Add("@RESULT", SqlDbType.Int);
-
             returnParameter.Direction = ParameterDirection.ReturnValue;
 
 
-            
-            cmd.ExecuteNonQuery();
+
+            SqlDataReader registros = cmd.ExecuteReader();
 
             int result = (int)returnParameter.Value;
 
-            
+            while (registros.Read())
+            {
+                int returnParam = registros.GetInt16(0);
+
+                if (returnParam < 0) {
+                    result = returnParam;
+                }
+
+            }
 
             return result;
+          
         }
 
         public static Usuario getUsuarioById(int id)
