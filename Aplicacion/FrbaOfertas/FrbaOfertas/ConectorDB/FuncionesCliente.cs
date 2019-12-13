@@ -48,6 +48,46 @@ namespace FrbaOfertas.ConectorDB
 
         }
 
+         public static List<Cliente> getClientes()
+         {
+
+             List<Cliente> clientes = new List<Cliente>();
+
+
+             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+             con.Open();
+
+
+
+
+             string sql = "SELECT * FROM [NO_SRTA_E_GATOREI].CLIENTES";
+
+
+             SqlCommand cmd = new SqlCommand(sql, con);
+
+             SqlDataReader registros = cmd.ExecuteReader();
+
+             while (registros.Read())
+             {
+
+                  
+
+                 clientes.Add(new Cliente(registros.GetInt32(registros.GetOrdinal("CLIENTE_ID")),
+                  registros.GetInt16(registros.GetOrdinal("DNI")),
+                  registros["NOMBRE"].ToString(),
+                  registros["APELLIDO"].ToString(),
+                  registros["MAIL"].ToString(),
+                  registros.GetInt16(registros.GetOrdinal("TELEFONO")),
+                  registros["FECHA_NACIMIENTO"].ToString(),
+                  registros.GetBoolean(registros.GetOrdinal("BAJA_LOGICA")),
+                  registros.GetInt16(registros.GetOrdinal("USUARIO_ID")),
+                  registros.GetInt16(registros.GetOrdinal("DIRECCION_ID"))));
+             }
+
+             return clientes;
+
+         }
+
          public static int cargarCreditoCliente(int clienteID, String tipoPago, Decimal monto, String nombre, String fechaVencimiento, String numero)
          {
              SqlConnection con = new SqlConnection(Conexion.getStringConnection());
