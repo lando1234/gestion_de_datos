@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.Detalles = new System.Windows.Forms.GroupBox();
+            this.comboRubro = new System.Windows.Forms.ComboBox();
             this.botonGuardar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.txt_nombreContacto = new System.Windows.Forms.TextBox();
@@ -48,7 +49,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_tel = new System.Windows.Forms.TextBox();
-            this.comboRubro = new System.Windows.Forms.ComboBox();
             this.Detalles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,12 +81,20 @@
             this.Detalles.TabStop = false;
             this.Detalles.Text = "Detalles Proveedor";
             // 
+            // comboRubro
+            // 
+            this.comboRubro.FormattingEnabled = true;
+            this.comboRubro.Location = new System.Drawing.Point(100, 254);
+            this.comboRubro.Name = "comboRubro";
+            this.comboRubro.Size = new System.Drawing.Size(282, 21);
+            this.comboRubro.TabIndex = 7;
+            // 
             // botonGuardar
             // 
             this.botonGuardar.Location = new System.Drawing.Point(307, 337);
             this.botonGuardar.Name = "botonGuardar";
             this.botonGuardar.Size = new System.Drawing.Size(75, 23);
-            this.botonGuardar.TabIndex = 41;
+            this.botonGuardar.TabIndex = 9;
             this.botonGuardar.Text = "Guardar";
             this.botonGuardar.UseVisualStyleBackColor = true;
             this.botonGuardar.Click += new System.EventHandler(this.botonGuardar_Click);
@@ -96,7 +104,7 @@
             this.button1.Location = new System.Drawing.Point(31, 337);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 39;
+            this.button1.TabIndex = 10;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -105,7 +113,7 @@
             this.txt_nombreContacto.Location = new System.Drawing.Point(131, 291);
             this.txt_nombreContacto.Name = "txt_nombreContacto";
             this.txt_nombreContacto.Size = new System.Drawing.Size(249, 20);
-            this.txt_nombreContacto.TabIndex = 11;
+            this.txt_nombreContacto.TabIndex = 8;
             // 
             // label12
             // 
@@ -130,7 +138,7 @@
             this.txt_ciudad.Location = new System.Drawing.Point(94, 77);
             this.txt_ciudad.Name = "txt_ciudad";
             this.txt_ciudad.Size = new System.Drawing.Size(284, 20);
-            this.txt_ciudad.TabIndex = 5;
+            this.txt_ciudad.TabIndex = 2;
             // 
             // label2
             // 
@@ -171,14 +179,14 @@
             this.txt_cuit.Location = new System.Drawing.Point(96, 180);
             this.txt_cuit.Name = "txt_cuit";
             this.txt_cuit.Size = new System.Drawing.Size(284, 20);
-            this.txt_cuit.TabIndex = 8;
+            this.txt_cuit.TabIndex = 5;
             // 
             // txt_codpostal
             // 
             this.txt_codpostal.Location = new System.Drawing.Point(98, 109);
             this.txt_codpostal.Name = "txt_codpostal";
             this.txt_codpostal.Size = new System.Drawing.Size(280, 20);
-            this.txt_codpostal.TabIndex = 6;
+            this.txt_codpostal.TabIndex = 3;
             // 
             // label6
             // 
@@ -203,7 +211,7 @@
             this.txt_mail.Location = new System.Drawing.Point(96, 144);
             this.txt_mail.Name = "txt_mail";
             this.txt_mail.Size = new System.Drawing.Size(284, 20);
-            this.txt_mail.TabIndex = 7;
+            this.txt_mail.TabIndex = 4;
             // 
             // txt_calle
             // 
@@ -236,15 +244,7 @@
             this.txt_tel.Location = new System.Drawing.Point(98, 216);
             this.txt_tel.Name = "txt_tel";
             this.txt_tel.Size = new System.Drawing.Size(284, 20);
-            this.txt_tel.TabIndex = 9;
-            // 
-            // comboRubro
-            // 
-            this.comboRubro.FormattingEnabled = true;
-            this.comboRubro.Location = new System.Drawing.Point(100, 254);
-            this.comboRubro.Name = "comboRubro";
-            this.comboRubro.Size = new System.Drawing.Size(282, 21);
-            this.comboRubro.TabIndex = 42;
+            this.txt_tel.TabIndex = 6;
             // 
             // AltaProveedor
             // 

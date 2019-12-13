@@ -12,9 +12,6 @@ namespace FrbaOfertas.Modelo.Roles
         public string Ciudad { get; set; }
         public string Calle { get; set; }
         public string codigoPostal { get; set; }
-        public string Piso { get; set; }
-        public string Dpto { get; set; }
-        public string Localidad { get; set; }
 
         public Direccion(Nullable<int> id, string ciudad, string calle, string codigoPostal)
         {

@@ -30,18 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textUsuario = new System.Windows.Forms.TextBox();
+            this.textPass1 = new System.Windows.Forms.TextBox();
+            this.textPass2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboTipo = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.siguienteRegistro = new System.Windows.Forms.Button();
             this.funcionesProveedorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.funcionesProveedorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.funcionesProveedorBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionesProveedorBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -55,37 +55,38 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Registrar usuario";
             // 
-            // textBox1
+            // textUsuario
             // 
-            this.textBox1.Location = new System.Drawing.Point(204, 61);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(171, 20);
-            this.textBox1.TabIndex = 1;
+            this.textUsuario.Location = new System.Drawing.Point(204, 61);
+            this.textUsuario.Name = "textUsuario";
+            this.textUsuario.Size = new System.Drawing.Size(171, 20);
+            this.textUsuario.TabIndex = 1;
             // 
-            // textBox2
+            // textPass1
             // 
-            this.textBox2.Location = new System.Drawing.Point(204, 85);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(171, 20);
-            this.textBox2.TabIndex = 2;
+            this.textPass1.Location = new System.Drawing.Point(204, 85);
+            this.textPass1.Name = "textPass1";
+            this.textPass1.PasswordChar = '*';
+            this.textPass1.Size = new System.Drawing.Size(171, 20);
+            this.textPass1.TabIndex = 2;
             // 
-            // textBox3
+            // textPass2
             // 
-            this.textBox3.Location = new System.Drawing.Point(204, 110);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.PasswordChar = '*';
-            this.textBox3.Size = new System.Drawing.Size(171, 20);
-            this.textBox3.TabIndex = 3;
+            this.textPass2.Location = new System.Drawing.Point(204, 110);
+            this.textPass2.Name = "textPass2";
+            this.textPass2.PasswordChar = '*';
+            this.textPass2.Size = new System.Drawing.Size(171, 20);
+            this.textPass2.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(101, 140);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 13);
+            this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 26;
-            this.label3.Text = "Rol:";
+            this.label3.Text = "Tipo usuario:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -114,25 +115,17 @@
             this.label5.TabIndex = 24;
             this.label5.Text = "Nombre de Usuario:";
             // 
-            // comboBox1
+            // comboTipo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboTipo.FormattingEnabled = true;
+            this.comboTipo.Items.AddRange(new object[] {
             "Cliente",
             "Proveedor"});
-            this.comboBox1.Location = new System.Drawing.Point(204, 137);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(171, 21);
-            this.comboBox1.TabIndex = 27;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // funcionesProveedorBindingSource1
-            // 
-            this.funcionesProveedorBindingSource1.DataSource = typeof(FrbaOfertas.ConectorDB.FuncionesProveedor);
-            // 
-            // funcionesProveedorBindingSource
-            // 
-            this.funcionesProveedorBindingSource.DataSource = typeof(FrbaOfertas.ConectorDB.FuncionesProveedor);
+            this.comboTipo.Location = new System.Drawing.Point(204, 137);
+            this.comboTipo.Name = "comboTipo";
+            this.comboTipo.Size = new System.Drawing.Size(171, 21);
+            this.comboTipo.TabIndex = 27;
+            this.comboTipo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -144,30 +137,32 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.botonCancelar);
             // 
-            // button2
+            // siguienteRegistro
             // 
-            this.button2.Location = new System.Drawing.Point(300, 199);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "Siguiente";
-            this.button2.UseVisualStyleBackColor = true;
+            this.siguienteRegistro.Location = new System.Drawing.Point(300, 199);
+            this.siguienteRegistro.Name = "siguienteRegistro";
+            this.siguienteRegistro.Size = new System.Drawing.Size(75, 23);
+            this.siguienteRegistro.TabIndex = 29;
+            this.siguienteRegistro.Text = "Siguiente";
+            this.siguienteRegistro.UseVisualStyleBackColor = true;
+            this.siguienteRegistro.Click += new System.EventHandler(this.button2_Click);
             // 
+
             // Registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(523, 262);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.siguienteRegistro);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboTipo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textPass2);
+            this.Controls.Add(this.textPass1);
+            this.Controls.Add(this.textUsuario);
             this.Controls.Add(this.label1);
             this.Name = "Registro";
             this.Text = "Registro";
@@ -181,16 +176,16 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textUsuario;
+        private System.Windows.Forms.TextBox textPass1;
+        private System.Windows.Forms.TextBox textPass2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboTipo;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button siguienteRegistro;
         private System.Windows.Forms.BindingSource funcionesProveedorBindingSource;
         private System.Windows.Forms.BindingSource funcionesProveedorBindingSource1;
     }

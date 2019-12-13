@@ -8,13 +8,14 @@ using System.Data;
 using FrbaOfertas.BaseDeDatos;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
+using FrbaOfertas.Modelo;
 
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesCliente
     {
         
-         public static int altaCliente(Cliente cliente, String username, String password, String rol, Decimal cp, String ciudad)
+         public static int altaCliente(Cliente cliente, Usuario usuario)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
@@ -22,19 +23,18 @@ namespace FrbaOfertas.ConectorDB
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = username;
-            cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = password;
-            cmd.Parameters.Add("@ROL", SqlDbType.VarChar).Value = rol;
+            cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = usuario.username;
+            cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = usuario.password;
             cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = cliente.nombre;
             cmd.Parameters.Add("@APELLIDO", SqlDbType.VarChar).Value = cliente.apellido;
             cmd.Parameters.Add("@DNI", SqlDbType.VarChar).Value = cliente.dni;
             cmd.Parameters.Add("@MAIL", SqlDbType.VarChar).Value = cliente.mail;
             cmd.Parameters.Add("@TELEFONO", SqlDbType.VarChar).Value = cliente.telefono;
-            cmd.Parameters.Add("@DIRECCION", SqlDbType.VarChar).Value = cliente.direccionId;
-            cmd.Parameters.Add("@CP", SqlDbType.VarChar).Value = cp;
-            cmd.Parameters.Add("@CIUDAD", SqlDbType.VarChar).Value = ciudad;
-            cmd.Parameters.Add("@FECHA_NACIMIENTO", SqlDbType.VarChar).Value = cliente.fecha_nacimiento;
-            cmd.Parameters.Add("@FECHA_ACTUAL", SqlDbType.VarChar).Value = DateTime.Now;
+            cmd.Parameters.Add("@DIRECCION", SqlDbType.VarChar).Value = cliente.direccion.Calle;
+            cmd.Parameters.Add("@CP", SqlDbType.VarChar).Value = cliente.direccion.codigoPostal;
+            cmd.Parameters.Add("@CIUDAD", SqlDbType.VarChar).Value = cliente.direccion.Ciudad;
+            cmd.Parameters.Add("@FECHA_NACIMIENTO", SqlDbType.DateTime).Value = cliente.fecha_nacimiento;
+            cmd.Parameters.Add("@FECHA_ACTUAL", SqlDbType.DateTime).Value = DateTime.Now;
 
             var returnParameter = cmd.Parameters.Add("@RESULT", SqlDbType.Int);
             returnParameter.Direction = ParameterDirection.ReturnValue;
@@ -86,16 +86,16 @@ namespace FrbaOfertas.ConectorDB
 
            if (registros.Read())
            {
-               cliente = new Cliente(clienteId,
-                   registros.GetInt16(registros.GetOrdinal("DNI")),
-                   registros["NOMBRE"].ToString(),
-                   registros["APELLIDO"].ToString(),
-                   registros["MAIL"].ToString(),
-                   registros.GetInt16(registros.GetOrdinal("TELEFONO")),
-                   registros["FECHA_NACIMIENTO"].ToString(),
-                   registros.GetBoolean(registros.GetOrdinal("BAJA_LOGICA")),
-                   registros.GetInt16(registros.GetOrdinal("USUARIO_ID")),
-                   registros.GetInt16(registros.GetOrdinal("DIRECCION_ID")));
+               //cliente = new Cliente(clienteId,
+                 //  registros.GetInt16(registros.GetOrdinal("DNI")),
+                 //  registros["NOMBRE"].ToString(),
+                 //  registros["APELLIDO"].ToString(),
+                  // registros["MAIL"].ToString(),
+                 //  registros.GetInt16(registros.GetOrdinal("TELEFONO")),
+                 //  DateTime.Parse(registros["FECHA_NACIMIENTO"]),
+                 //  registros.GetBoolean(registros.GetOrdinal("BAJA_LOGICA")),
+                  // registros.GetInt16(registros.GetOrdinal("USUARIO_ID")),
+                  // registros.GetInt16(registros.GetOrdinal("DIRECCION_ID")));
            }
            return cliente;
         }
@@ -181,7 +181,7 @@ namespace FrbaOfertas.ConectorDB
             cmd.Parameters.Add("@APELLIDO", cliente.apellido);
             cmd.Parameters.Add("@FECHA_NACIMIENTO", cliente.fecha_nacimiento);
             cmd.Parameters.Add("@USUARIO_ID", cliente.usuarioId);
-            cmd.Parameters.Add("@DIRECCION_ID", cliente.direccionId);
+            cmd.Parameters.Add("@DIRECCION_ID", cliente.direccion);
             cmd.Parameters.Add("@MAIL", cliente.mail);
             cmd.Parameters.Add("@TELEFONO", cliente.telefono);
             cmd.Parameters.Add("@BAJA_LOGICO", cliente.habilitado);
