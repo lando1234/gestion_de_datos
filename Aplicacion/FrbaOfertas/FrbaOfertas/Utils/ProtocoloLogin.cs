@@ -34,7 +34,7 @@ namespace FrbaOfertas.Utils
                     if (Respuesta > 0)
                     {
                         //SETEAR EL USUARIO DE FORMA GLOBAL
-                        ConectorDB.FuncionesUsername.
+                        //ConectorDB.FuncionesUsername.
                         return true;
                     }
                     else

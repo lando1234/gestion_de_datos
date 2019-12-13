@@ -14,10 +14,6 @@ namespace FrbaOfertas.Modelo
         public string password { get; set; }
         public Rol rol { get; set; }
 
-        public static void IngresoUsuario(string username, string pass)
-        {
-            FrbaOfertas.ConectorDB.FuncionesUsername.recuperar_usuario_id(username, pass);
 
-        }
     }
 }

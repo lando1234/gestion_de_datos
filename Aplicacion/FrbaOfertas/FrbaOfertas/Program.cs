@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Data;
 using FrbaOfertas.ConectorDB;
 using FrbaOfertas.Modelo.Roles;
-using FrbaOfertas.AbmRol;
+using FrbaOfertas.AbmProveedor;
 
 namespace FrbaOfertas
 {
@@ -23,7 +23,7 @@ namespace FrbaOfertas
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new LoginConRegistro());
+            Application.Run(new AbmRol.ListaRoles());
         }
     }
 }

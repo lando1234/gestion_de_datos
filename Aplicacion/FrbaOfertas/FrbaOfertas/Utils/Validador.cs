@@ -11,11 +11,6 @@ namespace FrbaOfertas.Utils
     class Validador
     {
 
-        public Boolean existeUsernameConDB(String username)
-        {
-            return FrbaOfertas.ConectorDB.FuncionesUsername.existeUsername(username);
-        }
-
         public Boolean existeDNIenDB(String dni)
         {
             return FrbaOfertas.ConectorDB.FuncionesCliente.existeDNI(dni);
