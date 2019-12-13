@@ -26,7 +26,7 @@ namespace FrbaOfertas.AbmRol
         private void ListaRoles_Load(object sender, EventArgs e)
         {
 
-            List<Rol> roles = ConectorDB.FuncionesRol.obtenerRolesMock();
+            List<Rol> roles = ConectorDB.FuncionesRol.obtenerRoles();
             //List<Rol> roles = ConectorDB.FuncionesRol.obtenerRoles();
             
             //ACA SE AGREGAN LOS ROLES AL DATA GRID PARA MOSTRARSE
