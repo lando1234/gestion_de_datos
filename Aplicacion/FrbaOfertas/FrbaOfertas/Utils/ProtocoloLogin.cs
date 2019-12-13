@@ -16,21 +16,31 @@ namespace FrbaOfertas.Utils
             switch (Respuesta)
             {
                 case -1:
-                    FrbaOfertas.ConectorDB.FuncionesUsername.resetearCant_login_Fallido(username);
-                    return true;
-                case -2:
-                    MessageBox.Show("El usuario se encuentra inhabilitado, comuniquese con un administrativo", "USUARIO INHABILITADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                case -3:
-                    MessageBox.Show("El usuario se encuentra bloqueado por superar el numero de logins, comuniquese con un administrativo", "USUARIO BLOQUEADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                case -4:
-                    MessageBox.Show("Password Incorrecta numero de intentos aumentado", "PASSWORD INCORRECTA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    FrbaOfertas.ConectorDB.FuncionesUsername.aumentarCant_login_Fallido(username);
-                    return false;
-                default:
+                    //usuario no encontrado
                     MessageBox.Show("Username no encontrado, registrese o intente nuevamente", "USERNAME NOT FOUND", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
+                case -2:
+                    //reintentos bloqueado
+                    MessageBox.Show("El usuario se encuentra bloqueado por superar el numero de logins incorrectos, comuniquese con un administrativo", "USUARIO BLOQUEADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                case -3:
+                    //fallo el intento sin bloquearse
+                    MessageBox.Show("Password Incorrecta numero de intentos aumentado", "PASSWORD INCORRECTA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                case -4:
+                    MessageBox.Show("El usuario se encuentra inhabilitado, comuniquese con un administrativo", "USUARIO INHABILITADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                default:
+                    if (Respuesta > 0)
+                    {
+                        //SETEAR EL USUARIO DE FORMA GLOBAL
+                        ConectorDB.FuncionesUsername.
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
 
             }
         }

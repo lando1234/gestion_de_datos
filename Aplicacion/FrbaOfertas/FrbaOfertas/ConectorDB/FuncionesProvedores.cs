@@ -8,6 +8,7 @@ using FrbaOfertas.Modelo;
 using System.Data;
 using FrbaOfertas.BaseDeDatos;
 using System.Data.SqlClient;
+using FrbaOfertas.Modelo.Roles;
 
 namespace FrbaOfertas.ConectorDB
 {
@@ -193,6 +194,15 @@ namespace FrbaOfertas.ConectorDB
 
             return f;
 
+        }
+
+        public static List<Rubro> obtenerRubros()
+        {
+            List<Rubro> rubros = new List<Rubro>();
+            Rubro rubro1 = new Rubro(null, "Libreria");
+            Rubro rubro2 = new Rubro(null, "Almacen");
+            rubros.Add(rubro1);
+            return rubros;
         }
     }
 
