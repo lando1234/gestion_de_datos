@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Data;
 using FrbaOfertas.Modelo;
 using System.Security.Cryptography;
+using FrbaOfertas.Modelo.Roles;
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesUsername
@@ -23,41 +24,39 @@ namespace FrbaOfertas.ConectorDB
 
             cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = username;
             cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = ComputeSha256Hash(password);
-            cmd.Parameters.Add("@RESULT", SqlDbType.VarChar).Value = " ";
+            cmd.Parameters.Add("@RESULT", SqlDbType.Int).Direction = ParameterDirection.Output;
 
-            var returnParameter = cmd.Parameters.Add("@RESULT", SqlDbType.Int);
+            var returnParameter = cmd.Parameters.Add("@ReturnValue", SqlDbType.Int);
             returnParameter.Direction = ParameterDirection.ReturnValue;
 
+            
+          
+           //SqlDataReader registros = cmd.ExecuteReader();
+            cmd.ExecuteNonQuery();
 
+           int returnValue = (int)returnParameter.Value;
 
-            SqlDataReader registros = cmd.ExecuteReader();
-
-            int result = (int)returnParameter.Value;
-
-            while (registros.Read())
-            {
-                int returnParam = registros.GetInt16(0);
-
-                if (returnParam < 0) {
-                    result = returnParam;
-                }
-
+            if (returnValue == 0) {
+             returnValue = Convert.ToInt16(cmd.Parameters["@RESULT"].Value);
             }
 
-            return result;
+
+            return returnValue;
           
         }
         
         public static Usuario getUserById(int usuario_id) {
 
             Usuario usuario = new Usuario();
+            usuario.roles = new List<Rol>();
+            
             
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
             String sql = "SELECT u.USERNAME, ur.ROL_ID FROM [NO_SRTA_E_GATOREI].USUARIOS u INNER JOIN [NO_SRTA_E_GATOREI].USUARIOS_ROLES ur ON u.USUARIO_ID = ur.USUARIO_ID ";
             sql += "WHERE u.USUARIO_ID = @USUARIO_ID";
 
-            SqlCommand cmd = new SqlCommand(sql);
+            SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.Add(new SqlParameter("@USUARIO_ID", usuario_id));
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -66,9 +65,10 @@ namespace FrbaOfertas.ConectorDB
                 if (usuario.username == null)
                 {
                     usuario.id = usuario_id;
+
                     usuario.username = reader.GetString(reader.GetOrdinal("USERNAME"));
                 }
-                usuario.roles.Add(FuncionesRol.obtenerRol(reader.GetInt16(reader.GetOrdinal("ROL_ID"))));
+                usuario.roles.Add(FuncionesRol.obtenerRol(reader.GetInt32(reader.GetOrdinal("ROL_ID"))));
 
 
             }
@@ -111,7 +111,7 @@ namespace FrbaOfertas.ConectorDB
                 {
                     builder.Append(bytes[i].ToString("x2"));
                 }
-                return builder.ToString();
+                return builder.ToString().ToLower();
             }
         }  
 
