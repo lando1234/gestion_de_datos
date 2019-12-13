@@ -47,14 +47,14 @@ namespace FrbaOfertas.ConectorDB
 
         }
 
-        public static void comprarOferta(Oferta oferta)
+        public static void comprarOferta(Oferta oferta, Cliente cliente)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
             SqlCommand cmd = new SqlCommand("COMPRAR_OFERTA", con);
-            cmd.Parameters.AddWithValue("@CLIENTE_ID", oferta.clienteId);
+            cmd.Parameters.AddWithValue("@CLIENTE_ID", cliente.id);
             cmd.Parameters.AddWithValue("@OFERTA_ID", oferta.id);
-            cmd.Parameters.AddWithValue("@FECHA_OFERTA", oferta.fecha);
+            cmd.Parameters.AddWithValue("@FECHA_OFERTA", Config.configurationsDb.Default.fechaSistema);
             cmd.ExecuteNonQuery();
             con.Close();
         }

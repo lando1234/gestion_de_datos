@@ -15,6 +15,7 @@ namespace FrbaOfertas.Modelo.Roles
         public float precio_oferta { get; set; }
         public float precio_lista { get; set; }
         public int cantidad { get; set; }
+        public int maximo_usuario { get; set; }
         public DateTime fecha_compra { get; set; }
         public int codigo { get; set; }
         public int entregado { get; set; }
@@ -22,7 +23,7 @@ namespace FrbaOfertas.Modelo.Roles
 
 
 
-        public Oferta(int id, string descripcion, DateTime fecha_publicacion, DateTime fecha_vencimiento, float precio_oferta, float precio_lista, int cantidad,
+        public Oferta(int id, string descripcion, DateTime fecha_publicacion, DateTime fecha_vencimiento, float precio_oferta, float precio_lista, int cantidad, int maximo_usuario,
             DateTime fecha_compra, int codigo, int entregado, int proveedor_id)
         {
             this.id = id;
@@ -32,6 +33,7 @@ namespace FrbaOfertas.Modelo.Roles
             this.precio_oferta = precio_oferta;
             this.precio_lista = precio_lista;
             this.cantidad = cantidad;
+            this.maximo_usuario = maximo_usuario;
             this.fecha_compra = fecha_compra;
             this.codigo = codigo;
             this.entregado = entregado;

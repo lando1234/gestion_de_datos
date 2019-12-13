@@ -108,7 +108,7 @@ namespace FrbaOfertas.ConectorDB
         }
 
         public static void GuardarUsuario(String usuario, String pass)
-        {/*
+        {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
             SqlCommand cmd = new SqlCommand("LOGIN_USUARIO", con);
@@ -119,7 +119,7 @@ namespace FrbaOfertas.ConectorDB
 
             var returnParameter = cmd.Parameters.Add("@Result", SqlDbType.Int);
             returnParameter.Direction = ParameterDirection.ReturnValue;
-            */
+            
         }
 
         public static void insertarRolxUsuario(string Rol, string usuario)

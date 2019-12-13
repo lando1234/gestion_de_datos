@@ -22,16 +22,16 @@ namespace FrbaOfertas.AbmProveedor
         {
             Proveedor proveedor = new Proveedor();
             proveedor.RazonSocial = txt_razonsocial.Text;
-            proveedor.Calle = txt_calle.Text;
-            proveedor.Piso = txt_piso.Text;
-            proveedor.Dpto = txt_dpto.Text;
-            proveedor.Localidad = txt_localidad.Text;
-            proveedor.Ciudad = txt_ciudad.Text;
-            proveedor.codigoPostal = txt_codpostal.Text;
+            proveedor.direccion = new Direccion(null, txt_ciudad.Text, txt_calle.Text, txt_codpostal.Text);
             proveedor.cuit = txt_cuit.Text;
             proveedor.telefono = txt_tel.Text;
-            proveedor.rubro = txt_rubro.Text;
+            proveedor.rubro = (Rubro) comboRubro.SelectedItem;
             proveedor.nombreContacto = txt_nombreContacto.Text;
+        }
+
+        private void AltaProveedor_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

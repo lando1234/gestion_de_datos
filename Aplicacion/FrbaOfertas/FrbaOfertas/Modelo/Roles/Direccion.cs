@@ -8,7 +8,7 @@ namespace FrbaOfertas.Modelo.Roles
 {
     public class Direccion
     {
-        public int id { get; set; }
+        public Nullable<int> id { get; set; }
         public string Ciudad { get; set; }
         public string Calle { get; set; }
         public string codigoPostal { get; set; }
@@ -16,7 +16,7 @@ namespace FrbaOfertas.Modelo.Roles
         public string Dpto { get; set; }
         public string Localidad { get; set; }
 
-        public Direccion(int id, string ciudad, string calle, string codigoPostal)
+        public Direccion(Nullable<int> id, string ciudad, string calle, string codigoPostal)
         {
             this.id = id;
             this.Ciudad = ciudad;

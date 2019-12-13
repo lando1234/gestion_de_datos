@@ -8,10 +8,10 @@ namespace FrbaOfertas.Modelo.Roles
 {
     class Rubro
     {
-        public int id { get; set; }
+        public Nullable<int> id { get; set; }
         public string descripcion { get; set; }
 
-        public Rubro(int id, string decripcion)
+        public Rubro(Nullable<int> id, string decripcion)
         {
             this.id = id;
             this.descripcion = descripcion;
