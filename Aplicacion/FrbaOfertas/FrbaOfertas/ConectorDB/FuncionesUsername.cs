@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using FrbaOfertas.Modelo;
+using System.Security.Cryptography;
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesUsername
@@ -21,7 +22,7 @@ namespace FrbaOfertas.ConectorDB
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = username;
-            cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = password;
+            cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = ComputeSha256Hash(password);
             cmd.Parameters.Add("@RESULT", SqlDbType.VarChar).Value = " ";
 
             var returnParameter = cmd.Parameters.Add("@RESULT", SqlDbType.Int);
@@ -75,11 +76,6 @@ namespace FrbaOfertas.ConectorDB
             return usuario;
         }
 
-        public static Usuario getUsuarioById(int id)
-        {
-            return null;
-        }
-
         public static List<String> ObtenerFuncionalidadesDeUnUsuario(string username)
         {
             return null;
@@ -100,6 +96,24 @@ namespace FrbaOfertas.ConectorDB
         {
 
         }
+
+        static string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }  
 
     }
 }

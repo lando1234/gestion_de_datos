@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrbaOfertas.Modelo;
 
 namespace FrbaOfertas.Utils
 {
@@ -34,7 +35,7 @@ namespace FrbaOfertas.Utils
                     if (Respuesta > 0)
                     {
                         //SETEAR EL USUARIO DE FORMA GLOBAL
-                        //ConectorDB.FuncionesUsername.
+                        Usuario usuarioLogeado = ConectorDB.FuncionesUsername.getUserById(Respuesta);
                         return true;
                     }
                     else
