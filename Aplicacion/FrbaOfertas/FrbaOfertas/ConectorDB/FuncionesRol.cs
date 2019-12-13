@@ -85,11 +85,11 @@ namespace FrbaOfertas.ConectorDB
             string sql = "SELECT R.*,P.* ";
             sql += "FROM [NO_SRTA_E_GATOREI].ROLES R JOIN [NO_SRTA_E_GATOREI].PERMISOS_ROLES PR ";
             sql += "ON R.ROL_ID = PR.ROL_ID ";
-            sql += "JOIN [NO_SRTA_E_GATOREI].PERMISOS P ON P.PERMISO_ID = PR.PERMISO_ID";
+            sql += "JOIN [NO_SRTA_E_GATOREI].PERMISOS P ON P.PERMISO_ID = PR.PERMISO_ID ";
             sql += "WHERE R.ROL_ID = @ROL";
 
 
-            SqlCommand cmd = new SqlCommand(sql);
+            SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.Add(new SqlParameter("@ROL",rolId));
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read()) {
