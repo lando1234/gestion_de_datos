@@ -46,6 +46,34 @@ namespace FrbaOfertas.ConectorDB
             return result;
           
         }
+        
+        public static Usuario getUserById(int usuario_id) {
+
+            Usuario usuario = new Usuario();
+            
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            String sql = "SELECT u.USERNAME, ur.ROL_ID FROM [NO_SRTA_E_GATOREI].USUARIOS u INNER JOIN [NO_SRTA_E_GATOREI].USUARIOS_ROLES ur ON u.USUARIO_ID = ur.USUARIO_ID ";
+            sql += "WHERE u.USUARIO_ID = @USUARIO_ID";
+
+            SqlCommand cmd = new SqlCommand(sql);
+            cmd.Parameters.Add(new SqlParameter("@USUARIO_ID", usuario_id));
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read()) {
+                if (usuario.username == null)
+                {
+                    usuario.id = usuario_id;
+                    usuario.username = reader.GetString(reader.GetOrdinal("USERNAME"));
+                }
+                usuario.roles.Add(FuncionesRol.obtenerRol(reader.GetInt16(reader.GetOrdinal("ROL_ID"))));
+
+
+            }
+
+            return usuario;
+        }
 
         public static Usuario getUsuarioById(int id)
         {
