@@ -44,7 +44,7 @@ namespace FrbaOfertas
 
             if (FrbaOfertas.Utils.ProtocoloLogin.protocoloLogin(textBoxLoginUser.Text, textBoxLoginPassword.Text))
             {
-               FrbaOfertas.Modelo.Usuario.IngresoUsuario(textBoxLoginUser.Text, textBoxLoginPassword.Text);
+               //ESTO TIENE QUE CARGAR EL USUARIO Y SETEAR LOS PERMISOS
             }
         }
 

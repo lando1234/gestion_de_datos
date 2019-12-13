@@ -13,6 +13,8 @@ namespace FrbaOfertas.AbmRol
 {
     public partial class ListaRoles : Form
     {
+        List<Rol> roles = new List<Rol>();
+
         public ListaRoles()
         {
             InitializeComponent();
@@ -26,8 +28,7 @@ namespace FrbaOfertas.AbmRol
         private void ListaRoles_Load(object sender, EventArgs e)
         {
 
-            List<Rol> roles = ConectorDB.FuncionesRol.obtenerRoles();
-            //List<Rol> roles = ConectorDB.FuncionesRol.obtenerRoles();
+            roles = ConectorDB.FuncionesRol.obtenerRoles();
             
             //ACA SE AGREGAN LOS ROLES AL DATA GRID PARA MOSTRARSE
             foreach(Rol rols in roles){
@@ -45,16 +46,9 @@ namespace FrbaOfertas.AbmRol
         private void dataGridRol1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int rolIdAModificar = (int)dataGridRol1.Rows[e.RowIndex].Cells[0].Value;
-            //Rol rolAModificar = ConectorDB.FuncionesRol.obtenerRol(rolIdAModificar);
+            Rol rolAModificar = roles.Find(a => a.id.Equals(rolIdAModificar));
 
-            //MOCK
-            Permiso permisotest1 = new Permiso(1, "aceptar1", "clave");
-            List<Permiso> permisos = new List<Permiso>();
-            permisos.Add(permisotest1);
-            Rol rolTest = new Rol(1, "admin1", permisos, true);
-            //MOCK
-
-            Form modificacion = new ModificacionRol(rolTest);
+            Form modificacion = new ModificacionRol(rolAModificar);
             modificacion.Show();
         }
 

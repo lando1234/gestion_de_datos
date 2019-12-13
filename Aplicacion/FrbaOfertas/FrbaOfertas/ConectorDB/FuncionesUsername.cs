@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using FrbaOfertas.Modelo;
+using System.Security.Cryptography;
+using FrbaOfertas.Modelo.Roles;
 namespace FrbaOfertas.ConectorDB
 {
     class FuncionesUsername
@@ -21,35 +23,57 @@ namespace FrbaOfertas.ConectorDB
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = username;
-            cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = password;
-            cmd.Parameters.Add("@RESULT", SqlDbType.VarChar).Value = " ";
+            cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = ComputeSha256Hash(password);
+            cmd.Parameters.Add("@RESULT", SqlDbType.Int).Direction = ParameterDirection.Output;
 
-            var returnParameter = cmd.Parameters.Add("@RESULT", SqlDbType.Int);
+            var returnParameter = cmd.Parameters.Add("@ReturnValue", SqlDbType.Int);
             returnParameter.Direction = ParameterDirection.ReturnValue;
 
+            
+          
+           //SqlDataReader registros = cmd.ExecuteReader();
+            cmd.ExecuteNonQuery();
+
+           int returnValue = (int)returnParameter.Value;
+
+            if (returnValue == 0) {
+             returnValue = Convert.ToInt16(cmd.Parameters["@RESULT"].Value);
+            }
 
 
-            SqlDataReader registros = cmd.ExecuteReader();
+            return returnValue;
+          
+        }
+        
+        public static Usuario getUserById(int usuario_id) {
 
-            int result = (int)returnParameter.Value;
+            Usuario usuario = new Usuario();
+            usuario.roles = new List<Rol>();
+            
+            
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            String sql = "SELECT u.USERNAME, ur.ROL_ID FROM [NO_SRTA_E_GATOREI].USUARIOS u INNER JOIN [NO_SRTA_E_GATOREI].USUARIOS_ROLES ur ON u.USUARIO_ID = ur.USUARIO_ID ";
+            sql += "WHERE u.USUARIO_ID = @USUARIO_ID";
 
-            while (registros.Read())
-            {
-                int returnParam = registros.GetInt16(0);
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.Add(new SqlParameter("@USUARIO_ID", usuario_id));
 
-                if (returnParam < 0) {
-                    result = returnParam;
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read()) {
+                if (usuario.username == null)
+                {
+                    usuario.id = usuario_id;
+
+                    usuario.username = reader.GetString(reader.GetOrdinal("USERNAME"));
                 }
+                usuario.roles.Add(FuncionesRol.obtenerRol(reader.GetInt32(reader.GetOrdinal("ROL_ID"))));
+
 
             }
 
-            return result;
-          
-        }
-
-        public static Usuario getUsuarioById(int id)
-        {
-            return null;
+            return usuario;
         }
 
         public static List<String> ObtenerFuncionalidadesDeUnUsuario(string username)
@@ -72,6 +96,24 @@ namespace FrbaOfertas.ConectorDB
         {
 
         }
+
+        static string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString().ToLower();
+            }
+        }  
 
     }
 }
