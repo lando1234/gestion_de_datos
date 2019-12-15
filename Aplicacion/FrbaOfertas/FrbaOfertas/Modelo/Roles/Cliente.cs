@@ -9,11 +9,11 @@ namespace FrbaOfertas.Modelo.Roles
     public class Cliente
     {
         public Nullable<int> id { get; set; }
-        public int dni { get; set; }
+        public decimal dni { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string mail { get; set; }
-        public int telefono { get; set; }
+        public decimal telefono { get; set; }
         public DateTime fecha_nacimiento { get; set; }
         public Boolean habilitado { get; set; }
         public Nullable<int> usuarioId { get; set; }
@@ -21,7 +21,8 @@ namespace FrbaOfertas.Modelo.Roles
 
 
 
-        public Cliente(Nullable<int> id, int dni, string nombre, string apellido, string mail, int telefono,
+
+        public Cliente(Nullable<int> id, decimal dni, string nombre, string apellido, string mail, decimal telefono,
             DateTime fecha_nacimiento, Boolean habilitado, Nullable<int> usuarioId, Direccion direccion)
         {
             this.id = id;

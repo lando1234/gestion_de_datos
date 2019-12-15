@@ -13,7 +13,18 @@ namespace FrbaOfertas.ConectorDB
     {
         public static Direccion extractDireccion(SqlDataReader reader)
         {
-            return new Direccion(reader.GetInt32(reader.GetOrdinal("DIRECCION_ID")), reader.GetString(reader.GetOrdinal("CIUDAD")), reader.GetString(reader.GetOrdinal("DIRECCION")), reader.GetDecimal(reader.GetOrdinal("CODIGO_POSTAL")));
+            Nullable<Decimal> codigoPostal;
+
+            if (reader.IsDBNull(reader.GetOrdinal("CODIGO_POSTAL")))
+            {
+                codigoPostal = null;
+            }
+            else
+            {
+                codigoPostal = reader.GetDecimal(reader.GetOrdinal("CODIGO_POSTAL"));
+            }
+
+            return new Direccion(reader.GetInt32(reader.GetOrdinal("DIRECCION_ID")), reader.GetString(reader.GetOrdinal("CIUDAD")), reader.GetString(reader.GetOrdinal("DIRECCION")), codigoPostal);
         }
 
         public static void actualizarDireccion(Direccion direccion)

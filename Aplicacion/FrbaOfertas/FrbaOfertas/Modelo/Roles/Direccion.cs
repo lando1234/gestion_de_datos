@@ -11,9 +11,9 @@ namespace FrbaOfertas.Modelo.Roles
         public Nullable<int> id { get; set; }
         public string Ciudad { get; set; }
         public string Calle { get; set; }
-        public decimal codigoPostal { get; set; }
+        public Nullable<decimal> codigoPostal { get; set; }
 
-        public Direccion(Nullable<int> id, string ciudad, string calle, decimal codigoPostal)
+        public Direccion(Nullable<int> id, string ciudad, string calle, Nullable<decimal> codigoPostal)
         {
             this.id = id;
             this.Ciudad = ciudad;

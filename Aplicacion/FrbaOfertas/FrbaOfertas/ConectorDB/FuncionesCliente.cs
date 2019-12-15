@@ -69,17 +69,23 @@ namespace FrbaOfertas.ConectorDB
 
              while (registros.Read())
              {
-
+                 Nullable <int> usuarioId;
+            
+                 if(registros.IsDBNull(registros.GetOrdinal("USUARIO_ID"))){
+                 usuarioId = null;
+                 }else{
+                 usuarioId = registros.GetInt32(registros.GetOrdinal("USUARIO_ID"));
+                 }
 
                  clientes.Add(new Cliente(registros.GetInt32(registros.GetOrdinal("CLIENTE_ID")),
-                  registros.GetInt16(registros.GetOrdinal("DNI")),
-                  registros["NOMBRE"].ToString(),
-                  registros["APELLIDO"].ToString(),
-                  registros["MAIL"].ToString(),
-                  registros.GetInt16(registros.GetOrdinal("TELEFONO")),
+                  registros.GetDecimal(registros.GetOrdinal("DNI")),
+                  registros.GetString(registros.GetOrdinal("NOMBRE")),
+                  registros.GetString(registros.GetOrdinal("APELLIDO")),
+                  registros.GetString(registros.GetOrdinal("MAIL")),
+                  registros.GetDecimal(registros.GetOrdinal("TELEFONO")),
                   registros.GetDateTime(registros.GetOrdinal("FECHA_NACIMIENTO")),
                   registros.GetBoolean(registros.GetOrdinal("BAJA_LOGICA")),
-                  registros.GetInt16(registros.GetOrdinal("USUARIO_ID")),
+                  usuarioId,
                   FuncionesDireccion.extractDireccion(registros)
                  ));
              }
