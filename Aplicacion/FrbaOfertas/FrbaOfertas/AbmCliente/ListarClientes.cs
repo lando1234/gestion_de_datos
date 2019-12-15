@@ -21,5 +21,10 @@ namespace FrbaOfertas.AbmCliente
         {
 
         }
+
+        private void ListarClientes_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -8,11 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Modelo.Roles;
+using FrbaOfertas.Modelo;
 
 namespace FrbaOfertas.AbmProveedor
 {
     public partial class AltaProveedor : Form
     {
+        Usuario usuario;
+        public AltaProveedor(Usuario usuario)
+        {
+            this.usuario = usuario;
+            InitializeComponent();
+        }
+
         public AltaProveedor()
         {
             InitializeComponent();
@@ -29,7 +37,7 @@ namespace FrbaOfertas.AbmProveedor
             proveedor.rubro = (Rubro) comboRubro.SelectedItem;
             proveedor.nombreContacto = txt_nombreContacto.Text;
 
-            ConectorDB.FuncionesProveedor.altaProveedor(proveedor);
+            ConectorDB.FuncionesProveedor.altaUsuarioProveedor(proveedor, usuario);
         }
 
         private void AltaProveedor_Load(object sender, EventArgs e)
