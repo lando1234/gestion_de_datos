@@ -32,9 +32,11 @@ namespace FrbaOfertas.ComprarOferta
             }
         }
 
-        private void dataGridCompraOfertas_CellContentClick()
+        private void dataGridCompraOfertas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
         }
+
+        
 
 
     }
