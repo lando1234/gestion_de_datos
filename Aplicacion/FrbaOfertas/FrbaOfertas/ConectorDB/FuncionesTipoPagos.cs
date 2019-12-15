@@ -23,7 +23,7 @@ namespace FrbaOfertas.ConectorDB
 
 
 
-            string sql = "SELECT * FROM [NO_SRTA_E_GATOREI].TIPOS_PAGOS WHERE DESCRIPCION NOT LIKE'REGALO'";
+            string sql = "SELECT * FROM [NO_SRTA_E_GATOREI].TIPOS_PAGOS WHERE DESCRIPCION NOT LIKE 'REGALO'";
 
 
             SqlCommand cmd = new SqlCommand(sql, con);
