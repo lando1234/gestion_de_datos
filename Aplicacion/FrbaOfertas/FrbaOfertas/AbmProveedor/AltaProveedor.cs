@@ -32,15 +32,17 @@ namespace FrbaOfertas.AbmProveedor
             try
             {
                 this.validar();
-                Proveedor proveedor = new Proveedor();
-                proveedor.RazonSocial = txt_razonsocial.Text;
-                proveedor.direccion = new Direccion(null, txt_ciudad.Text, txt_calle.Text, Int32.Parse(txt_codpostal.Text));
-                proveedor.cuit = txt_cuit.Text;
-                proveedor.telefono = Int32.Parse(txt_tel.Text);
-                proveedor.rubro = (Rubro)comboRubro.SelectedItem;
-                proveedor.nombreContacto = txt_nombreContacto.Text;
-                proveedor.mail = txt_mail.Text;
-
+                Proveedor proveedor = new Proveedor(
+                0,//no se usa
+                txt_razonsocial.Text,
+                txt_cuit.Text,
+                txt_mail.Text,
+                Convert.ToDecimal(txt_tel.Text),
+                new Direccion(null, txt_ciudad.Text, txt_calle.Text, Convert.ToDecimal(txt_codpostal.Text)),
+                (Rubro)comboRubro.SelectedItem,
+                txt_nombreContacto.Text,
+                true
+                );
                 ConectorDB.FuncionesProveedor.altaUsuarioProveedor(proveedor, usuario);
                 if (this.usuario != null)
                 {

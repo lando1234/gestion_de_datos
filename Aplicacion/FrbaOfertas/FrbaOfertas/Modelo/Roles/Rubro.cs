@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrbaOfertas.Modelo.Roles
 {
-    class Rubro
+    public class Rubro
     {
         public Nullable<int> id { get; set; }
         public string descripcion { get; set; }

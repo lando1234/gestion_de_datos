@@ -174,16 +174,17 @@ namespace FrbaOfertas.ConectorDB
                  }
 
 
-                Proveedor p = new Proveedor();
-                p.id = reader.GetInt32(reader.GetOrdinal("PROVEEDOR_ID"));
-                p.RazonSocial = reader.GetString(reader.GetOrdinal("RAZON_SOCIAL"));
-                p.cuit = reader.GetString(reader.GetOrdinal("CUIT"));
-                p.mail = mailDefinido;
-                p.telefono = reader.GetDecimal(reader.GetOrdinal("TELEFONO"));
-                p.direccion = FuncionesDireccion.extractDireccion(reader);
-                p.rubro = new Rubro(reader.GetInt32(reader.GetOrdinal("RUBRO_ID")), reader.GetString(reader.GetOrdinal("DESCRIPCION")));
-                p.nombreContacto = nombreDefinido;
-                p.habilitado = reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"));
+                Proveedor p = new Proveedor(
+                reader.GetInt32(reader.GetOrdinal("PROVEEDOR_ID")),
+                reader.GetString(reader.GetOrdinal("RAZON_SOCIAL")),
+                reader.GetString(reader.GetOrdinal("CUIT")),
+                mailDefinido,
+                reader.GetDecimal(reader.GetOrdinal("TELEFONO")),
+                FuncionesDireccion.extractDireccion(reader),
+                new Rubro(reader.GetInt32(reader.GetOrdinal("RUBRO_ID")), reader.GetString(reader.GetOrdinal("DESCRIPCION"))),
+                nombreDefinido,
+                reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"))
+                 );
                 lista.Add(p);
             }
            
@@ -208,16 +209,17 @@ namespace FrbaOfertas.ConectorDB
 
             while (reader.Read())
             {
-                Proveedor p = new Proveedor();
-                p.id = reader.GetInt32(reader.GetOrdinal("PROVEEDOR_ID"));
-                p.RazonSocial = reader.GetString(reader.GetOrdinal("RAZON_SOCIAL"));
-                p.cuit = reader.GetString(reader.GetOrdinal("CUIT"));
-                p.mail = reader.GetString(reader.GetOrdinal("MAIL"));
-                p.telefono = reader.GetDecimal(reader.GetOrdinal("TELEFONO"));
-                p.direccion = FuncionesDireccion.extractDireccion(reader);
-                p.rubro = new Rubro(reader.GetInt32(reader.GetOrdinal("RUBRO_ID")), reader.GetString(reader.GetOrdinal("DESCRIPCION")));
-                p.nombreContacto = reader.GetString(reader.GetOrdinal("NOMBRE_CONTACTO"));
-                p.habilitado = reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"));
+                Proveedor p = new Proveedor(
+                reader.GetInt32(reader.GetOrdinal("PROVEEDOR_ID")),
+                reader.GetString(reader.GetOrdinal("RAZON_SOCIAL")),
+                reader.GetString(reader.GetOrdinal("CUIT")),
+                reader.GetString(reader.GetOrdinal("MAIL")),
+                reader.GetDecimal(reader.GetOrdinal("TELEFONO")),
+                FuncionesDireccion.extractDireccion(reader),
+                new Rubro(reader.GetInt32(reader.GetOrdinal("RUBRO_ID")), reader.GetString(reader.GetOrdinal("DESCRIPCION"))),
+                reader.GetString(reader.GetOrdinal("NOMBRE_CONTACTO")),
+                reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"))
+                );
                 lista.Add(p);
             }
             con.Close();
