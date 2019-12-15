@@ -67,10 +67,15 @@ namespace FrbaOfertas.AbmCliente
                 throw new System.ArgumentException("el telefono debe ser númerico", "original");
             }
             else if (Validador.isEmpty(txt_nombre.Text) || Validador.isEmpty(txt_apellido.Text) || Validador.isEmpty(txt_mail.Text) ||
-              Validador.isEmpty(txt_tel.Text) || Validador.isEmpty(txt_ciudad.Text) || Validador.isEmpty(txt_calle.Text) || Validador.isEmpty(txt_cpostal.Text) )
-            {
+              Validador.isEmpty(txt_tel.Text) || Validador.isEmpty(txt_ciudad.Text) || Validador.isEmpty(txt_calle.Text) || Validador.isEmpty(txt_cpostal.Text) ){
+                  throw new System.ArgumentException("Los campos no deben ir vacios", "original");
             }
 
+
+        }
+
+        private void AltaCliente_Load(object sender, EventArgs e)
+        {
 
         }
 

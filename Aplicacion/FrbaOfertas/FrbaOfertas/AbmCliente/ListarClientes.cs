@@ -31,7 +31,7 @@ namespace FrbaOfertas.AbmCliente
             foreach (Cliente cliente in clientes)
             {
                 Object[] row = new Object[] { cliente.id, cliente.nombre, cliente.apellido, cliente.dni, cliente.mail, cliente.telefono, cliente.fecha_nacimiento
-                , null, null, null, cliente.direccion, null, cliente.habilitado};
+                , cliente.direccion.Calle , null, null, cliente.direccion.Ciudad, null, cliente.habilitado};
                 dataGridView1.Rows.Add(row);
             }
         }
