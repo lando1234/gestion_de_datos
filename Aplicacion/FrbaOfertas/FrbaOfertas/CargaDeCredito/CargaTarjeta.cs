@@ -34,7 +34,7 @@ namespace FrbaOfertas.CargaDeCredito
 
             Credito credito = new Credito(null,
                     HoraSistema.get(), tipopago, cantidad, Session.UserSession.id,
-                    nombreTitular.Text, fechaVencimiento.Value, Decimal.ToInt32(numeroTarjeta.Value));
+                    nombreTitular.Text, fechaVencimiento.Value, numeroTarjeta.Value.ToString());
 
             ConectorDB.FuncionesCargaCredito.cargaCredito(credito);
         }

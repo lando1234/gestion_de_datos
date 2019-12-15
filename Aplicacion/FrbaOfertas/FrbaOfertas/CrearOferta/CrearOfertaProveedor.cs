@@ -29,14 +29,14 @@ namespace FrbaOfertas.CrearOferta
             try
             {
                 Oferta oferta = new Oferta();
-                oferta.maximo_usuario = Int32.Parse(txt_maxUnidadesPorCliente.Text);
+                oferta.maximo_usuario = Int32.Parse(maxUnidades.Text);
                 oferta.codigo = txt_codigo.Text;
                 oferta.descripcion = txt_descripcion.Text;
-                oferta.fecha_publicacion = dateTimePickerOferta.Text;
-                oferta.fecha_vencimiento = dateTimePickerVencimiento.Text;
-                oferta.cantidad = Int32.Parse(txt_cantidad.Text);
-                oferta.precio_lista = txt_precioLista.Text;
-                oferta.precio_oferta = txt_precioOferta.Text;
+                oferta.fecha_publicacion = dateTimePickerOferta.Value;
+                oferta.fecha_vencimiento = dateTimePickerVencimiento.Value;
+                oferta.cantidad = Int32.Parse(cantidad.Text);
+                oferta.precio_lista = Int32.Parse(precioLista.Text);
+                oferta.precio_oferta = Int32.Parse(precioOferta.Text);
                 oferta.proveedor_id = FuncionesProveedor.getProveedorLogueado();
 
                 FuncionesOferta.altaOferta(oferta);

@@ -69,6 +69,11 @@
             // cantidadACargar
             // 
             this.cantidadACargar.Location = new System.Drawing.Point(233, 112);
+            this.cantidadACargar.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.cantidadACargar.Name = "cantidadACargar";
             this.cantidadACargar.Size = new System.Drawing.Size(126, 20);
             this.cantidadACargar.TabIndex = 1;

@@ -36,7 +36,6 @@
             this.dateTimePickerOferta = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.Detalles = new System.Windows.Forms.GroupBox();
-            this.txt_cantidad = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txt_codigo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,14 +44,19 @@
             this.txt_descripcion = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_maxUnidadesPorCliente = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_precioOferta = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txt_precioLista = new System.Windows.Forms.TextBox();
+            this.precioOferta = new System.Windows.Forms.NumericUpDown();
+            this.precioLista = new System.Windows.Forms.NumericUpDown();
+            this.maxCliente = new System.Windows.Forms.NumericUpDown();
+            this.cantidad = new System.Windows.Forms.NumericUpDown();
             this.Detalles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.precioOferta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.precioLista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maxCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cantidad)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
@@ -60,7 +64,7 @@
             this.button3.Location = new System.Drawing.Point(526, 379);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 30;
+            this.button3.TabIndex = 10;
             this.button3.Text = "Guardar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -90,7 +94,7 @@
             this.dateTimePickerVencimiento.Location = new System.Drawing.Point(244, 103);
             this.dateTimePickerVencimiento.Name = "dateTimePickerVencimiento";
             this.dateTimePickerVencimiento.Size = new System.Drawing.Size(314, 20);
-            this.dateTimePickerVencimiento.TabIndex = 26;
+            this.dateTimePickerVencimiento.TabIndex = 2;
             // 
             // label7
             // 
@@ -109,7 +113,7 @@
             this.dateTimePickerOferta.Location = new System.Drawing.Point(244, 62);
             this.dateTimePickerOferta.Name = "dateTimePickerOferta";
             this.dateTimePickerOferta.Size = new System.Drawing.Size(314, 20);
-            this.dateTimePickerOferta.TabIndex = 24;
+            this.dateTimePickerOferta.TabIndex = 1;
             // 
             // label1
             // 
@@ -123,7 +127,10 @@
             // 
             // Detalles
             // 
-            this.Detalles.Controls.Add(this.txt_cantidad);
+            this.Detalles.Controls.Add(this.cantidad);
+            this.Detalles.Controls.Add(this.maxCliente);
+            this.Detalles.Controls.Add(this.precioLista);
+            this.Detalles.Controls.Add(this.precioOferta);
             this.Detalles.Controls.Add(this.label11);
             this.Detalles.Controls.Add(this.txt_codigo);
             this.Detalles.Controls.Add(this.label6);
@@ -132,13 +139,10 @@
             this.Detalles.Controls.Add(this.txt_descripcion);
             this.Detalles.Controls.Add(this.label10);
             this.Detalles.Controls.Add(this.label3);
-            this.Detalles.Controls.Add(this.txt_maxUnidadesPorCliente);
             this.Detalles.Controls.Add(this.label5);
             this.Detalles.Controls.Add(this.label8);
             this.Detalles.Controls.Add(this.label2);
-            this.Detalles.Controls.Add(this.txt_precioOferta);
             this.Detalles.Controls.Add(this.label4);
-            this.Detalles.Controls.Add(this.txt_precioLista);
             this.Detalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Detalles.ForeColor = System.Drawing.SystemColors.WindowText;
             this.Detalles.Location = new System.Drawing.Point(87, 29);
@@ -148,15 +152,6 @@
             this.Detalles.TabStop = false;
             this.Detalles.Text = "Detalle de Oferta";
             this.Detalles.Enter += new System.EventHandler(this.Detalles_Enter);
-            // 
-            // txt_cantidad
-            // 
-            this.txt_cantidad.ForeColor = System.Drawing.SystemColors.Window;
-            this.txt_cantidad.Location = new System.Drawing.Point(80, 315);
-            this.txt_cantidad.Name = "txt_cantidad";
-            this.txt_cantidad.Size = new System.Drawing.Size(393, 20);
-            this.txt_cantidad.TabIndex = 23;
-            this.txt_cantidad.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // label11
             // 
@@ -176,7 +171,7 @@
             this.txt_codigo.Location = new System.Drawing.Point(71, 289);
             this.txt_codigo.Name = "txt_codigo";
             this.txt_codigo.Size = new System.Drawing.Size(402, 20);
-            this.txt_codigo.TabIndex = 21;
+            this.txt_codigo.TabIndex = 8;
             this.txt_codigo.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label6
@@ -197,8 +192,7 @@
             this.comboBox1.Location = new System.Drawing.Point(157, 256);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(314, 21);
-            this.comboBox1.TabIndex = 19;
-            this.comboBox1.Text = "<";
+            this.comboBox1.TabIndex = 7;
             // 
             // label9
             // 
@@ -214,7 +208,7 @@
             this.txt_descripcion.Location = new System.Drawing.Point(157, 111);
             this.txt_descripcion.Name = "txt_descripcion";
             this.txt_descripcion.Size = new System.Drawing.Size(314, 20);
-            this.txt_descripcion.TabIndex = 17;
+            this.txt_descripcion.TabIndex = 3;
             // 
             // label10
             // 
@@ -230,23 +224,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(478, 156);
+            this.label3.Location = new System.Drawing.Point(283, 152);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(14, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "$";
             // 
-            // txt_maxUnidadesPorCliente
-            // 
-            this.txt_maxUnidadesPorCliente.Location = new System.Drawing.Point(227, 220);
-            this.txt_maxUnidadesPorCliente.Name = "txt_maxUnidadesPorCliente";
-            this.txt_maxUnidadesPorCliente.Size = new System.Drawing.Size(245, 20);
-            this.txt_maxUnidadesPorCliente.TabIndex = 13;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(478, 196);
+            this.label5.Location = new System.Drawing.Point(283, 186);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(14, 13);
             this.label5.TabIndex = 7;
@@ -274,14 +261,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Precio de Oferta";
             // 
-            // txt_precioOferta
-            // 
-            this.txt_precioOferta.Location = new System.Drawing.Point(157, 149);
-            this.txt_precioOferta.Name = "txt_precioOferta";
-            this.txt_precioOferta.Size = new System.Drawing.Size(315, 20);
-            this.txt_precioOferta.TabIndex = 3;
-            this.txt_precioOferta.TextChanged += new System.EventHandler(this.txt_precioOferta_TextChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -293,12 +272,33 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Precio de Lista";
             // 
-            // txt_precioLista
+            // precioOferta
             // 
-            this.txt_precioLista.Location = new System.Drawing.Point(157, 189);
-            this.txt_precioLista.Name = "txt_precioLista";
-            this.txt_precioLista.Size = new System.Drawing.Size(315, 20);
-            this.txt_precioLista.TabIndex = 6;
+            this.precioOferta.Location = new System.Drawing.Point(157, 148);
+            this.precioOferta.Name = "precioOferta";
+            this.precioOferta.Size = new System.Drawing.Size(120, 20);
+            this.precioOferta.TabIndex = 4;
+            // 
+            // precioLista
+            // 
+            this.precioLista.Location = new System.Drawing.Point(157, 184);
+            this.precioLista.Name = "precioLista";
+            this.precioLista.Size = new System.Drawing.Size(120, 20);
+            this.precioLista.TabIndex = 5;
+            // 
+            // maxCliente
+            // 
+            this.maxCliente.Location = new System.Drawing.Point(216, 223);
+            this.maxCliente.Name = "maxCliente";
+            this.maxCliente.Size = new System.Drawing.Size(120, 20);
+            this.maxCliente.TabIndex = 6;
+            // 
+            // cantidad
+            // 
+            this.cantidad.Location = new System.Drawing.Point(81, 316);
+            this.cantidad.Name = "cantidad";
+            this.cantidad.Size = new System.Drawing.Size(120, 20);
+            this.cantidad.TabIndex = 9;
             // 
             // CrearOfertaAdministrativo
             // 
@@ -317,6 +317,10 @@
             this.Text = "Form1";
             this.Detalles.ResumeLayout(false);
             this.Detalles.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.precioOferta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.precioLista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maxCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,18 +339,18 @@
         private System.Windows.Forms.TextBox txt_descripcion;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_maxUnidadesPorCliente;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_precioOferta;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txt_precioLista;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txt_codigo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txt_cantidad;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown cantidad;
+        private System.Windows.Forms.NumericUpDown maxCliente;
+        private System.Windows.Forms.NumericUpDown precioLista;
+        private System.Windows.Forms.NumericUpDown precioOferta;
     }
 }

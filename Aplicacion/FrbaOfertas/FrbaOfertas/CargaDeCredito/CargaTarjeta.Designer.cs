@@ -113,6 +113,11 @@
             // numeroTarjeta
             // 
             this.numeroTarjeta.Location = new System.Drawing.Point(155, 103);
+            this.numeroTarjeta.Maximum = new decimal(new int[] {
+            1569325055,
+            23283064,
+            0,
+            0});
             this.numeroTarjeta.Name = "numeroTarjeta";
             this.numeroTarjeta.Size = new System.Drawing.Size(339, 20);
             this.numeroTarjeta.TabIndex = 18;
