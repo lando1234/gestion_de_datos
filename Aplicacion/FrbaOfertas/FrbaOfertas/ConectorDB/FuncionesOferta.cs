@@ -61,7 +61,7 @@ namespace FrbaOfertas.ConectorDB
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            string sql = "SELECT * FROM [NO_SRTA_E_GATOREI].[OFERTAS] WHERE @FECHA_SISTEMA < FECHA_VENCIMIENTO ";
+            string sql = "SELECT * FROM [NO_SRTA_E_GATOREI].OFERTAS WHERE @FECHA_SISTEMA < FECHA_VENCIMIENTO";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@FECHA_SISTEMA", Utils.HoraSistema.get());
 
@@ -76,14 +76,13 @@ namespace FrbaOfertas.ConectorDB
 
                 Oferta o = new Oferta();
                 o.id = reader.GetInt32(reader.GetOrdinal("OFERTA_ID"));
-                o.precio_lista= reader.GetFloat(reader.GetOrdinal("PRECIO_LISTA"));
-                o.precio_oferta = reader.GetFloat(reader.GetOrdinal("PRECIO_OFERTA"));
+                o.precio_lista= reader.GetDecimal(reader.GetOrdinal("PRECIO_LISTA"));
+                o.precio_oferta = reader.GetDecimal(reader.GetOrdinal("PRECIO_OFERTA"));
                 o.fecha_publicacion = reader.GetDateTime(reader.GetOrdinal("FECHA_PUBLICACION"));
                 o.fecha_vencimiento = reader.GetDateTime(reader.GetOrdinal("FECHA_VENCIMIENTO"));
-                o.cantidad = reader.GetInt32(reader.GetOrdinal("CANTIDAD"));
-                o.maximo_usuario = reader.GetInt32(reader.GetOrdinal("MAXIMO_USUARIO"));
+                o.cantidad = reader.GetDecimal(reader.GetOrdinal("CANTIDAD"));
+                o.maximo_usuario = reader.GetDecimal(reader.GetOrdinal("MAXIMO_USUARIO"));
                 o.descripcion = reader.GetString(reader.GetOrdinal("DESCRIPCION"));
-                o.fecha_compra = reader.GetDateTime(reader.GetOrdinal("FECHA_COMPRA"));
                 o.codigo = reader.GetString(reader.GetOrdinal("CODIGO"));
                 o.proveedor_id = reader.GetInt32(reader.GetOrdinal("PROVEEDOR_ID"));
                 ofertas.Add(o);

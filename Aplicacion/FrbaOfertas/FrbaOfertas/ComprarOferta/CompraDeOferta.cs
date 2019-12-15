@@ -23,17 +23,23 @@ namespace FrbaOfertas.ComprarOferta
         private void dataGridCompraOfertas_Load(object sender, DataGridViewCellEventArgs e)
         {
 
-            List<Oferta> ofertas = FuncionesOferta.getOfertasNoVencidas();
-            //ACA SE AGREGAN LAS OFERTAS AL DATA GRID PARA MOSTRARSE
-            foreach (Oferta oferta in ofertas)
-            {
-              Object[] row = new Object[] { oferta.proveedor_id, oferta.descripcion, oferta.precio_oferta, oferta.cantidad, oferta.maximo_usuario };
-              dataGridCompraOfertas.Rows.Add(row);
-            }
+          
         }
 
         private void dataGridCompraOfertas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        private void CompraDeOferta_Load(object sender, EventArgs e)
+        {
+            List<Oferta> ofertas = FuncionesOferta.getOfertasNoVencidas();
+            //ACA SE AGREGAN LAS OFERTAS AL DATA GRID PARA MOSTRARSE
+            foreach (Oferta oferta in ofertas)
+            {
+                Object[] row = new Object[] { oferta.proveedor_id, oferta.descripcion, oferta.precio_oferta, oferta.cantidad, oferta.maximo_usuario };
+                dataGridCompraOfertas.Rows.Add(row);
+            }
+
         }
 
         

@@ -112,12 +112,13 @@
             this.maximo,
             this.Comprar,
             this.codigo});
-            this.dataGridCompraOfertas.Location = new System.Drawing.Point(12, 104);
+            this.dataGridCompraOfertas.Location = new System.Drawing.Point(23, 104);
             this.dataGridCompraOfertas.Name = "dataGridCompraOfertas";
             this.dataGridCompraOfertas.ReadOnly = true;
             this.dataGridCompraOfertas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridCompraOfertas.Size = new System.Drawing.Size(862, 345);
             this.dataGridCompraOfertas.TabIndex = 8;
+            this.dataGridCompraOfertas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCompraOfertas_CellContentClick);
             // 
             // Proveedor
             // 
@@ -182,6 +183,7 @@
             this.Controls.Add(this.dataGridCompraOfertas);
             this.Name = "CompraDeOferta";
             this.Text = "Comprar oferta";
+            this.Load += new System.EventHandler(this.CompraDeOferta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCompraOfertas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
