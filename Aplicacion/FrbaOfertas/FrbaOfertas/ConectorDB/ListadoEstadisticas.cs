@@ -19,24 +19,25 @@ namespace FrbaOfertas.ConectorDB
 
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            string sql = "select top 5 p.RAZON_SOCIAL,sum(o.PRECIO_OFERTA)/sum(o.PRECIO_LISTA*o.CANTIDAD) * 100 as porcentaje ";
+            string sql = "select top 5 p.RAZON_SOCIAL,count(o.oferta_id) as ofertas,sum(o.PRECIO_OFERTA)/sum(o.PRECIO_LISTA) * 100 as porcentaje ";
             sql += "from NO_SRTA_E_GATOREI.PROVEEDORES p ";
-            sql = "inner join NO_SRTA_E_GATOREI.OFERTAS o ";
-            sql = "on p.PROVEEDOR_ID = o.PROVEDOR_ID ";
-            sql = "where FECHA_PUBLICACION between @FROM and @TO";
-            sql = "group by p.RAZON_SOCIAL ";
-            sql = "order by 2 desc; ";
+            sql += "inner join NO_SRTA_E_GATOREI.OFERTAS o ";
+            sql += "on p.PROVEEDOR_ID = o.PROVEEDOR_ID ";
+            sql += "where FECHA_PUBLICACION between convert(datetime,@FROM,121) and convert(datetime,@TO,121)";
+            sql += "group by p.RAZON_SOCIAL ";
+            sql += "order by 2 desc; ";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.Add("@FROM", desde);
             cmd.Parameters.Add("@TO", hasta);
 
             SqlDataReader r = cmd.ExecuteReader();
-            while (r.NextResult())
+            while (r.Read())
             {
                 ProveedorValor p = new ProveedorValor();
-                p.razonSocial = r.GetString(1);
-                p.monto = r.GetDouble(2);
+                p.razonSocial = r.GetString(0);
+                p.cantidad = r.GetInt32(1);
+                p.monto = r.GetDecimal(2);
                 lista.Add(p);
             }
 
@@ -50,32 +51,33 @@ namespace FrbaOfertas.ConectorDB
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
 
-            string sql = "select top 5 p.RAZON_SOCIAL, sum(f.importe) ";
-            sql = "from NO_SRTA_E_GATOREI.PROVEEDORES p ";
-            sql = "inner join NO_SRTA_E_GATOREI.OFERTAS o ";
-            sql = "on p.PROVEEDOR_ID = o.PROVEDOR_ID ";
-            sql = "inner join NO_SRTA_E_GATOREI.COMPRAS c ";
-            sql = "on o.OFERTA_ID = c.OFERTA_ID ";
-            sql = "inner join NO_SRTA_E_GATOREI.FACTURAS_COMPRAS fc ";
-            sql = "on c.COMPRA_ID = fc.COMPRA_ID ";
-            sql = "inner join NO_SRTA_E_GATOREI.FACTURAS f ";
-            sql = "on fc.FACTURA_ID = f.FACTURA_ID ";
-            sql = "where f.FACTURA_ID is not null ";
-            sql = "and FECHA_PUBLICACION between @FROM and @TO";
-            sql = "group by p.RAZON_SOCIAL ";
-            sql = "order by 2 desc ";
+            string sql = "select top 5 p.RAZON_SOCIAL,count(distinct f.factura_id), sum(f.importe) ";
+            sql += "from NO_SRTA_E_GATOREI.PROVEEDORES p ";
+            sql += "inner join NO_SRTA_E_GATOREI.OFERTAS o ";
+            sql += "on p.PROVEEDOR_ID = o.PROVEEDOR_ID ";
+            sql += "inner join NO_SRTA_E_GATOREI.COMPRAS c ";
+            sql += "on o.OFERTA_ID = c.OFERTA_ID ";
+            sql += "inner join NO_SRTA_E_GATOREI.FACTURAS_COMPRAS fc ";
+            sql += "on c.COMPRA_ID = fc.COMPRA_ID ";
+            sql += "inner join NO_SRTA_E_GATOREI.FACTURAS f ";
+            sql += "on fc.FACTURA_ID = f.FACTURA_ID ";
+            sql += "where f.FACTURA_ID is not null ";
+            sql += "and FECHA between convert(datetime,@FROM,121) and convert(datetime,@TO,121) ";
+            sql += "group by p.RAZON_SOCIAL ";
+            sql += "order by 2 desc ";
 
             
             SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.Parameters.Add("@FROM", desde);
-            cmd.Parameters.Add("@TO", hasta);
+            cmd.Parameters.AddWithValue("@FROM", desde);
+            cmd.Parameters.AddWithValue("@TO", hasta);
 
             SqlDataReader r = cmd.ExecuteReader();
-            while (r.NextResult())
+            while (r.Read())
             {
                 ProveedorValor p = new ProveedorValor();
-                p.razonSocial = r.GetString(1);
-                p.monto = r.GetDouble(2);
+                p.razonSocial = r.GetString(0);
+                p.monto = r.GetDecimal(2);
+                p.cantidad = r.GetInt32(1);
                 lista.Add(p);
             }
 
@@ -83,5 +85,20 @@ namespace FrbaOfertas.ConectorDB
 
         }
 
+
+        internal static IEnumerable<int> getAniosFacturas()
+        {
+            List<int> lista = new List<int>();
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT DISTINCT YEAR(FECHA) FROM NO_SRTA_E_GATOREI.FACTURAS", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read()) {
+                lista.Add(reader.GetInt32(0));
+            }
+
+            return lista;
+        }
     }
 }
