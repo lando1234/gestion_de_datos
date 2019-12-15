@@ -124,6 +124,7 @@
     <Compile Include="ConectorDB\FuncionesOferta.cs" />
     <Compile Include="ConectorDB\FuncionesProvedores.cs" />
     <Compile Include="ConectorDB\FuncionesRol.cs" />
+    <Compile Include="ConectorDB\FuncionesRubro.cs" />
     <Compile Include="ConectorDB\FuncionesUsername.cs" />
     <Compile Include="ConectorDB\ListadoEstadisticas.cs" />
     <Compile Include="Config\configurationsDb.Designer.cs">
