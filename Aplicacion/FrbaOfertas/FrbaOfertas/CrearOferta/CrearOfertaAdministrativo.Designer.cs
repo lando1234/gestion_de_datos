@@ -36,6 +36,10 @@
             this.dateTimePickerOferta = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.Detalles = new System.Windows.Forms.GroupBox();
+            this.cantidad = new System.Windows.Forms.NumericUpDown();
+            this.maxCliente = new System.Windows.Forms.NumericUpDown();
+            this.precioLista = new System.Windows.Forms.NumericUpDown();
+            this.precioOferta = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.txt_codigo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -48,15 +52,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.precioOferta = new System.Windows.Forms.NumericUpDown();
-            this.precioLista = new System.Windows.Forms.NumericUpDown();
-            this.maxCliente = new System.Windows.Forms.NumericUpDown();
-            this.cantidad = new System.Windows.Forms.NumericUpDown();
             this.Detalles.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.precioOferta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.precioLista)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maxCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maxCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.precioLista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.precioOferta)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
@@ -152,6 +152,54 @@
             this.Detalles.TabStop = false;
             this.Detalles.Text = "Detalle de Oferta";
             this.Detalles.Enter += new System.EventHandler(this.Detalles_Enter);
+            // 
+            // cantidad
+            // 
+            this.cantidad.Location = new System.Drawing.Point(81, 316);
+            this.cantidad.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.cantidad.Name = "cantidad";
+            this.cantidad.Size = new System.Drawing.Size(120, 20);
+            this.cantidad.TabIndex = 9;
+            // 
+            // maxCliente
+            // 
+            this.maxCliente.Location = new System.Drawing.Point(216, 223);
+            this.maxCliente.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.maxCliente.Name = "maxCliente";
+            this.maxCliente.Size = new System.Drawing.Size(120, 20);
+            this.maxCliente.TabIndex = 6;
+            // 
+            // precioLista
+            // 
+            this.precioLista.Location = new System.Drawing.Point(157, 184);
+            this.precioLista.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
+            this.precioLista.Name = "precioLista";
+            this.precioLista.Size = new System.Drawing.Size(120, 20);
+            this.precioLista.TabIndex = 5;
+            // 
+            // precioOferta
+            // 
+            this.precioOferta.Location = new System.Drawing.Point(157, 148);
+            this.precioOferta.Maximum = new decimal(new int[] {
+            1215752191,
+            23,
+            0,
+            0});
+            this.precioOferta.Name = "precioOferta";
+            this.precioOferta.Size = new System.Drawing.Size(120, 20);
+            this.precioOferta.TabIndex = 4;
             // 
             // label11
             // 
@@ -272,34 +320,6 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Precio de Lista";
             // 
-            // precioOferta
-            // 
-            this.precioOferta.Location = new System.Drawing.Point(157, 148);
-            this.precioOferta.Name = "precioOferta";
-            this.precioOferta.Size = new System.Drawing.Size(120, 20);
-            this.precioOferta.TabIndex = 4;
-            // 
-            // precioLista
-            // 
-            this.precioLista.Location = new System.Drawing.Point(157, 184);
-            this.precioLista.Name = "precioLista";
-            this.precioLista.Size = new System.Drawing.Size(120, 20);
-            this.precioLista.TabIndex = 5;
-            // 
-            // maxCliente
-            // 
-            this.maxCliente.Location = new System.Drawing.Point(216, 223);
-            this.maxCliente.Name = "maxCliente";
-            this.maxCliente.Size = new System.Drawing.Size(120, 20);
-            this.maxCliente.TabIndex = 6;
-            // 
-            // cantidad
-            // 
-            this.cantidad.Location = new System.Drawing.Point(81, 316);
-            this.cantidad.Name = "cantidad";
-            this.cantidad.Size = new System.Drawing.Size(120, 20);
-            this.cantidad.TabIndex = 9;
-            // 
             // CrearOfertaAdministrativo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,10 +337,10 @@
             this.Text = "Form1";
             this.Detalles.ResumeLayout(false);
             this.Detalles.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.precioOferta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.precioLista)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maxCliente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maxCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.precioLista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.precioOferta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
