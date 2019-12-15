@@ -14,10 +14,15 @@ namespace FrbaOfertas.AbmProveedor
 {
     public partial class ModificarProveedor : Form
     {
-        Proveedor proveedorAModificar;
-        public ModificarProveedor(Proveedor proveedor)
+        private Proveedor proveedorAModificar;
+
+        public ModificarProveedor() {
+            InitializeComponent();
+        }
+
+        ModificarProveedor(Proveedor proveedor)
         {
-             proveedorAModificar = proveedor;
+            proveedorAModificar = proveedor;
             InitializeComponent();
         }
 
