@@ -89,5 +89,10 @@ namespace FrbaOfertas.MenuPrincipal
             form.Show();
         }
 
+        private void abmRolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
