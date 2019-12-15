@@ -117,6 +117,7 @@
             // 
             // comboTipo
             // 
+            this.comboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipo.FormattingEnabled = true;
             this.comboTipo.Items.AddRange(new object[] {
             "Cliente",
@@ -147,7 +148,6 @@
             this.siguienteRegistro.UseVisualStyleBackColor = true;
             this.siguienteRegistro.Click += new System.EventHandler(this.button2_Click);
             // 
-
             // Registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

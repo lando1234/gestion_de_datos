@@ -37,35 +37,39 @@ namespace FrbaOfertas.AbmCliente
                 Cliente cliente = new Cliente(null, int.Parse(txt_dni.Text), txt_nombre.Text, txt_apellido.Text, txt_mail.Text, int.Parse(txt_tel.Text), dateTimePicker.Value, true, null, direccion);
                 ConectorDB.FuncionesCliente.altaCliente(cliente, usuario);
             }
-            catch (System.ArgumentException ex) 
-            { 
-                
+            catch (System.ArgumentException ex)
+            {
+
                 MessageBox.Show(ex.Message, ex.ParamName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-    }
-
-        private void validar()
-        {
-            if (Validador.isNumeric(txt_cpostal.Text))
-            {
-                throw new System.ArgumentException("Codigo postal debe ser númerico", "original");
-
-            }
-            else if (Validador.isNumeric(txt_dni.Text))
-            {
-                throw new System.ArgumentException("Codigo postal debe ser númerico", "original");
-            }
-            else if (Validador.IsValidEmail(txt_mail.Text))
-            {
-                throw new System.ArgumentException("el mail debe ser válido", "original");
-            }
-            else if (Validador.IsValidEmail(txt_tel.Text))
-            {
-                throw new System.ArgumentException("el telefono debe ser númerico", "original");
             }
         }
 
+        private void validar()
+        {
+            if (!Validador.isNumeric(txt_cpostal.Text))
+            {
+                throw new System.ArgumentException("Codigo postal debe ser númerico", "original");
+
+            }
+            else if (!Validador.isNumeric(txt_dni.Text))
+            {
+                throw new System.ArgumentException("Codigo postal debe ser númerico", "original");
+            }
+            else if (!Validador.IsValidEmail(txt_mail.Text))
+            {
+                throw new System.ArgumentException("el mail debe ser válido", "original");
+            }
+            else if (!Validador.isNumeric(txt_tel.Text))
+            {
+                throw new System.ArgumentException("el telefono debe ser númerico", "original");
+            }
+            else if (Validador.isEmpty(txt_nombre.Text) || Validador.isEmpty(txt_apellido.Text) || Validador.isEmpty(txt_mail.Text) ||
+              Validador.isEmpty(txt_tel.Text) || Validador.isEmpty(txt_ciudad.Text) || Validador.isEmpty(txt_calle.Text) || Validador.isEmpty(txt_cpostal.Text) )
+            {
+            }
+
+
+        }
 
     }
-    
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.Detalles = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.txt_monto = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,8 +54,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_tel = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.Detalles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,6 +90,25 @@
             this.Detalles.TabIndex = 2;
             this.Detalles.TabStop = false;
             this.Detalles.Text = "Detalles Cliente";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(315, 401);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 37;
+            this.button2.Text = "Guardar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(23, 401);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Cancelar";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
@@ -277,24 +296,6 @@
             this.txt_tel.Name = "txt_tel";
             this.txt_tel.Size = new System.Drawing.Size(313, 20);
             this.txt_tel.TabIndex = 7;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(23, 401);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(315, 401);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "Guardar";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // ModificarCliente
             // 

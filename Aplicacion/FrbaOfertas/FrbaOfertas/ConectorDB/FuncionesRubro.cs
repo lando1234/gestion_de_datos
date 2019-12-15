@@ -29,13 +29,11 @@ namespace FrbaOfertas.ConectorDB
 
             SqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read()) { 
-            
-               rubros.Add(new Rubro(reader.GetInt32(reader.GetOrdinal("id")) , reader.GetString(reader.GetOrdinal("descripcion"))));
+            while (reader.Read()) {
+
+                rubros.Add(new Rubro(reader.GetInt32(reader.GetOrdinal("RUBRO_ID")), reader.GetString(reader.GetOrdinal("DESCRIPCION"))));
             }
-
             con.Close();
-
             return rubros;
         
         }

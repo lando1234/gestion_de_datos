@@ -12,7 +12,7 @@ namespace FrbaOfertas.Modelo.Roles
         public string RazonSocial { get; set; }
         public string cuit { get; set; }
         public string mail { get; set; }
-        public string telefono { get; set; }
+        public int telefono { get; set; }
         public Direccion direccion { get; set; }
         public Rubro rubro { get; set; }
         public string nombreContacto { get; set; }
