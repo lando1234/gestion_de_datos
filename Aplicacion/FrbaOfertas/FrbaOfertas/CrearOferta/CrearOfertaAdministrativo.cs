@@ -1,4 +1,5 @@
-﻿using FrbaOfertas.Modelo.Roles;
+﻿using FrbaOfertas.ConectorDB;
+using FrbaOfertas.Modelo.Roles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,7 @@ namespace FrbaOfertas.CrearOferta
             oferta.precio_oferta = txt_precioOferta.Text;
             oferta.proveedor_id = Int32.Parse(comboBox1.Text);
 
+            FuncionesOferta.altaOferta(oferta);
             
 
         }
