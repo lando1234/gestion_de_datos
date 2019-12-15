@@ -36,13 +36,19 @@ namespace FrbaOfertas.AbmProveedor
             proveedor.telefono = txt_tel.Text;
             proveedor.rubro = (Rubro) comboRubro.SelectedItem;
             proveedor.nombreContacto = txt_nombreContacto.Text;
+            proveedor.mail = txt_mail.Text;
 
             ConectorDB.FuncionesProveedor.altaUsuarioProveedor(proveedor, usuario);
         }
 
         private void AltaProveedor_Load(object sender, EventArgs e)
         {
-            ConectorDB.FuncionesProveedor.obtenerRubros();
+            List<Rubro> rubros = ConectorDB.FuncionesRubro.getRubros();
+           
+            foreach (Rubro rubro in rubros)
+            {
+                comboRubro.Items.Add(rubro);
+            }
             
         }
     }
