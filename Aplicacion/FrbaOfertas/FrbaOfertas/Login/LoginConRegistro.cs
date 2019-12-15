@@ -40,11 +40,11 @@ namespace FrbaOfertas
         private void buttonLogin_Click(object sender, EventArgs e)
         {
 
-            Console.WriteLine("LOGIN BUTTON CLICK");
-
             if (FrbaOfertas.Utils.ProtocoloLogin.protocoloLogin(textBoxLoginUser.Text, textBoxLoginPassword.Text))
             {
-               //ESTO TIENE QUE CARGAR EL USUARIO Y SETEAR LOS PERMISOS
+                //HACER LA VALIDACION DE LOS PERMISOS EN EL MENU PARA MOSTRAR SOLO QUE CORRESPONDE
+                Form alta = new MenuPrincipal.Menu();
+                alta.Show();
             }
         }
 

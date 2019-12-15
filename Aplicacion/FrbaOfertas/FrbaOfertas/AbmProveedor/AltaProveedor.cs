@@ -31,7 +31,7 @@ namespace FrbaOfertas.AbmProveedor
             
             Proveedor proveedor = new Proveedor();
             proveedor.RazonSocial = txt_razonsocial.Text;
-            proveedor.direccion = new Direccion(null, txt_ciudad.Text, txt_calle.Text, txt_codpostal.Text);
+            proveedor.direccion = new Direccion(null, txt_ciudad.Text, txt_calle.Text, Int16.Parse(txt_codpostal.Text));
             proveedor.cuit = txt_cuit.Text;
             proveedor.telefono = txt_tel.Text;
             proveedor.rubro = (Rubro) comboRubro.SelectedItem;

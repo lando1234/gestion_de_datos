@@ -24,14 +24,14 @@ namespace FrbaOfertas.ConectorDB
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = usuario.username;
-            cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = usuario.password;
+            cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = ComputeSha256Hash(usuario.password);
             cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = cliente.nombre;
             cmd.Parameters.Add("@APELLIDO", SqlDbType.VarChar).Value = cliente.apellido;
-            cmd.Parameters.Add("@DNI", SqlDbType.VarChar).Value = cliente.dni;
+            cmd.Parameters.Add("@DNI", SqlDbType.Int).Value = cliente.dni;
             cmd.Parameters.Add("@MAIL", SqlDbType.VarChar).Value = cliente.mail;
-            cmd.Parameters.Add("@TELEFONO", SqlDbType.VarChar).Value = cliente.telefono;
+            cmd.Parameters.Add("@TELEFONO", SqlDbType.Int).Value = cliente.telefono;
             cmd.Parameters.Add("@DIRECCION", SqlDbType.VarChar).Value = cliente.direccion.Calle;
-            cmd.Parameters.Add("@CP", SqlDbType.VarChar).Value = cliente.direccion.codigoPostal;
+            cmd.Parameters.Add("@CP", SqlDbType.Int).Value = cliente.direccion.codigoPostal;
             cmd.Parameters.Add("@CIUDAD", SqlDbType.VarChar).Value = cliente.direccion.Ciudad;
             cmd.Parameters.Add("@FECHA_NACIMIENTO", SqlDbType.DateTime).Value = cliente.fecha_nacimiento;
             cmd.Parameters.Add("@FECHA_ACTUAL", SqlDbType.DateTime).Value = DateTime.Now;
@@ -69,8 +69,7 @@ namespace FrbaOfertas.ConectorDB
 
              while (registros.Read())
              {
-               
-                  
+
 
                  clientes.Add(new Cliente(registros.GetInt32(registros.GetOrdinal("CLIENTE_ID")),
                   registros.GetInt16(registros.GetOrdinal("DNI")),
