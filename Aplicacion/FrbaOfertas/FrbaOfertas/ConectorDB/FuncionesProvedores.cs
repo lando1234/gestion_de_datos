@@ -162,7 +162,7 @@ namespace FrbaOfertas.ConectorDB
                 p.RazonSocial = reader.GetString(reader.GetOrdinal("RAZON_SOCIAL"));
                 p.cuit = reader.GetString(reader.GetOrdinal("CUIT"));
                 p.mail = reader.GetString(reader.GetOrdinal("MAIL"));
-                p.telefono = reader.GetString(reader.GetOrdinal("TELEFONO"));
+                p.telefono = reader.GetInt16(reader.GetOrdinal("TELEFONO"));
                 p.direccion = FuncionesDireccion.extractDireccion(reader);
                 p.rubro = new Rubro(reader.GetInt16(reader.GetOrdinal("RUBRO_ID")), reader.GetString(reader.GetOrdinal("DESCRIPCION")));
                 p.nombreContacto = reader.GetString(reader.GetOrdinal("NOMBRE_CONTACTO"));
