@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Utils;
+using FrbaOfertas.ConectorDB;
 
 namespace FrbaOfertas.AbmCliente
 {

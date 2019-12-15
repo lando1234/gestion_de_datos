@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrbaOfertas.Modelo.Roles
 {
-    class Proveedor
+    public class Proveedor
     {
         public int id { get; set; }
         public string RazonSocial { get; set; }

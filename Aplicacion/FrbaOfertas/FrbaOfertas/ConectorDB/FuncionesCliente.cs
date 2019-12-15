@@ -50,6 +50,39 @@ namespace FrbaOfertas.ConectorDB
 
         }
 
+         public static int crearCliente(Cliente cliente)
+         {
+             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+             con.Open();
+             SqlCommand cmd = new SqlCommand("CREAR_CLIENTE", con);
+
+             cmd.CommandType = CommandType.StoredProcedure;
+
+            
+             cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = cliente.nombre;
+             cmd.Parameters.Add("@APELLIDO", SqlDbType.VarChar).Value = cliente.apellido;
+             cmd.Parameters.Add("@DNI", SqlDbType.Int).Value = cliente.dni;
+             cmd.Parameters.Add("@MAIL", SqlDbType.VarChar).Value = cliente.mail;
+             cmd.Parameters.Add("@TELEFONO", SqlDbType.Int).Value = cliente.telefono;
+             cmd.Parameters.Add("@DIRECCION", SqlDbType.VarChar).Value = cliente.direccion.Calle;
+             cmd.Parameters.Add("@CP", SqlDbType.Int).Value = cliente.direccion.codigoPostal;
+             cmd.Parameters.Add("@CIUDAD", SqlDbType.VarChar).Value = cliente.direccion.Ciudad;
+             cmd.Parameters.Add("@FECHA_NACIMIENTO", SqlDbType.DateTime).Value = cliente.fecha_nacimiento;
+             cmd.Parameters.Add("@FECHA_ACTUAL", SqlDbType.DateTime).Value = DateTime.Now;
+
+             var returnParameter = cmd.Parameters.Add("@RESULT", SqlDbType.Int);
+             returnParameter.Direction = ParameterDirection.ReturnValue;
+
+
+             cmd.ExecuteNonQuery();
+
+             int result = (int)returnParameter.Value;
+
+
+             con.Close();
+             return result;
+         }
+
          public static List<Cliente> getClientes()
          {
 
