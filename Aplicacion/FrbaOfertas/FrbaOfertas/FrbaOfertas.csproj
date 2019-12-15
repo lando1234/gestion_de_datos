@@ -125,6 +125,7 @@
     <Compile Include="ConectorDB\FuncionesProvedores.cs" />
     <Compile Include="ConectorDB\FuncionesRol.cs" />
     <Compile Include="ConectorDB\FuncionesRubro.cs" />
+    <Compile Include="ConectorDB\FuncionesTipoPagos.cs" />
     <Compile Include="ConectorDB\FuncionesUsername.cs" />
     <Compile Include="ConectorDB\ListadoEstadisticas.cs" />
     <Compile Include="Config\configurationsDb.Designer.cs">
@@ -161,6 +162,7 @@
     <Compile Include="Modelo\Roles\Rol.cs" />
     <Compile Include="Modelo\Roles\Rubro.cs" />
     <Compile Include="Modelo\Roles\Session.cs" />
+    <Compile Include="Modelo\Roles\TipoPago.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="ComprarOferta\CompraDeOferta.cs">
       <SubType>Form</SubType>
@@ -198,6 +200,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\HoraSistema.cs" />
     <Compile Include="Utils\Validador.cs" />
     <Compile Include="Utils\ProtocoloLogin.cs" />
     <EmbeddedResource Include="AbmCliente\AltaCliente.resx">

@@ -69,6 +69,11 @@
             // cantidadACargar
             // 
             this.cantidadACargar.Location = new System.Drawing.Point(233, 112);
+            this.cantidadACargar.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.cantidadACargar.Name = "cantidadACargar";
             this.cantidadACargar.Size = new System.Drawing.Size(126, 20);
             this.cantidadACargar.TabIndex = 1;
@@ -86,9 +91,6 @@
             // 
             this.tipoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoPago.FormattingEnabled = true;
-            this.tipoPago.Items.AddRange(new object[] {
-            "Efectivo",
-            "Credito"});
             this.tipoPago.Location = new System.Drawing.Point(233, 166);
             this.tipoPago.Name = "tipoPago";
             this.tipoPago.Size = new System.Drawing.Size(214, 21);
@@ -107,6 +109,7 @@
             this.Controls.Add(this.label1);
             this.Name = "RecargarCredito";
             this.Text = "Cargar credito";
+            this.Load += new System.EventHandler(this.RecargarCredito_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cantidadACargar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

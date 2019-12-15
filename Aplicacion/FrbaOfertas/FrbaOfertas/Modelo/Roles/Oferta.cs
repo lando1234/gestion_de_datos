@@ -17,14 +17,16 @@ namespace FrbaOfertas.Modelo.Roles
         public int cantidad { get; set; }
         public int maximo_usuario { get; set; }
         public DateTime fecha_compra { get; set; }
-        public int codigo { get; set; }
+        public string codigo { get; set; }
         public int entregado { get; set; }
         public int proveedor_id { get; set; }
 
 
 
+        public Oferta() { }
+
         public Oferta(int id, string descripcion, DateTime fecha_publicacion, DateTime fecha_vencimiento, float precio_oferta, float precio_lista, int cantidad, int maximo_usuario,
-            DateTime fecha_compra, int codigo, int entregado, int proveedor_id)
+            DateTime fecha_compra, string codigo, int entregado, int proveedor_id)
         {
             this.id = id;
             this.descripcion = descripcion;
