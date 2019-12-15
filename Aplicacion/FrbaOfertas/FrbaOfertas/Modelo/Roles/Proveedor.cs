@@ -18,6 +18,10 @@ namespace FrbaOfertas.Modelo.Roles
         public string nombreContacto { get; set; }
         public bool habilitado { get; set; }
 
+        public Proveedor() { 
+        
+        }
+
         public Proveedor(int id, string RazonSocial, string cuit, string mail, decimal telefono, Direccion direccion, Rubro rubro, string nombreContacto, bool habilitado) {
 
             this.id = id;
