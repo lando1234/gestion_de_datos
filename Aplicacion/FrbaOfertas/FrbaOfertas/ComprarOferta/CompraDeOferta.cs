@@ -16,5 +16,10 @@ namespace FrbaOfertas.ComprarOferta
         {
             InitializeComponent();
         }
+
+        private void CompraDeOferta_Load(object sender, EventArgs e)
+        {
+            //ACA SE CARGA EL DATA GRID
+        }
     }
 }

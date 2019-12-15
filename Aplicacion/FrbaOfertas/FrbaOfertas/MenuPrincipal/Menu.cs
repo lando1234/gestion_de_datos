@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FrbaOfertas.Modelo.Roles;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -90,6 +91,46 @@ namespace FrbaOfertas.MenuPrincipal
         }
 
         private void abmRolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            List<Rol> roles = Session.UserSession.roles;
+            List<Permiso> permisos = new List<Permiso>();
+            List<String> clavesPermisos = new List<String>();
+
+            foreach (Rol rol in roles)
+            {
+                foreach (Permiso permiso in rol.permisos)
+                {
+                    permisos.Add(permiso);
+                }
+            }
+
+            foreach (Permiso permiso in permisos)
+            {
+                clavesPermisos.Add(permiso.clave);
+            }
+            
+            
+            abmCliente.Visible = clavesPermisos.Contains("ABM_CLIENTES");
+            abmProveedor.Visible = clavesPermisos.Contains("ABM_PROVEEDORES");
+            abmRol.Visible = clavesPermisos.Contains("ABM_ROLES");
+            CargaCredito.Visible = clavesPermisos.Contains("CARGAR_CREDITO");
+            facturacion.Visible = clavesPermisos.Contains("FACTURAS");
+            estadisticas.Visible = clavesPermisos.Contains("REPORTES");
+
+            Ofertas.Visible = clavesPermisos.Contains("ABM_CLIENTES");
+            
+            ComprarOferta.Visible =  clavesPermisos.Contains("COMPRAR_OFERTA");
+            crearOfertaProv.Visible = clavesPermisos.Contains("CREAR_OFERTA");
+
+//              CANJEAR_OFERTA
+        }
+
+        private void Ofertas_Click(object sender, EventArgs e)
         {
 
         }

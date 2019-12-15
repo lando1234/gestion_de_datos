@@ -133,7 +133,7 @@ namespace FrbaOfertas.ConectorDB
             con.Open();
             SqlCommand cmd = new SqlCommand("CREAR_ROL", con);
             cmd.Parameters.Add("@ROL_DESC", SqlDbType.VarChar).Value = rol.nombre;
-            cmd.Parameters.Add("@PERMISOS", SqlDbType.VarChar).Value = rol.getPermisos();
+            //cmd.Parameters.Add("@PERMISOS", SqlDbType.VarChar).Value = rol.getPermisos();
             cmd.ExecuteNonQuery();
             con.Close();
 

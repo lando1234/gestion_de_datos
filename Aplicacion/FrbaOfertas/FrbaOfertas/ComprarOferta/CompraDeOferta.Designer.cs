@@ -182,6 +182,7 @@
             this.Controls.Add(this.dataGridCompraOfertas);
             this.Name = "CompraDeOferta";
             this.Text = "Comprar oferta";
+            this.Load += new System.EventHandler(this.CompraDeOferta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCompraOfertas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
