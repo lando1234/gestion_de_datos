@@ -40,7 +40,7 @@ namespace FrbaOfertas.ConectorDB
              returnValue = Convert.ToInt16(cmd.Parameters["@RESULT"].Value);
             }
 
-
+            con.Close();
             return returnValue;
           
         }
@@ -72,7 +72,7 @@ namespace FrbaOfertas.ConectorDB
 
 
             }
-
+              con.Close();
             return usuario;
         }
 
