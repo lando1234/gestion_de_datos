@@ -21,7 +21,7 @@ namespace FrbaOfertas.ConectorDB
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@FECHA", SqlDbType.DateTime).Value = credito.fecha;
-            cmd.Parameters.Add("@CLIENTE_ID", SqlDbType.Int).Value = credito.cliente_id;
+            cmd.Parameters.Add("@CLIENTE_ID", SqlDbType.Int).Value = credito.usuario_id;
             cmd.Parameters.Add("@TIPO_PAGO_ID", SqlDbType.VarChar).Value = credito.tipo_pago_id;
             cmd.Parameters.Add("@MONTO", SqlDbType.Float).Value = credito.monto;
             cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = credito.nombre;

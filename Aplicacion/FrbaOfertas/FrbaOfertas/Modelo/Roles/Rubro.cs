@@ -11,10 +11,15 @@ namespace FrbaOfertas.Modelo.Roles
         public Nullable<int> id { get; set; }
         public string descripcion { get; set; }
 
-        public Rubro(Nullable<int> id, string decripcion)
+        public Rubro(Nullable<int> id, string descripcion)
         {
             this.id = id;
             this.descripcion = descripcion;
+        }
+
+
+        public override string ToString() {
+            return this.descripcion;
         }
     }
 }

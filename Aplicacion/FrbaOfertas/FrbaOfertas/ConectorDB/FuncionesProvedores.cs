@@ -24,7 +24,7 @@ namespace FrbaOfertas.ConectorDB
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = usuario.username;
-            cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = usuario.password;
+            cmd.Parameters.Add("@PASS", SqlDbType.VarChar).Value = ComputeSha256Hash(usuario.password);
             cmd.Parameters.Add("@RS", SqlDbType.VarChar).Value = proveedor.RazonSocial;
             cmd.Parameters.Add("@CUIT", SqlDbType.VarChar).Value = proveedor.cuit;
             cmd.Parameters.Add("@MAIL", SqlDbType.VarChar).Value = proveedor.mail;

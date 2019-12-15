@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FrbaOfertas.Modelo.Roles;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,22 @@ namespace FrbaOfertas.CargaDeCredito
         public RecargarCredito()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            Double cantidad = Convert.ToDouble(cantidadACargar.Value);
+
+            if (tipoPago.Text == "Credito") {
+                Form alta = new CargaDeCredito.CargaTarjeta();
+                alta.Show();
+            }
+            if (tipoPago.Text == "Efectivo")
+            {
+                //Credito credito = new Credito(null, FrbaOfertas.Config.configurationsDb.Default.fechaSistema,tipoPago.SelectedItem
+                //ConectorDB.FuncionesCargaCredito.cargaCredito()
+            }
         }
     }
 }
