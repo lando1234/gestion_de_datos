@@ -19,6 +19,14 @@ namespace FrbaOfertas.CrearOferta
             InitializeComponent();
         }
 
+
+        private void CrearOfertaAdministrativo_Load(object sender, EventArgs e)
+        {
+            foreach(Proveedor p in FuncionesProveedor.getProveedoresHabilitados()) {
+                comboBox1.Items.Add(p);
+            }
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
 
@@ -75,5 +83,6 @@ namespace FrbaOfertas.CrearOferta
         {
 
         }
+
     }
 }
