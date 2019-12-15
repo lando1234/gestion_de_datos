@@ -335,6 +335,7 @@
             this.Controls.Add(this.Detalles);
             this.Name = "CrearOfertaAdministrativo";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.CrearOfertaAdministrativo_Load);
             this.Detalles.ResumeLayout(false);
             this.Detalles.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cantidad)).EndInit();

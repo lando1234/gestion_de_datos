@@ -12,8 +12,8 @@ namespace FrbaOfertas.ConectorDB
     public class FuncionesDireccion
     {
         public static Direccion extractDireccion(SqlDataReader reader)
-        { 
-            return new Direccion(reader.GetInt16(reader.GetOrdinal("DIRECCION_ID")),reader.GetString(reader.GetOrdinal("CIUDAD")), reader.GetString(reader.GetOrdinal("CALLE")),reader.GetInt16(reader.GetOrdinal("CODIGO_POSTAL")));
+        {
+            return new Direccion(reader.GetInt32(reader.GetOrdinal("DIRECCION_ID")), reader.GetString(reader.GetOrdinal("CIUDAD")), reader.GetString(reader.GetOrdinal("DIRECCION")), reader.GetDecimal(reader.GetOrdinal("CODIGO_POSTAL")));
         }
 
         public static void actualizarDireccion(Direccion direccion)
