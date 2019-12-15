@@ -28,10 +28,21 @@ namespace FrbaOfertas.ComprarOferta
 
         private void dataGridCompraOfertas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == dataGridCompraOfertas.Columns["Comprar"].Index && (dataGridCompraOfertas.Rows.Count > 1) && e.RowIndex != dataGridCompraOfertas.Rows.Count - 1) {
+
+                Oferta oferta = new Oferta();
+               int idProveedor = Int32.Parse(dataGridCompraOfertas.Rows[e.RowIndex].Cells["Proveedor"].Value.ToString());
+
+
+               FrbaOfertas.ComprarOferta.Form1 dialog = new FrbaOfertas.ComprarOferta.Form1(oferta);
+               dialog.ShowDialog(this);
+            }
         }
 
         private void CompraDeOferta_Load(object sender, EventArgs e)
         {
+          
+            
             List<Oferta> ofertas = FuncionesOferta.getOfertasNoVencidas();
             //ACA SE AGREGAN LAS OFERTAS AL DATA GRID PARA MOSTRARSE
             foreach (Oferta oferta in ofertas)

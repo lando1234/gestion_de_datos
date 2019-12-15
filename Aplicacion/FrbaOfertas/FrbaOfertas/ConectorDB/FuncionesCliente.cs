@@ -232,6 +232,33 @@ namespace FrbaOfertas.ConectorDB
             cmd.ExecuteNonQuery();
             con.Close(); 
         }
+
+        internal static int getClienteLogueado()
+        {
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+
+
+
+
+            string sql = "SELECT PROVEEDOR_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE USUARIO_ID = @USER AND BAJA_LOGICA = 0";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@USER", Session.UserSession.id);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+
+                return reader.GetInt32(0);
+            }
+
+            con.Close();
+            throw new InvalidOperationException();
+        }
+
         static string ComputeSha256Hash(string rawData)
         {
             // Create a SHA256   

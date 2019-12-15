@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FrbaOfertas.Modelo.Roles;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,30 @@ namespace FrbaOfertas.ComprarOferta
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        Oferta ofertaNueva;
+        public Form1(Oferta oferta)
         {
             InitializeComponent();
+            ofertaNueva = oferta;
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int idCliente = ConectorDB.FuncionesCliente.getClienteLogueado();
+
+            Cliente cliente = ConectorDB.FuncionesCliente.traerCliente(idCliente);
+              
+            ofertaNueva.cantidad = (Decimal) cantidad.Value;
+           
+            ConectorDB.FuncionesOferta.comprarOferta(ofertaNueva, cliente);
+
         }
     }
 }
