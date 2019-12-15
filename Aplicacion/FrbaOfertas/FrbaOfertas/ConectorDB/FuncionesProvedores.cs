@@ -157,19 +157,36 @@ namespace FrbaOfertas.ConectorDB
 
              while (reader.Read())
             {
+                 string mailDefinido, nombreDefinido;
+                 if (reader.IsDBNull(reader.GetOrdinal("MAIL"))){
+                 mailDefinido = " ";
+                 }else {
+                     mailDefinido = reader.GetString(reader.GetOrdinal("MAIL"));
+                 }
+
+                 if (reader.IsDBNull(reader.GetOrdinal("NOMBRE_CONTACTO")))
+                 {
+                     nombreDefinido = " ";
+                 }
+                 else
+                 {
+                     nombreDefinido = reader.GetString(reader.GetOrdinal("NOMBRE_CONTACTO"));
+                 }
+
+
                 Proveedor p = new Proveedor();
-                p.id = reader.GetInt16(reader.GetOrdinal("PROVEEDOR_ID"));
+                p.id = reader.GetInt32(reader.GetOrdinal("PROVEEDOR_ID"));
                 p.RazonSocial = reader.GetString(reader.GetOrdinal("RAZON_SOCIAL"));
                 p.cuit = reader.GetString(reader.GetOrdinal("CUIT"));
-                p.mail = reader.GetString(reader.GetOrdinal("MAIL"));
-                p.telefono = reader.GetInt16(reader.GetOrdinal("TELEFONO"));
+                p.mail = mailDefinido;
+                p.telefono = reader.GetDecimal(reader.GetOrdinal("TELEFONO"));
                 p.direccion = FuncionesDireccion.extractDireccion(reader);
-                p.rubro = new Rubro(reader.GetInt16(reader.GetOrdinal("RUBRO_ID")), reader.GetString(reader.GetOrdinal("DESCRIPCION")));
-                p.nombreContacto = reader.GetString(reader.GetOrdinal("NOMBRE_CONTACTO"));
+                p.rubro = new Rubro(reader.GetInt32(reader.GetOrdinal("RUBRO_ID")), reader.GetString(reader.GetOrdinal("DESCRIPCION")));
+                p.nombreContacto = nombreDefinido;
                 p.habilitado = reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA"));
                 lista.Add(p);
             }
-            cmd.ExecuteNonQuery();
+           
             con.Close();
 
             return lista;
