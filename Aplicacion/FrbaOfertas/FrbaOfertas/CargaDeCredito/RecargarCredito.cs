@@ -25,15 +25,15 @@ namespace FrbaOfertas.CargaDeCredito
             Double cantidad = Convert.ToDouble(cantidadACargar.Value);
             TipoPago tipopago = (TipoPago) tipoPago.SelectedItem;
 
-            if (tipoPago.Text == "Credito") {
+            if (tipopago.descripcion.ToLower().Equals("crédito")) {
                 Form alta = new CargaDeCredito.CargaTarjeta(tipopago.id, cantidad);
                 alta.Show();
             }
-            if (tipoPago.Text == "Efectivo")
+            if (tipopago.descripcion.ToLower().Equals("efectivo"))
             {
                 Credito credito = new Credito(null,
                     HoraSistema.get(), tipopago.id, cantidad, Session.UserSession.id,
-                    null, null, null);
+                    "carga efectivo", DateTime.Now, -1);
 
                 ConectorDB.FuncionesCargaCredito.cargaCredito(credito);
             }

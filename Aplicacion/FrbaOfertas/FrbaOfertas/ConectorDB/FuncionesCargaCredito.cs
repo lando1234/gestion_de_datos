@@ -25,7 +25,7 @@ namespace FrbaOfertas.ConectorDB
             cmd.Parameters.Add("@USUARIO_ID", SqlDbType.Int).Value = credito.usuario_id;
             cmd.Parameters.Add("@TIPO_PAGO_ID", SqlDbType.VarChar).Value = credito.tipo_pago_id;
             cmd.Parameters.Add("@MONTO", SqlDbType.Float).Value = credito.monto;
-            cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = credito.nombre;
+            cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = credito.tarjeta_nombre;
             cmd.Parameters.Add("@FECHA_VENCIMIENTO", SqlDbType.VarChar).Value = credito.fecha_vencimiento;
             cmd.Parameters.Add("@NUMERO", SqlDbType.VarChar).Value = credito.numero_tarjeta;
 
