@@ -278,7 +278,7 @@ namespace FrbaOfertas.ConectorDB
             if (reader.Read())
             {
 
-                return reader.GetInt32(1);
+                return reader.GetInt32(0);
             }
 
             con.Close();

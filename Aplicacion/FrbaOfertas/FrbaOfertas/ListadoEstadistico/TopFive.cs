@@ -23,6 +23,7 @@ namespace FrbaOfertas.ListadoEstadistico
 
         private void ListadoEstadistico_Load(object sender, EventArgs e)
         {
+            /*
 
             int minimoAnio = FrbaOfertas.ConectorDB.ObtenerRangoAñosFacturas.obtenerMinimoAño();
             int maximoAnio = FrbaOfertas.ConectorDB.ObtenerRangoAñosFacturas.obtenerMaximoAño();
@@ -31,6 +32,7 @@ namespace FrbaOfertas.ListadoEstadistico
                 cboAños.Items.Add(i);
             }
             radioBtnPRIMERO.Checked = true;
+             */
         }
 
         private void cmdLimpiar_Click(object sender, EventArgs e)
@@ -79,12 +81,12 @@ namespace FrbaOfertas.ListadoEstadistico
                     {
                         int id = proveedores.IndexOf(proveedor);
                         
-                        dataGridViewListadoOFERTAS.Rows.Add();
-                        dataGridViewListadoOFERTAS.Rows[id].Cells[0].Value = id; //reader["ID PROVEEDOR"].ToString();
-                        dataGridViewListadoOFERTAS.Rows[id].Cells[1].Value = proveedor.razonSocial;// reader["Razon Social"].ToString();
-                        dataGridViewListadoOFERTAS.Rows[cont].Cells[2].Value = ;  //reader["Cantidad Ofertas Realizadas"].ToString();
-                        dataGridViewListadoOFERTAS.Rows[cont].Cells[3].Value = proveedor.monto;
-                        cont++;
+              //          dataGridViewListadoOFERTAS.Rows.Add();
+                //        dataGridViewListadoOFERTAS.Rows[id].Cells[0].Value = id; //reader["ID PROVEEDOR"].ToString();
+                  //      dataGridViewListadoOFERTAS.Rows[id].Cells[1].Value = proveedor.razonSocial;// reader["Razon Social"].ToString();
+                    //    dataGridViewListadoOFERTAS.Rows[cont].Cells[2].Value = ;  //reader["Cantidad Ofertas Realizadas"].ToString();
+                      //  dataGridViewListadoOFERTAS.Rows[cont].Cells[3].Value = proveedor.monto;
+                        // cont++;
                     }
                 }
                 else
@@ -132,12 +134,12 @@ namespace FrbaOfertas.ListadoEstadistico
                     foreach (ProveedorValor proveedor in proveedores ){
                         int id = proveedores.IndexOf(proveedor);
 
-                        dataGridViewListadoFACTURAS.Rows.Add();
-                        dataGridViewListadoFACTURAS.Rows[id].Cells[0].Value = id; //reader["ID PROVEEDOR"].ToString();
-                        dataGridViewListadoFACTURAS.Rows[id].Cells[1].Value = proveedor.razonSocial;//reader["Razon Social"].ToString();
-                        dataGridViewListadoFACTURAS.Rows[cont].Cells[2].Value = reader["Total Facturado"].ToString();
-                        dataGridViewListadoFACTURAS.Rows[cont].Cells[3].Value = proveedor.monto;//reader["Cantidad de Facturas"].ToString();
-                        cont++;
+                 //       dataGridViewListadoFACTURAS.Rows.Add();
+                   //     dataGridViewListadoFACTURAS.Rows[id].Cells[0].Value = id; //reader["ID PROVEEDOR"].ToString();
+                     //   dataGridViewListadoFACTURAS.Rows[id].Cells[1].Value = proveedor.razonSocial;//reader["Razon Social"].ToString();
+                       // dataGridViewListadoFACTURAS.Rows[cont].Cells[2].Value = reader["Total Facturado"].ToString();
+                        //dataGridViewListadoFACTURAS.Rows[cont].Cells[3].Value = proveedor.monto;//reader["Cantidad de Facturas"].ToString();
+                        //cont++;
                     
                     }
 
