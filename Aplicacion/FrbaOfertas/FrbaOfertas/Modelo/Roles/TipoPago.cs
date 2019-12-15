@@ -17,6 +17,11 @@ namespace FrbaOfertas.Modelo.Roles
             this.id = id;
             this.descripcion = descripcion;
         }
+
+        public override string ToString()
+        {
+            return descripcion;
+        }
 }
     }
 
