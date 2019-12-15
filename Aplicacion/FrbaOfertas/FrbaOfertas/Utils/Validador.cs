@@ -8,26 +8,26 @@ using System.Windows.Forms;
 
 namespace FrbaOfertas.Utils
 {
-    class Validador
+    static class Validador
     {
 
-        public Boolean existeDNIenDB(String dni)
+        static public Boolean existeDNIenDB(String dni)
         {
             return FrbaOfertas.ConectorDB.FuncionesCliente.existeDNI(dni);
         }
 
-        public Boolean existeMailenDB(String mail)
+        static public Boolean existeMailenDB(String mail)
         {
             return FrbaOfertas.ConectorDB.FuncionesCliente.existeMail(mail);
         }
 
-        public Boolean containsNumber(String palabra)
+        static public Boolean containsNumber(String palabra)
         {
             palabra = palabra.Trim();
             return palabra.Any(char.IsNumber);
         }
 
-        public Boolean isEmpty(String palabra)
+        static public Boolean isEmpty(String palabra)
         {
             //Estos son mensajes de error de no estar aca podrian crearse usuario con username = "El campo ya existe"
             if (palabra == "El campo ya existe" || palabra == "Falta completar campo" || palabra == "El Campo ingresado ya existe en la base de datos" || palabra == "El Rol ya existe"
@@ -40,25 +40,25 @@ namespace FrbaOfertas.Utils
             return palabra == "";
         }
 
-        public Boolean isNumeric(String palabra)
+        static public Boolean isNumeric(String palabra)
         {
             palabra = palabra.Trim();
             return palabra.All(char.IsNumber);
         }
 
-        public Boolean superaCantidadCaracteres(String palabra, int length)
+        static public Boolean superaCantidadCaracteres(String palabra, int length)
         {
             palabra = palabra.Trim();
             return palabra.Length > length;
         }
 
-        public Boolean fueraDeRango(String palabra, int inf, int sup)
+        static public Boolean fueraDeRango(String palabra, int inf, int sup)
         {
             palabra = palabra.Trim();
             return (palabra.Length > sup) || (palabra.Length < inf);
         }
 
-        public Boolean IsValidEmail(String email)
+        static public Boolean IsValidEmail(String email)
         {
             try
             {
@@ -72,127 +72,127 @@ namespace FrbaOfertas.Utils
             }
         }
 
-        public Boolean FechaFutura(DateTime fechaDelDateTimePicker)
+       static public Boolean FechaFutura(DateTime fechaDelDateTimePicker)
         {
             return DateTime.Compare(fechaDelDateTimePicker, DateTime.Now) > 0;
         }
 
-        public void textoDeError(TextBox textbox, string texto)
+        static public void textoDeError(TextBox textbox, string texto)
         {
             textbox.Text = texto;
             textbox.ForeColor = Color.Red;
         }
 
-        public void ErrorFaltaCompletarCampo(TextBox textbox)
+        static public void ErrorFaltaCompletarCampo(TextBox textbox)
         {
             textoDeError(textbox, "Falta completar campo");
         }
-        public void ErrorCampoYaExisteEnLaBase(TextBox textbox)
+        static public void ErrorCampoYaExisteEnLaBase(TextBox textbox)
         {
             textoDeError(textbox, "El Campo ingresado ya existe en la base de datos");
         }
-        public void ErrornoContenerNumeros(TextBox textbox)
+        static public void ErrornoContenerNumeros(TextBox textbox)
         {
             textoDeError(textbox, "El Campo no debe contener numeros");
         }
-        public void ErrornoContenerLetras(TextBox textbox)
+        static public void ErrornoContenerLetras(TextBox textbox)
         {
             textoDeError(textbox, "El Campo no debe contener Letras");
         }
-        public void ErrorYaExisteRol(TextBox textbox)
+        static public void ErrorYaExisteRol(TextBox textbox)
         {
             textoDeError(textbox, "El Rol ya existe");
         }
 
-        public void ErrorSuperaRango(TextBox textbox)
+        static public void ErrorSuperaRango(TextBox textbox)
         {
             textoDeError(textbox, "El Campo supera el rango maximo de caracteres");
         }
-        public void ErrorEmail(TextBox textbox)
+        static public void ErrorEmail(TextBox textbox)
         {
             textoDeError(textbox, "Usá el formato nombre@ejemplo.com");
         }
-        public void ErrorCuitLongitud(TextBox textbox)
+        static public void ErrorCuitLongitud(TextBox textbox)
         {
             textoDeError(textbox, "Utilice el formato tipo-DNI-DigitoVerificador, 11 numeros");
         }
 
-        public static void crearCajaDeError(string texto, string titulo)
+        static public void crearCajaDeError(string texto, string titulo)
         {
             MessageBox.Show(texto, titulo, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
         //creo esta funcion ya que hay muchos campos que necesitan validar estas mismas propiedades (nombre, apellido, calle, etc)
-        public Boolean validaCadenaCaracter(TextBox textbox, Boolean pass)
+        static public Boolean validaCadenaCaracter(TextBox textbox, Boolean pass)
         {
-            if (this.isEmpty(textbox.Text))
+            if (isEmpty(textbox.Text))
             {
-                this.ErrorFaltaCompletarCampo(textbox);
+                ErrorFaltaCompletarCampo(textbox);
                 pass = false;
             }
-            else if (this.containsNumber(textbox.Text))
+            else if (containsNumber(textbox.Text))
             {
-                this.ErrornoContenerNumeros(textbox);
+                ErrornoContenerNumeros(textbox);
                 pass = false;
             }
-            else if (this.fueraDeRango(textbox.Text, 0, 255))
+            else if (fueraDeRango(textbox.Text, 0, 255))
             {
-                this.ErrorSuperaRango(textbox);
+                ErrorSuperaRango(textbox);
                 pass = false;
             }
             return pass;
 
         }
-        public Boolean validacionDni(TextBox textboxDni, Boolean pass)
+        static public Boolean validacionDni(TextBox textboxDni, Boolean pass)
         {
-            if (this.isEmpty(textboxDni.Text))
+            if (isEmpty(textboxDni.Text))
             {
-                this.ErrorFaltaCompletarCampo(textboxDni);
+                ErrorFaltaCompletarCampo(textboxDni);
                 pass = false;
             }
-            else if (!this.isNumeric(textboxDni.Text))
+            else if (!isNumeric(textboxDni.Text))
             {
-                this.ErrornoContenerLetras(textboxDni);
+                ErrornoContenerLetras(textboxDni);
                 pass = false;
             }
-            else if (this.fueraDeRango(textboxDni.Text, 8, 9))
+            else if (fueraDeRango(textboxDni.Text, 8, 9))
             {
-                this.ErrorSuperaRango(textboxDni);
+                ErrorSuperaRango(textboxDni);
                 pass = false;
             }
-            else if (this.existeDNIenDB(textboxDni.Text))
+            else if (existeDNIenDB(textboxDni.Text))
             {
-                this.ErrorCampoYaExisteEnLaBase(textboxDni);
+                ErrorCampoYaExisteEnLaBase(textboxDni);
                 pass = false;
             }
             return pass;
 
         }
-        public Boolean validarCuit(TextBox TBcuit, Boolean pass)
+        static public Boolean validarCuit(TextBox TBcuit, Boolean pass)
         {
             string cuit = TBcuit.Text.Replace("-", string.Empty);
-            if (this.isEmpty(TBcuit.Text))
+            if (isEmpty(TBcuit.Text))
             {
-                this.ErrorFaltaCompletarCampo(TBcuit);
+                ErrorFaltaCompletarCampo(TBcuit);
                 pass = false;
             }
 
-            else if (!this.isNumeric(TBcuit.Text))
+            else if (!isNumeric(TBcuit.Text))
             {
-                this.ErrornoContenerLetras(TBcuit);
+                ErrornoContenerLetras(TBcuit);
                 pass = false;
             }
             else if (cuit.Length != 11)
             {
-                this.ErrorCuitLongitud(TBcuit);
+                ErrorCuitLongitud(TBcuit);
                 pass = false;
             }
 
 
             return pass;
         }
-        public static void BorrarMensajeDeError(object sender, EventArgs e)
+        static public void BorrarMensajeDeError(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             if (textBox.Text == "El campo ya existe" || textBox.Text == "Falta completar campo" || textBox.Text == "El Campo ingresado ya existe en la base de datos" || textBox.Text == "El Rol ya existe"
