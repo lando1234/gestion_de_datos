@@ -21,19 +21,6 @@ namespace FrbaOfertas.ListadoEstadistico
             InitializeComponent();
         }
 
-        private void ListadoEstadistico_Load(object sender, EventArgs e)
-        {
-            /*
-
-            int minimoAnio = FrbaOfertas.ConectorDB.ObtenerRangoAñosFacturas.obtenerMinimoAño();
-            int maximoAnio = FrbaOfertas.ConectorDB.ObtenerRangoAñosFacturas.obtenerMaximoAño();
-            for (int i = minimoAnio; i <= maximoAnio; i++)
-            {
-                cboAños.Items.Add(i);
-            }
-            radioBtnPRIMERO.Checked = true;
-             */
-        }
 
         private void cmdLimpiar_Click(object sender, EventArgs e)
         {
@@ -56,8 +43,8 @@ namespace FrbaOfertas.ListadoEstadistico
 
                 int anio = (int) cboAños.SelectedItem;
 
-                DateTime rango_inf = new DateTime(0, 0, 0);
-                DateTime rango_sup = new DateTime(0, 0, 0);
+                DateTime rango_inf = new DateTime();
+                DateTime rango_sup = new DateTime();
                 if (radioBtnPRIMERO.Checked == true)
                 {
                     rango_inf = new DateTime(anio, 01, 01);
@@ -77,16 +64,16 @@ namespace FrbaOfertas.ListadoEstadistico
 
               IList <ProveedorValor> proveedores =  ListadoEstadisticas.getMasPorcentaje(rango_inf,rango_sup);
                 if(proveedores.Count > 0){
+                    dataGridViewListadoOFERTAS.Rows.Clear();
                     foreach (ProveedorValor proveedor in proveedores )
                     {
                         int id = proveedores.IndexOf(proveedor);
                         
-              //          dataGridViewListadoOFERTAS.Rows.Add();
-                //        dataGridViewListadoOFERTAS.Rows[id].Cells[0].Value = id; //reader["ID PROVEEDOR"].ToString();
-                  //      dataGridViewListadoOFERTAS.Rows[id].Cells[1].Value = proveedor.razonSocial;// reader["Razon Social"].ToString();
-                    //    dataGridViewListadoOFERTAS.Rows[cont].Cells[2].Value = ;  //reader["Cantidad Ofertas Realizadas"].ToString();
-                      //  dataGridViewListadoOFERTAS.Rows[cont].Cells[3].Value = proveedor.monto;
-                        // cont++;
+                        dataGridViewListadoOFERTAS.Rows.Add();
+                        dataGridViewListadoOFERTAS.Rows[id].Cells[0].Value = id; 
+                        dataGridViewListadoOFERTAS.Rows[id].Cells[1].Value = proveedor.razonSocial;
+                        dataGridViewListadoOFERTAS.Rows[id].Cells[2].Value = proveedor.cantidad;
+                        dataGridViewListadoOFERTAS.Rows[id].Cells[3].Value = proveedor.monto.ToString()+ "%";
                     }
                 }
                 else
@@ -109,8 +96,8 @@ namespace FrbaOfertas.ListadoEstadistico
 
                 int anio = (int)cboAños.SelectedItem;
 
-                DateTime rango_inf = new DateTime(0, 0, 0);
-                DateTime rango_sup = new DateTime(0, 0, 0);
+                DateTime rango_inf = new DateTime();
+                DateTime rango_sup = new DateTime();
                 if (radioBtnPRIMERO.Checked == true)
                 {
                     rango_inf = new DateTime(anio, 01, 01);
@@ -131,18 +118,18 @@ namespace FrbaOfertas.ListadoEstadistico
                 IList<ProveedorValor> proveedores = ListadoEstadisticas.getMasFacturacion(rango_inf, rango_sup);
      
                 if(proveedores.Count > 0){
+                    dataGridViewListadoFACTURAS.Rows.Clear();
                     foreach (ProveedorValor proveedor in proveedores ){
                         int id = proveedores.IndexOf(proveedor);
 
-                 //       dataGridViewListadoFACTURAS.Rows.Add();
-                   //     dataGridViewListadoFACTURAS.Rows[id].Cells[0].Value = id; //reader["ID PROVEEDOR"].ToString();
-                     //   dataGridViewListadoFACTURAS.Rows[id].Cells[1].Value = proveedor.razonSocial;//reader["Razon Social"].ToString();
-                       // dataGridViewListadoFACTURAS.Rows[cont].Cells[2].Value = reader["Total Facturado"].ToString();
-                        //dataGridViewListadoFACTURAS.Rows[cont].Cells[3].Value = proveedor.monto;//reader["Cantidad de Facturas"].ToString();
-                        //cont++;
+                        dataGridViewListadoFACTURAS.Rows.Add();
+                        dataGridViewListadoFACTURAS.Rows[id].Cells[0].Value = id;
+                        dataGridViewListadoFACTURAS.Rows[id].Cells[1].Value = proveedor.razonSocial;
+                        dataGridViewListadoFACTURAS.Rows[id].Cells[2].Value = proveedor.cantidad;
+                        dataGridViewListadoFACTURAS.Rows[id].Cells[3].Value = proveedor.monto.ToString();
                     
                     }
-
+                    dataGridViewListadoOFERTAS.Refresh();
                 }
                 else
                 {
@@ -167,6 +154,15 @@ namespace FrbaOfertas.ListadoEstadistico
         private void cmdCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void TopFive_Load(object sender, EventArgs e)
+        {
+            foreach (int anio in ListadoEstadisticas.getAniosFacturas())
+            {
+                cboAños.Items.Add(anio);
+            }
+            radioBtnPRIMERO.Checked = true;
         }
     }
 }
