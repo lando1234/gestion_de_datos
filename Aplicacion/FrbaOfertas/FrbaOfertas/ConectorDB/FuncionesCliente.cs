@@ -44,6 +44,8 @@ namespace FrbaOfertas.ConectorDB
 
             int result = (int)returnParameter.Value;
 
+
+            con.Close();
             return result;
 
         }
@@ -69,21 +71,27 @@ namespace FrbaOfertas.ConectorDB
 
              while (registros.Read())
              {
-
+                 Nullable <int> usuarioId;
+            
+                 if(registros.IsDBNull(registros.GetOrdinal("USUARIO_ID"))){
+                 usuarioId = null;
+                 }else{
+                 usuarioId = registros.GetInt32(registros.GetOrdinal("USUARIO_ID"));
+                 }
 
                  clientes.Add(new Cliente(registros.GetInt32(registros.GetOrdinal("CLIENTE_ID")),
-                  registros.GetInt16(registros.GetOrdinal("DNI")),
-                  registros["NOMBRE"].ToString(),
-                  registros["APELLIDO"].ToString(),
-                  registros["MAIL"].ToString(),
-                  registros.GetInt16(registros.GetOrdinal("TELEFONO")),
+                  registros.GetDecimal(registros.GetOrdinal("DNI")),
+                  registros.GetString(registros.GetOrdinal("NOMBRE")),
+                  registros.GetString(registros.GetOrdinal("APELLIDO")),
+                  registros.GetString(registros.GetOrdinal("MAIL")),
+                  registros.GetDecimal(registros.GetOrdinal("TELEFONO")),
                   registros.GetDateTime(registros.GetOrdinal("FECHA_NACIMIENTO")),
                   registros.GetBoolean(registros.GetOrdinal("BAJA_LOGICA")),
-                  registros.GetInt16(registros.GetOrdinal("USUARIO_ID")),
+                  usuarioId,
                   FuncionesDireccion.extractDireccion(registros)
                  ));
              }
-
+             con.Close();
              return clientes;
 
          }
@@ -106,7 +114,7 @@ namespace FrbaOfertas.ConectorDB
 
              
              cmd.ExecuteNonQuery();
-             
+             con.Close();
              //VER RETORNO SIN PARAMETRO DE SALIDA
              return 1;
          }
@@ -114,28 +122,44 @@ namespace FrbaOfertas.ConectorDB
         public static Cliente traerCliente(int clienteId)
         {
            Cliente cliente = null;
+           Nullable <int> usuarioId = null;
 
            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
            con.Open();
-           String sql = "SELECT * FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE CLIENTE_ID = @CLIENTE_ID ";
+           String sql = "SELECT * FROM [NO_SRTA_E_GATOREI].CLIENTES c INNER JOIN [NO_SRTA_E_GATOREI].DIRECCIONES d ON d.DIRECCION_ID = c.DIRECCION_ID  WHERE CLIENTE_ID = @CLIENTE_ID";
            SqlCommand cmd = new SqlCommand(sql, con);
 
            cmd.Parameters.Add(new SqlParameter("@CLIENTE_ID", clienteId));
 
            SqlDataReader registros = cmd.ExecuteReader();
 
-           if (registros.Read())
+          
+
+           while (registros.Read())
            {
-               //cliente = new Cliente(clienteId,
-                 //  registros.GetInt16(registros.GetOrdinal("DNI")),
-                 //  registros["NOMBRE"].ToString(),
-                 //  registros["APELLIDO"].ToString(),
-                  // registros["MAIL"].ToString(),
-                 //  registros.GetInt16(registros.GetOrdinal("TELEFONO")),
-                 //  DateTime.Parse(registros["FECHA_NACIMIENTO"]),
-                 //  registros.GetBoolean(registros.GetOrdinal("BAJA_LOGICA")),
-                  // registros.GetInt16(registros.GetOrdinal("USUARIO_ID")),
-                  // registros.GetInt16(registros.GetOrdinal("DIRECCION_ID")));
+               if (registros.IsDBNull(registros.GetOrdinal("USUARIO_ID")))
+               {
+                   usuarioId = null;
+               }
+               else
+               {
+                   usuarioId = registros.GetInt32(registros.GetOrdinal("USUARIO_ID"));
+               }
+
+
+               
+
+               cliente = new Cliente(clienteId,
+                  registros.GetDecimal(registros.GetOrdinal("DNI")),
+                  registros.GetString(registros.GetOrdinal("NOMBRE")),
+                  registros.GetString(registros.GetOrdinal("APELLIDO")),
+                  registros.GetString(registros.GetOrdinal("MAIL")),
+                  registros.GetDecimal(registros.GetOrdinal("TELEFONO")),
+                  registros.GetDateTime(registros.GetOrdinal("FECHA_NACIMIENTO")),
+                  registros.GetBoolean(registros.GetOrdinal("BAJA_LOGICA")),
+                  usuarioId,
+                  FuncionesDireccion.extractDireccion(registros)
+                 );
            }
            return cliente;
         }
@@ -232,6 +256,35 @@ namespace FrbaOfertas.ConectorDB
             cmd.ExecuteNonQuery();
             con.Close(); 
         }
+
+        internal static int getClienteLogueado()
+        {
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+
+
+
+
+            string sql = "SELECT CLIENTE_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE USUARIO_ID = @USER AND BAJA_LOGICA = 0";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+           
+            cmd.Parameters.AddWithValue("@USER",  Session.UserSession.id);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+
+                return reader.GetInt32(0);
+            }
+
+            con.Close();
+            throw new InvalidOperationException();
+        }
+
         static string ComputeSha256Hash(string rawData)
         {
             // Create a SHA256   

@@ -9,7 +9,8 @@ namespace FrbaOfertas.Modelo
     public class ProveedorValor
     {
         public string razonSocial { get; set; }
-        public double monto { get; set; }
+        public decimal monto { get; set; }
+        public int cantidad { get; set; }
 
     }
 }

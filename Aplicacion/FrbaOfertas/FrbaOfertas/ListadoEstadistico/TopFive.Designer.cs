@@ -179,6 +179,7 @@
             this.cmdListadoFACTURACION.TabIndex = 15;
             this.cmdListadoFACTURACION.Text = "Mayor Facturación";
             this.cmdListadoFACTURACION.UseVisualStyleBackColor = true;
+            this.cmdListadoFACTURACION.Click += new System.EventHandler(this.cmdListadoFACTURACION_Click);
             // 
             // cmdListadoOFERTAS
             // 
@@ -189,6 +190,7 @@
             this.cmdListadoOFERTAS.TabIndex = 14;
             this.cmdListadoOFERTAS.Text = "Mayor Porcentaje de Descuento Ofrecido en Ofertas";
             this.cmdListadoOFERTAS.UseVisualStyleBackColor = true;
+            this.cmdListadoOFERTAS.Click += new System.EventHandler(this.cmdListadoOFERTAS_Click);
             // 
             // radioBtnSEGUNDO
             // 
@@ -243,7 +245,7 @@
             this.lblnombre.TabIndex = 0;
             this.lblnombre.Text = "Año";
             // 
-            // Form1
+            // TopFive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -253,8 +255,9 @@
             this.Controls.Add(this.cmdLimpiar);
             this.Controls.Add(this.dataGridViewListadoFACTURAS);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "TopFive";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.TopFive_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListadoOFERTAS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListadoFACTURAS)).EndInit();
             this.groupBox1.ResumeLayout(false);

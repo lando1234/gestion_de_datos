@@ -42,6 +42,10 @@ namespace FrbaOfertas.AbmProveedor
                 proveedor.mail = txt_mail.Text;
 
                 ConectorDB.FuncionesProveedor.altaUsuarioProveedor(proveedor, usuario);
+                if (this.usuario != null)
+                {
+                    new LoginConRegistro().Show();
+                } 
             }
             catch (System.ArgumentException ex)
             {
