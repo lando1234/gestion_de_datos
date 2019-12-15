@@ -224,5 +224,31 @@ namespace FrbaOfertas.ConectorDB
             }
         }
 
+
+        internal static int getProveedorLogueado()
+        {
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+
+
+
+
+            string sql = "SELECT PROVEEDOR_ID FROM [NO_SRTA_E_GATOREI].PROVEEDORES WHERE USUARIO_ID = @USER AND BAJA_LOGICA = 0";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@USER", Session.UserSession.id);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+
+                return reader.GetInt32(1);
+            }
+
+            con.Close();
+            throw new InvalidOperationException();
+        }
     }
 }

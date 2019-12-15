@@ -34,6 +34,8 @@ namespace FrbaOfertas.ConectorDB
                rubros.Add(new Rubro(reader.GetInt32(reader.GetOrdinal("id")) , reader.GetString(reader.GetOrdinal("descripcion"))));
             }
 
+            con.Close();
+
             return rubros;
         
         }

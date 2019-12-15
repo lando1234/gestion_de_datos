@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FrbaOfertas.ConectorDB;
+using FrbaOfertas.Modelo.Roles;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,13 +26,26 @@ namespace FrbaOfertas.CrearOferta
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.txt_precioLista.Text = "";
-            this.txt_precioOferta.Text = "";
-            this.txt_stockDisponible.Text = "";
-            this.txt_maxUnidadesPorCliente.Text = "";
-            this.txt_descripcion.Text = "";
-            this.dateTimePickerOferta.Value = DateTime.Now;
-            this.dateTimePickerVencimiento.Value = DateTime.Now;
+            try
+            {
+                Oferta oferta = new Oferta();
+                oferta.maximo_usuario = Int32.Parse(txt_maxUnidadesPorCliente.Text);
+                oferta.codigo = txt_codigo.Text;
+                oferta.descripcion = txt_descripcion.Text;
+                oferta.fecha_publicacion = dateTimePickerOferta.Text;
+                oferta.fecha_vencimiento = dateTimePickerVencimiento.Text;
+                oferta.cantidad = Int32.Parse(txt_cantidad.Text);
+                oferta.precio_lista = txt_precioLista.Text;
+                oferta.precio_oferta = txt_precioOferta.Text;
+                oferta.proveedor_id = FuncionesProveedor.getProveedorLogueado();
+
+                FuncionesOferta.altaOferta(oferta);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show("El Proveedor esta dado de baja", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

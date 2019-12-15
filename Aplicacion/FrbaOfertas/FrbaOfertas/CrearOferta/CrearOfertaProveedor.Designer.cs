@@ -33,6 +33,8 @@
             this.dateTimePickerOferta = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.Detalles = new System.Windows.Forms.GroupBox();
+            this.txt_cantidad = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txt_descripcion = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,12 +44,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_precioOferta = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txt_stockDisponible = new System.Windows.Forms.TextBox();
             this.txt_precioLista = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.txt_codigo = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.Detalles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,6 +93,10 @@
             // 
             // Detalles
             // 
+            this.Detalles.Controls.Add(this.txt_codigo);
+            this.Detalles.Controls.Add(this.label9);
+            this.Detalles.Controls.Add(this.txt_cantidad);
+            this.Detalles.Controls.Add(this.label6);
             this.Detalles.Controls.Add(this.txt_descripcion);
             this.Detalles.Controls.Add(this.label10);
             this.Detalles.Controls.Add(this.label3);
@@ -100,9 +106,7 @@
             this.Detalles.Controls.Add(this.label2);
             this.Detalles.Controls.Add(this.txt_precioOferta);
             this.Detalles.Controls.Add(this.label4);
-            this.Detalles.Controls.Add(this.txt_stockDisponible);
             this.Detalles.Controls.Add(this.txt_precioLista);
-            this.Detalles.Controls.Add(this.label6);
             this.Detalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Detalles.ForeColor = System.Drawing.SystemColors.WindowText;
             this.Detalles.Location = new System.Drawing.Point(81, 12);
@@ -111,6 +115,24 @@
             this.Detalles.TabIndex = 19;
             this.Detalles.TabStop = false;
             this.Detalles.Text = "Detalle de Oferta";
+            // 
+            // txt_cantidad
+            // 
+            this.txt_cantidad.Location = new System.Drawing.Point(221, 256);
+            this.txt_cantidad.Name = "txt_cantidad";
+            this.txt_cantidad.Size = new System.Drawing.Size(245, 20);
+            this.txt_cantidad.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label6.Location = new System.Drawing.Point(18, 256);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Cantidad";
             // 
             // txt_descripcion
             // 
@@ -141,7 +163,7 @@
             // 
             // txt_maxUnidadesPorCliente
             // 
-            this.txt_maxUnidadesPorCliente.Location = new System.Drawing.Point(227, 268);
+            this.txt_maxUnidadesPorCliente.Location = new System.Drawing.Point(221, 224);
             this.txt_maxUnidadesPorCliente.Name = "txt_maxUnidadesPorCliente";
             this.txt_maxUnidadesPorCliente.Size = new System.Drawing.Size(245, 20);
             this.txt_maxUnidadesPorCliente.TabIndex = 13;
@@ -160,7 +182,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(18, 271);
+            this.label8.Location = new System.Drawing.Point(18, 224);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(189, 13);
             this.label8.TabIndex = 12;
@@ -195,30 +217,12 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Precio de Lista";
             // 
-            // txt_stockDisponible
-            // 
-            this.txt_stockDisponible.Location = new System.Drawing.Point(157, 228);
-            this.txt_stockDisponible.Name = "txt_stockDisponible";
-            this.txt_stockDisponible.Size = new System.Drawing.Size(315, 20);
-            this.txt_stockDisponible.TabIndex = 9;
-            // 
             // txt_precioLista
             // 
             this.txt_precioLista.Location = new System.Drawing.Point(157, 189);
             this.txt_precioLista.Name = "txt_precioLista";
             this.txt_precioLista.Size = new System.Drawing.Size(315, 20);
             this.txt_precioLista.TabIndex = 6;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(18, 231);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Stock Disponible";
             // 
             // button1
             // 
@@ -248,6 +252,24 @@
             this.button3.Text = "Guardar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // textBox1
+            // 
+            this.txt_codigo.Location = new System.Drawing.Point(221, 290);
+            this.txt_codigo.Name = "textBox1";
+            this.txt_codigo.Size = new System.Drawing.Size(245, 20);
+            this.txt_codigo.TabIndex = 23;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label9.Location = new System.Drawing.Point(18, 290);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Codigo";
             // 
             // CrearOfertaProveedor
             // 
@@ -287,11 +309,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_precioOferta;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txt_stockDisponible;
         private System.Windows.Forms.TextBox txt_precioLista;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txt_cantidad;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txt_codigo;
+        private System.Windows.Forms.Label label9;
     }
 }
