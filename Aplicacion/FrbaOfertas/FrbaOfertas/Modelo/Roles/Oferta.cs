@@ -38,7 +38,6 @@ namespace FrbaOfertas.Modelo.Roles
             this.maximo_usuario = maximo_usuario;
             this.fecha_compra = fecha_compra;
             this.codigo = codigo;
-            this.entregado = entregado;
             this.proveedor_id = proveedor_id;
 
         }
