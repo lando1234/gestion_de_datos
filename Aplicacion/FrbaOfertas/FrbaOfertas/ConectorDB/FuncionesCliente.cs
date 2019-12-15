@@ -60,7 +60,7 @@ namespace FrbaOfertas.ConectorDB
 
 
 
-             string sql = "SELECT * FROM [NO_SRTA_E_GATOREI].CLIENTES";
+             string sql = "SELECT * FROM [NO_SRTA_E_GATOREI].CLIENTES c INNER JOIN [NO_SRTA_E_GATOREI].DIRECCIONES d ON c.DIRECCION_ID = d.DIRECCION_ID ";
 
 
              SqlCommand cmd = new SqlCommand(sql, con);
@@ -71,17 +71,17 @@ namespace FrbaOfertas.ConectorDB
              {
 
 
-
-                 //clientes.Add(new Cliente(registros.GetInt32(registros.GetOrdinal("CLIENTE_ID")),
-                 // registros.GetInt16(registros.GetOrdinal("DNI")),
-                 // registros["NOMBRE"].ToString(),
-                 // registros["APELLIDO"].ToString(),
-                 // registros["MAIL"].ToString(),
-                 // registros.GetInt16(registros.GetOrdinal("TELEFONO")),
-                 // registros["FECHA_NACIMIENTO"].ToString(),
-                 // registros.GetBoolean(registros.GetOrdinal("BAJA_LOGICA")),
-                 // registros.GetInt16(registros.GetOrdinal("USUARIO_ID")),
-                 // registros.GetInt16(registros.GetOrdinal("DIRECCION_ID"))));
+                 clientes.Add(new Cliente(registros.GetInt32(registros.GetOrdinal("CLIENTE_ID")),
+                  registros.GetInt16(registros.GetOrdinal("DNI")),
+                  registros["NOMBRE"].ToString(),
+                  registros["APELLIDO"].ToString(),
+                  registros["MAIL"].ToString(),
+                  registros.GetInt16(registros.GetOrdinal("TELEFONO")),
+                  registros.GetDateTime(registros.GetOrdinal("FECHA_NACIMIENTO")),
+                  registros.GetBoolean(registros.GetOrdinal("BAJA_LOGICA")),
+                  registros.GetInt16(registros.GetOrdinal("USUARIO_ID")),
+                  FuncionesDireccion.extractDireccion(registros)
+                 ));
              }
 
              return clientes;
