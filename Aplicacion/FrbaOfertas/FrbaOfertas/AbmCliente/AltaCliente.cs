@@ -36,6 +36,11 @@ namespace FrbaOfertas.AbmCliente
                 Direccion direccion = new Direccion(null, txt_ciudad.Text, txt_calle.Text, Int16.Parse(txt_cpostal.Text));
                 Cliente cliente = new Cliente(null, int.Parse(txt_dni.Text), txt_nombre.Text, txt_apellido.Text, txt_mail.Text, int.Parse(txt_tel.Text), dateTimePicker.Value, true, null, direccion);
                 ConectorDB.FuncionesCliente.altaCliente(cliente, usuario);
+
+              
+
+                FrbaOfertas.MenuPrincipal.Menu dialog = new FrbaOfertas.MenuPrincipal.Menu();
+                dialog.ShowDialog(this);
             }
             catch (System.ArgumentException ex)
             {
@@ -64,10 +69,15 @@ namespace FrbaOfertas.AbmCliente
                 throw new System.ArgumentException("el telefono debe ser númerico", "original");
             }
             else if (Validador.isEmpty(txt_nombre.Text) || Validador.isEmpty(txt_apellido.Text) || Validador.isEmpty(txt_mail.Text) ||
-              Validador.isEmpty(txt_tel.Text) || Validador.isEmpty(txt_ciudad.Text) || Validador.isEmpty(txt_calle.Text) || Validador.isEmpty(txt_cpostal.Text) )
-            {
+              Validador.isEmpty(txt_tel.Text) || Validador.isEmpty(txt_ciudad.Text) || Validador.isEmpty(txt_calle.Text) || Validador.isEmpty(txt_cpostal.Text) ){
+                  throw new System.ArgumentException("Los campos no deben ir vacios", "original");
             }
 
+
+        }
+
+        private void AltaCliente_Load(object sender, EventArgs e)
+        {
 
         }
 
