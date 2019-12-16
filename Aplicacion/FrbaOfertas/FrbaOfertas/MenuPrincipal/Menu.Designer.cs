@@ -49,6 +49,7 @@
             this.estadisticas = new System.Windows.Forms.ToolStripMenuItem();
             this.top5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.canjearCuponToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +62,8 @@
             this.CargaCredito,
             this.Ofertas,
             this.facturacion,
-            this.estadisticas});
+            this.estadisticas,
+            this.canjearCuponToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -82,14 +84,14 @@
             // altaCliente
             // 
             this.altaCliente.Name = "altaCliente";
-            this.altaCliente.Size = new System.Drawing.Size(152, 22);
+            this.altaCliente.Size = new System.Drawing.Size(144, 22);
             this.altaCliente.Text = "AltaCliente";
             this.altaCliente.Click += new System.EventHandler(this.altaClienteToolStripMenuItem_Click);
             // 
             // ListarCliente
             // 
             this.ListarCliente.Name = "ListarCliente";
-            this.ListarCliente.Size = new System.Drawing.Size(152, 22);
+            this.ListarCliente.Size = new System.Drawing.Size(144, 22);
             this.ListarCliente.Text = "ListarClientes";
             this.ListarCliente.Click += new System.EventHandler(this.listarClientesToolStripMenuItem_Click);
             // 
@@ -128,14 +130,14 @@
             // altaRolToolStripMenuItem
             // 
             this.altaRolToolStripMenuItem.Name = "altaRolToolStripMenuItem";
-            this.altaRolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.altaRolToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.altaRolToolStripMenuItem.Text = "AltaRol";
             this.altaRolToolStripMenuItem.Click += new System.EventHandler(this.altaRolToolStripMenuItem_Click);
             // 
             // listarRolToolStripMenuItem
             // 
             this.listarRolToolStripMenuItem.Name = "listarRolToolStripMenuItem";
-            this.listarRolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.listarRolToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.listarRolToolStripMenuItem.Text = "ListarRol";
             this.listarRolToolStripMenuItem.Click += new System.EventHandler(this.listarRolToolStripMenuItem_Click);
             // 
@@ -212,7 +214,7 @@
             // top5ToolStripMenuItem
             // 
             this.top5ToolStripMenuItem.Name = "top5ToolStripMenuItem";
-            this.top5ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.top5ToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.top5ToolStripMenuItem.Text = "Top 5";
             this.top5ToolStripMenuItem.Click += new System.EventHandler(this.top5ToolStripMenuItem_Click);
             // 
@@ -225,6 +227,13 @@
             this.label1.Size = new System.Drawing.Size(309, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "BIENVENIDO A FRBA OFERTAS";
+            // 
+            // canjearCuponToolStripMenuItem
+            // 
+            this.canjearCuponToolStripMenuItem.Name = "canjearCuponToolStripMenuItem";
+            this.canjearCuponToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.canjearCuponToolStripMenuItem.Text = "Canjear Cupon";
+            this.canjearCuponToolStripMenuItem.Click += new System.EventHandler(this.canjearCuponToolStripMenuItem_Click);
             // 
             // Menu
             // 
@@ -266,5 +275,6 @@
         private System.Windows.Forms.ToolStripMenuItem listarRolToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem facturarAProveedorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem canjearCuponToolStripMenuItem;
     }
 }

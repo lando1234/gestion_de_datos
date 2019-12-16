@@ -9,6 +9,7 @@ using FrbaOfertas.BaseDeDatos;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using FrbaOfertas.Modelo;
+using FrbaOfertas.Utils;
 
 namespace FrbaOfertas.ConectorDB
 {
@@ -34,7 +35,7 @@ namespace FrbaOfertas.ConectorDB
             cmd.Parameters.Add("@CP", SqlDbType.Int).Value = cliente.direccion.codigoPostal;
             cmd.Parameters.Add("@CIUDAD", SqlDbType.VarChar).Value = cliente.direccion.Ciudad;
             cmd.Parameters.Add("@FECHA_NACIMIENTO", SqlDbType.DateTime).Value = cliente.fecha_nacimiento;
-            cmd.Parameters.Add("@FECHA_ACTUAL", SqlDbType.DateTime).Value = DateTime.Now;
+            cmd.Parameters.Add("@FECHA_ACTUAL", SqlDbType.DateTime).Value = HoraSistema.get();
 
             var returnParameter = cmd.Parameters.Add("@RESULT", SqlDbType.Int);
             returnParameter.Direction = ParameterDirection.ReturnValue;
@@ -68,7 +69,7 @@ namespace FrbaOfertas.ConectorDB
              cmd.Parameters.Add("@CP", SqlDbType.Int).Value = cliente.direccion.codigoPostal;
              cmd.Parameters.Add("@CIUDAD", SqlDbType.VarChar).Value = cliente.direccion.Ciudad;
              cmd.Parameters.Add("@FECHA_NACIMIENTO", SqlDbType.DateTime).Value = cliente.fecha_nacimiento;
-             cmd.Parameters.Add("@FECHA_ACTUAL", SqlDbType.DateTime).Value = DateTime.Now;
+             cmd.Parameters.Add("@FECHA_ACTUAL", SqlDbType.DateTime).Value = HoraSistema.get();
 
              var returnParameter = cmd.Parameters.Add("@RESULT", SqlDbType.Int);
              returnParameter.Direction = ParameterDirection.ReturnValue;
@@ -159,7 +160,7 @@ namespace FrbaOfertas.ConectorDB
 
              cmd.CommandType = CommandType.StoredProcedure;
 
-             cmd.Parameters.Add("@FECHA", SqlDbType.VarChar).Value = DateTime.Now; ;
+             cmd.Parameters.Add("@FECHA", SqlDbType.VarChar).Value = HoraSistema.get(); ;
              cmd.Parameters.Add("@CLIENTE_ID", SqlDbType.VarChar).Value = clienteID;
              cmd.Parameters.Add("@TIPO_PAGO", SqlDbType.VarChar).Value = tipoPago;
              cmd.Parameters.Add("@MONTO", SqlDbType.VarChar).Value = monto;

@@ -115,24 +115,30 @@ namespace FrbaOfertas.MenuPrincipal
             }
 
 
-            abmCliente.Visible = true; // clavesPermisos.Contains("ABM_CLIENTES");
-            abmProveedor.Visible = true; // clavesPermisos.Contains("ABM_PROVEEDORES");
-            abmRol.Visible = true; // clavesPermisos.Contains("ABM_ROLES");
-            CargaCredito.Visible = true; // clavesPermisos.Contains("CARGAR_CREDITO");
-            facturacion.Visible = true; //clavesPermisos.Contains("FACTURAS");
-            estadisticas.Visible = true; //clavesPermisos.Contains("REPORTES");
+            abmCliente.Visible =  clavesPermisos.Contains("ABM_CLIENTES");
+            abmProveedor.Visible =  clavesPermisos.Contains("ABM_PROVEEDORES");
+            abmRol.Visible =  clavesPermisos.Contains("ABM_ROLES");
+            CargaCredito.Visible =  clavesPermisos.Contains("CARGAR_CREDITO");
+            facturacion.Visible = clavesPermisos.Contains("FACTURAS");
+            estadisticas.Visible = clavesPermisos.Contains("REPORTES");
 
-            Ofertas.Visible = true; //clavesPermisos.Contains("ABM_CLIENTES");
+            Ofertas.Visible = clavesPermisos.Contains("ABM_CLIENTES");
 
-            ComprarOferta.Visible = true; //clavesPermisos.Contains("COMPRAR_OFERTA");
-            crearOfertaProv.Visible = true; //clavesPermisos.Contains("CREAR_OFERTA");
+            ComprarOferta.Visible = clavesPermisos.Contains("COMPRAR_OFERTA");
+            crearOfertaProv.Visible = clavesPermisos.Contains("CREAR_OFERTA");
+            canjearCuponToolStripMenuItem.Visible = clavesPermisos.Contains("CANJEAR_OFERTA");
 
-//              CANJEAR_OFERTA
         }
 
         private void Ofertas_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void canjearCuponToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = new Canje.CanjearOferta();
+            form.Show();
         }
 
     }

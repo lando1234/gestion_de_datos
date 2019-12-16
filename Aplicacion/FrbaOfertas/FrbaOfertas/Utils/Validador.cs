@@ -74,7 +74,7 @@ namespace FrbaOfertas.Utils
 
        static public Boolean FechaFutura(DateTime fechaDelDateTimePicker)
         {
-            return DateTime.Compare(fechaDelDateTimePicker, DateTime.Now) > 0;
+            return DateTime.Compare(fechaDelDateTimePicker, HoraSistema.get()) > 0;
         }
 
         static public void textoDeError(TextBox textbox, string texto)

@@ -39,7 +39,7 @@ namespace FrbaOfertas.CargaDeCredito
                 {
                     Credito credito = new Credito(null,
                         HoraSistema.get(), tipopago.id, cantidad, Session.UserSession.id,
-                        "", DateTime.Now, "");
+                        "", HoraSistema.get(), "");
 
                     ConectorDB.FuncionesCargaCredito.cargaCredito(credito);
                 }

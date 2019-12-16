@@ -38,6 +38,8 @@
             this.txt_codigo_cupon = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.provedorId = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCUPON)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +62,7 @@
             this.dataGridViewCUPON.RowTemplate.Height = 33;
             this.dataGridViewCUPON.Size = new System.Drawing.Size(697, 308);
             this.dataGridViewCUPON.TabIndex = 24;
+            this.dataGridViewCUPON.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCUPON_CellContentClick);
             // 
             // Cupon_Fecha_Vencimiento
             // 
@@ -134,11 +137,29 @@
             this.button2.Text = "Buscar";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // provedorId
+            // 
+            this.provedorId.Location = new System.Drawing.Point(311, 120);
+            this.provedorId.Name = "provedorId";
+            this.provedorId.Size = new System.Drawing.Size(176, 20);
+            this.provedorId.TabIndex = 27;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(241, 123);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "idProveedor";
+            // 
             // CanjearOferta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 420);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.provedorId);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridViewCUPON);
@@ -150,6 +171,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -165,5 +187,7 @@
         private System.Windows.Forms.TextBox txt_codigo_cupon;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox provedorId;
+        private System.Windows.Forms.Label label2;
     }
 }
