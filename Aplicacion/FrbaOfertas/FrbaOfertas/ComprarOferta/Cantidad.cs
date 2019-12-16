@@ -35,7 +35,7 @@ namespace FrbaOfertas.ComprarOferta
               
             ofertaNueva.cantidad = Convert.ToDecimal(cantidad.Value);
            
-            
+           
             decimal codigoCupon = ConectorDB.FuncionesOferta.comprarOferta(ofertaNueva, cliente);
 
 

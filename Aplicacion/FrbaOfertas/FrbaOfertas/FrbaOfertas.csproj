@@ -99,6 +99,12 @@
       <DependentUpon>ListaRoles.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseDeDatos\Conexion.cs" />
+    <Compile Include="Canje\CanjearOferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Canje\CanjearOferta.Designer.cs">
+      <DependentUpon>CanjearOferta.cs</DependentUpon>
+    </Compile>
     <Compile Include="CargaDeCredito\CargaTarjeta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +217,9 @@
     <Compile Include="Utils\ProtocoloLogin.cs" />
     <EmbeddedResource Include="AbmCliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Canje\CanjearOferta.resx">
+      <DependentUpon>CanjearOferta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Facturar\FacturarListaProveedores.resx">
       <DependentUpon>FacturarListaProveedores.cs</DependentUpon>
