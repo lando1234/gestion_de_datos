@@ -235,7 +235,7 @@ namespace FrbaOfertas.ConectorDB
             cmd.Parameters.Add("@FECHA_DESDE", fechaDesde);
             cmd.Parameters.Add("@FECHA_HASTA", fechaHasta);
             cmd.Parameters.Add("@PROVEEDOR_ID",proveedorId);
-            cmd.Parameters.Add("@FECHA_FACTURACION",new DateTime());
+            cmd.Parameters.Add("@FECHA_FACTURACION",DateTime.Now);
             cmd.Parameters.Add("@NUMERO", SqlDbType.BigInt).Direction = ParameterDirection.Output;
             cmd.Parameters.Add("@IMPORTE", SqlDbType.Decimal).Direction = ParameterDirection.Output;
             cmd.CommandType = CommandType.StoredProcedure;
