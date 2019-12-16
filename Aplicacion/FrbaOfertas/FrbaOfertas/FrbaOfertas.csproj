@@ -165,6 +165,7 @@
     </Compile>
     <Compile Include="Modelo\ProveedorValor.cs" />
     <Compile Include="Modelo\Roles\Credito.cs" />
+    <Compile Include="Modelo\Roles\Cupon.cs" />
     <Compile Include="Modelo\Roles\Direccion.cs" />
     <Compile Include="Modelo\Roles\Factura.cs" />
     <Compile Include="Modelo\Roles\Oferta.cs" />
