@@ -198,7 +198,7 @@ namespace FrbaOfertas.ConectorDB
             sql += "FROM NO_SRTA_E_GATOREI.PROVEEDORES P ";
             sql += "INNER JOIN NO_SRTA_E_GATOREI.RUBROS R ON P.RUBRO_ID = R.RUBRO_ID ";
             sql += "INNER JOIN NO_SRTA_E_GATOREI.DIRECCIONES D ON P.DIRECCION_ID = D.DIRECCION_ID ";
-            sql += " WHERE P.BAJA_LOGICA = 0";
+            sql += " WHERE P.BAJA_LOGICA = 1";
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
@@ -286,7 +286,7 @@ namespace FrbaOfertas.ConectorDB
 
 
 
-            string sql = "SELECT PROVEEDOR_ID FROM [NO_SRTA_E_GATOREI].PROVEEDORES WHERE USUARIO_ID = @USER AND BAJA_LOGICA = 0";
+            string sql = "SELECT PROVEEDOR_ID FROM [NO_SRTA_E_GATOREI].PROVEEDORES WHERE USUARIO_ID = @USER AND BAJA_LOGICA = 1";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@USER", Session.UserSession.id);
@@ -299,6 +299,30 @@ namespace FrbaOfertas.ConectorDB
                 return reader.GetInt32(0);
             }
 
+            con.Close();
+            throw new InvalidOperationException();
+        }
+
+        public static String getProveedorRazonSocial(int proveedorID) {
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+
+
+
+
+            string sql = "SELECT RAZON_SOCIAL FROM [NO_SRTA_E_GATOREI].PROVEEDORES WHERE PROVEEDOR_ID = @ID AND BAJA_LOGICA = 0";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@ID", proveedorID);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+
+                return reader.GetString(0);
+            }
             con.Close();
             throw new InvalidOperationException();
         }

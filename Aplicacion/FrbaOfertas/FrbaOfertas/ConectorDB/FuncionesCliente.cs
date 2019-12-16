@@ -83,7 +83,35 @@ namespace FrbaOfertas.ConectorDB
              return result;
          }
 
-         public static List<Cliente> getClientes()
+         public List<Cliente> buscar(string nombre, string apellido, string dni, string mail)
+         {
+             String sql = "SELECT * FROM [NO_SRTA_E_GATOREI].CLIENTES c INNER JOIN [NO_SRTA_E_GATOREI].DIRECCIONES d ON c.DIRECCION_ID = d.DIRECCION_ID ";
+                 sql += "WHERE 1 = 1 ";
+                 if (nombre != null && nombre.Trim() != "")
+                 {
+                     sql += "AND NOMBRE LIKE '%" + nombre + "% ";
+                 }
+                 if (apellido != null && apellido.Trim() != "")
+                 {
+                     sql += "AND APELLIDO LIKE '%" + apellido + "% ";
+                 }
+                 if (dni != null && dni.Trim() != "")
+                 {
+                     sql += "AND DNI = '" + dni +"'" ;
+                 }
+                 if (mail != null && mail.Trim() != "")
+                 {
+                     sql += "AND MAIL LIKE '%" + mail + "% ";
+                 }
+
+                 return getClientes(sql);
+         }
+
+         public static List<Cliente> getClientes() 
+         {
+             return getClientes("SELECT * FROM [NO_SRTA_E_GATOREI].CLIENTES c INNER JOIN [NO_SRTA_E_GATOREI].DIRECCIONES d ON c.DIRECCION_ID = d.DIRECCION_ID ");
+         }
+         public static List<Cliente> getClientes(string sql)
          {
 
              List<Cliente> clientes = new List<Cliente>();
@@ -91,12 +119,6 @@ namespace FrbaOfertas.ConectorDB
 
              SqlConnection con = new SqlConnection(Conexion.getStringConnection());
              con.Open();
-
-
-
-
-             string sql = "SELECT * FROM [NO_SRTA_E_GATOREI].CLIENTES c INNER JOIN [NO_SRTA_E_GATOREI].DIRECCIONES d ON c.DIRECCION_ID = d.DIRECCION_ID ";
-
 
              SqlCommand cmd = new SqlCommand(sql, con);
 
@@ -299,7 +321,7 @@ namespace FrbaOfertas.ConectorDB
 
 
 
-            string sql = "SELECT CLIENTE_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE USUARIO_ID = @USER AND BAJA_LOGICA = 0";
+            string sql = "SELECT CLIENTE_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE USUARIO_ID = @USER AND BAJA_LOGICA = 1";
 
             SqlCommand cmd = new SqlCommand(sql, con);
 
@@ -308,7 +330,7 @@ namespace FrbaOfertas.ConectorDB
 
             SqlDataReader reader = cmd.ExecuteReader();
 
-            if (reader.Read())
+           while(reader.Read())
             {
 
                 return reader.GetInt32(0);
