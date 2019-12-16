@@ -28,10 +28,21 @@ namespace FrbaOfertas.AbmProveedor
         {
             IList<Proveedor> proveedores = FuncionesProveedor.getProveedores();
             //ACA SE AGREGAN LOS CLIENTES AL DATA GRID PARA MOSTRARSE
-            foreach (Proveedor proveedor in proveedores)
+            foreach (Proveedor prov in proveedores)
             {
-                Object[] row = new Object[] { proveedor.id, proveedor.RazonSocial, proveedor.cuit, proveedor.mail, proveedor.telefono, proveedor.direccion.Calle, null, null, null ,
-                    proveedor.direccion.Ciudad, proveedor.direccion.codigoPostal, proveedor.nombreContacto, proveedor.rubro, proveedor.habilitado};
+                Object[] row = new Object[] { 
+                    prov.id,
+                    prov.RazonSocial,
+                    prov.cuit,
+                    prov.mail,
+                    prov.telefono,
+                    prov.direccion.Calle,
+                    prov.direccion.Ciudad,
+                    prov.direccion.codigoPostal,
+                    prov.nombreContacto,
+                    prov.rubro.descripcion,
+                    prov.habilitado
+                   };
                 dataGridView1.Rows.Add(row);
             }
         }

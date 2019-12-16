@@ -80,7 +80,7 @@ namespace FrbaOfertas.MenuPrincipal
 
         private void facturarAProveedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form form = new Facturar.FacturarAProveedor();
+            Form form = new Facturar.FacturarListaProveedores();
             form.Show();
         }
 

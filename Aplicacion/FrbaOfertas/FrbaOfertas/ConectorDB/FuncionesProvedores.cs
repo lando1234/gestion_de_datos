@@ -140,7 +140,7 @@ namespace FrbaOfertas.ConectorDB
             cmd.ExecuteNonQuery();
             con.Close();
         }
-        public static IList<Proveedor> getProveedores()
+        public static List<Proveedor> getProveedores()
         {
             String sql = "SELECT P.[PROVEEDOR_ID],P.[CUIT],P.[RAZON_SOCIAL],P.[NOMBRE_CONTACTO],P.[MAIL],P.[TELEFONO],P.[BAJA_LOGICA],R.*, D.* ";
             sql += "FROM NO_SRTA_E_GATOREI.PROVEEDORES P ";
@@ -153,7 +153,7 @@ namespace FrbaOfertas.ConectorDB
             
             SqlDataReader reader = cmd.ExecuteReader();
 
-            IList<Proveedor> lista = new List<Proveedor>();
+            List<Proveedor> lista = new List<Proveedor>();
 
              while (reader.Read())
             {
@@ -232,8 +232,8 @@ namespace FrbaOfertas.ConectorDB
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
             SqlCommand cmd = new SqlCommand("FACTURAR_PROVEEDOR", con);
-            cmd.Parameters.Add("@FECHA_DESDE",fechaDesde);
-            cmd.Parameters.Add("@FECHA_HASTA",fechaHasta);
+            cmd.Parameters.Add("@FECHA_DESDE", fechaDesde);
+            cmd.Parameters.Add("@FECHA_HASTA", fechaHasta);
             cmd.Parameters.Add("@PROVEEDOR_ID",proveedorId);
             cmd.Parameters.Add("@FECHA_FACTURACION",new DateTime());
             cmd.Parameters.Add("@NUMERO", SqlDbType.BigInt).Direction = ParameterDirection.Output;

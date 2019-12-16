@@ -139,6 +139,18 @@
     <Compile Include="CrearOferta\CrearOfertaProveedor.Designer.cs">
       <DependentUpon>CrearOfertaProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Facturar\FacturarListaProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturar\FacturarListaProveedores.Designer.cs">
+      <DependentUpon>FacturarListaProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facturar\FacturarSeleccionFechas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturar\FacturarSeleccionFechas.Designer.cs">
+      <DependentUpon>FacturarSeleccionFechas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListadoEstadistico\TopFive.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,12 +192,6 @@
     <Compile Include="Excepciones\UnavailableException.cs" />
     <Compile Include="Excepciones\PasswordMismatchExceptions.cs" />
     <Compile Include="Excepciones\NoResultsException.cs" />
-    <Compile Include="Facturar\FacturarAProveedor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Facturar\FacturarAProveedor.Designer.cs">
-      <DependentUpon>FacturarAProveedor.cs</DependentUpon>
-    </Compile>
     <Compile Include="Login\LoginConRegistro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,12 @@
     <Compile Include="Utils\ProtocoloLogin.cs" />
     <EmbeddedResource Include="AbmCliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturar\FacturarListaProveedores.resx">
+      <DependentUpon>FacturarListaProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturar\FacturarSeleccionFechas.resx">
+      <DependentUpon>FacturarSeleccionFechas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoEstadistico\TopFive.resx">
       <DependentUpon>TopFive.cs</DependentUpon>
