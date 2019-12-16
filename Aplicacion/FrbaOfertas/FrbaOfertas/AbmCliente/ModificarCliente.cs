@@ -37,7 +37,7 @@ namespace FrbaOfertas.AbmCliente
                 dateTimePicker.Value,
                 checkBox1.Checked,
                 Session.UserSession.id,
-                new Direccion(clienteAModificar.direccion.id, txt_localidad.Text, txt_calle.Text, null));
+                new Direccion(clienteAModificar.direccion.id, txt_ciudad.Text, txt_calle.Text, Convert.ToDecimal(txt_cpostal.Text)));
 
                 FrbaOfertas.ConectorDB.FuncionesCliente.UpdateCliente(cliente);
 
@@ -65,7 +65,8 @@ namespace FrbaOfertas.AbmCliente
             txt_apellido.Text = clienteAModificar.apellido;
             txt_calle.Text = clienteAModificar.direccion.Calle;
             txt_dni.Text = clienteAModificar.dni.ToString();
-            txt_localidad.Text = clienteAModificar.direccion.Ciudad;
+            txt_ciudad.Text = clienteAModificar.direccion.Ciudad;
+            txt_cpostal.Text = clienteAModificar.direccion.codigoPostal.ToString();
             txt_mail.Text = clienteAModificar.mail;
             txt_tel.Text = clienteAModificar.telefono.ToString();
             dateTimePicker.Value = clienteAModificar.fecha_nacimiento;
@@ -87,12 +88,26 @@ namespace FrbaOfertas.AbmCliente
                 throw new System.ArgumentException("el telefono debe ser númerico", "original");
             }
             else if (Validador.isEmpty(txt_nombre.Text) || Validador.isEmpty(txt_apellido.Text) || Validador.isEmpty(txt_mail.Text) ||
-              Validador.isEmpty(txt_tel.Text) || Validador.isEmpty(txt_localidad.Text) || Validador.isEmpty(txt_calle.Text))
+              Validador.isEmpty(txt_tel.Text) || Validador.isEmpty(txt_ciudad.Text) || Validador.isEmpty(txt_calle.Text))
             {
                 throw new System.ArgumentException("Los campos no deben ir vacios", "original");
             }
 
 
+        }
+
+        private void ModificarCliente_Load_1(object sender, EventArgs e)
+        {
+            txt_nombre.Text = clienteAModificar.nombre;
+            txt_apellido.Text = clienteAModificar.apellido;
+            txt_calle.Text = clienteAModificar.direccion.Calle;
+            txt_dni.Text = clienteAModificar.dni.ToString();
+            txt_ciudad.Text = clienteAModificar.direccion.Ciudad;
+            txt_cpostal.Text = clienteAModificar.direccion.codigoPostal.ToString();
+            txt_mail.Text = clienteAModificar.mail;
+            txt_tel.Text = clienteAModificar.telefono.ToString();
+            dateTimePicker.Value = clienteAModificar.fecha_nacimiento;
+            checkBox1.Checked = Convert.ToBoolean(clienteAModificar.habilitado);
         }
 
         }

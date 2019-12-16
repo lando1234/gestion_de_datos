@@ -283,11 +283,10 @@ namespace FrbaOfertas.ConectorDB
             sql += ",[NOMBRE] = @NOMBRE ";
             sql += ",[APELLIDO] = @APELLIDO ";
             sql += ",[FECHA_NACIMIENTO] = @FECHA_NACIMIENTO ";
-            sql += ",[USUARIO_ID] = @USUARIO_ID ";
-            sql += ",[DIRECCION_ID] = @DIRECCION_ID ";
+           
             sql += ",[MAIL] = @MAIL ";
             sql += ",[TELEFONO] = @TELEFONO ";
-            sql += ",[BAJA_LOGICO] = @BAJA_LOGICO ";
+            
             sql += "WHERE CLIENTE_ID = @ID ";
 
             SqlCommand cmd = new SqlCommand(sql, con);
@@ -296,11 +295,11 @@ namespace FrbaOfertas.ConectorDB
             cmd.Parameters.Add("@NOMBRE", cliente.nombre);
             cmd.Parameters.Add("@APELLIDO", cliente.apellido);
             cmd.Parameters.Add("@FECHA_NACIMIENTO", cliente.fecha_nacimiento);
-            cmd.Parameters.Add("@USUARIO_ID", cliente.usuarioId);
-            cmd.Parameters.Add("@DIRECCION_ID", cliente.direccion);
+            //cmd.Parameters.Add("@USUARIO_ID", cliente.usuarioId);
+            //cmd.Parameters.Add("@DIRECCION_ID", cliente.direccion.id);
             cmd.Parameters.Add("@MAIL", cliente.mail);
             cmd.Parameters.Add("@TELEFONO", cliente.telefono);
-            cmd.Parameters.Add("@BAJA_LOGICO", cliente.habilitado);
+            //cmd.Parameters.Add("@BAJA_LOGICO", cliente.habilitado);
             cmd.Parameters.Add("@ID", cliente.id);
            
 

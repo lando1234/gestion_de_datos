@@ -14,6 +14,7 @@ namespace FrbaOfertas.AbmCliente
 {
     public partial class ListarClientes : Form
     {
+        List<Cliente> clientes;
         public ListarClientes()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace FrbaOfertas.AbmCliente
 
         private void ListarClientes_Load(object sender, EventArgs e)
         {
-            List<Cliente> clientes = FuncionesCliente.getClientes();
+            clientes = FuncionesCliente.getClientes();
             //ACA SE AGREGAN LOS CLIENTES AL DATA GRID PARA MOSTRARSE
             foreach (Cliente cliente in clientes)
             {
@@ -44,6 +45,15 @@ namespace FrbaOfertas.AbmCliente
         private void button3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            int idClienteAModif = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+            Cliente clienteAModifObj = clientes.Find(a => a.id.Equals(idClienteAModif));
+
+            Form modificacion = new ModificarCliente(clienteAModifObj);
+            modificacion.Show();
         }
     }
 }

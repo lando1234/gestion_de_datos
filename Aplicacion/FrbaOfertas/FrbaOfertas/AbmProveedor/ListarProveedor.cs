@@ -14,6 +14,8 @@ namespace FrbaOfertas.AbmProveedor
 {
     public partial class ListarProveedor : Form
     {
+        List<Proveedor> proveedores;
+
         public ListarProveedor()
         {
             InitializeComponent();
@@ -26,7 +28,7 @@ namespace FrbaOfertas.AbmProveedor
 
         private void ListarProveedor_Load(object sender, EventArgs e)
         {
-            IList<Proveedor> proveedores = FuncionesProveedor.getProveedores();
+            proveedores = FuncionesProveedor.getProveedores();
             //ACA SE AGREGAN LOS CLIENTES AL DATA GRID PARA MOSTRARSE
             foreach (Proveedor prov in proveedores)
             {
@@ -49,7 +51,11 @@ namespace FrbaOfertas.AbmProveedor
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            int idClienteAModif = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+            Proveedor clienteAModifObj = this.proveedores.Find(a => a.id.Equals(idClienteAModif));
 
+            Form modificacion = new ModificarProveedor(clienteAModifObj);
+            modificacion.Show();
         }
 
        

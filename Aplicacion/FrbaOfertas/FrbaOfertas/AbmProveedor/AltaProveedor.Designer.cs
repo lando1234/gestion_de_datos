@@ -220,7 +220,6 @@
             this.txt_calle.Name = "txt_calle";
             this.txt_calle.Size = new System.Drawing.Size(284, 20);
             this.txt_calle.TabIndex = 1;
-            this.txt_calle.Text = "calle, piso, depto,  localidad";
             // 
             // label5
             // 

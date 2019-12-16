@@ -16,11 +16,7 @@ namespace FrbaOfertas.AbmProveedor
     {
         private Proveedor proveedorAModificar;
 
-        public ModificarProveedor() {
-            InitializeComponent();
-        }
-
-        ModificarProveedor(Proveedor proveedor)
+        public ModificarProveedor(Proveedor proveedor)
         {
             proveedorAModificar = proveedor;
             InitializeComponent();
@@ -57,7 +53,7 @@ namespace FrbaOfertas.AbmProveedor
                 txt_cuit.Text,
                 txt_mail.Text,
                 Convert.ToDecimal(txt_tel.Text),
-               new Direccion(proveedorAModificar.direccion.id, txt_localidad.Text, txt_calle.Text, Convert.ToDecimal(txt_codpostal)),
+               new Direccion(proveedorAModificar.direccion.id, txt_ciudad.Text, txt_calle.Text, Convert.ToDecimal(txt_codpostal)),
                 new Rubro (null, txt_rubro.Text),
                 txt_nombreContacto.Text,
                 checkBox1.Checked);
