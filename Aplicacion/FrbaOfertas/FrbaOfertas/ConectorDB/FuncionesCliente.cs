@@ -201,9 +201,6 @@ namespace FrbaOfertas.ConectorDB
                    usuarioId = registros.GetInt32(registros.GetOrdinal("USUARIO_ID"));
                }
 
-
-               
-
                cliente = new Cliente(clienteId,
                   registros.GetDecimal(registros.GetOrdinal("DNI")),
                   registros.GetString(registros.GetOrdinal("NOMBRE")),
