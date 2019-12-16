@@ -15,6 +15,13 @@ namespace FrbaOfertas.ConectorDB
     {
         public static void cargaCredito(Credito credito)
         {
+            if (Session.UserSession.isAdmin())
+            {
+                MessageBox.Show("Solo pueden cargar crédito los clientes", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else
+            {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
             SqlCommand cmd = new SqlCommand("CARGAR_CREDITO", con);
@@ -41,10 +48,11 @@ namespace FrbaOfertas.ConectorDB
 
             if (returnValue == -1)
             {
-                MessageBox.Show("Usuario esta bloquead", "USER IS BLOCKED", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario esta bloqueado", "USER IS BLOCKED", MessageBoxButtons.OK, MessageBoxIcon.Error);
                
             }
             con.Close();
+            }
 
         }
 

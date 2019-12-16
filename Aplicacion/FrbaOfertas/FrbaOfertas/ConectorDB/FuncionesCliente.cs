@@ -299,7 +299,7 @@ namespace FrbaOfertas.ConectorDB
 
 
 
-            string sql = "SELECT CLIENTE_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE USUARIO_ID = @USER AND BAJA_LOGICA = 0";
+            string sql = "SELECT CLIENTE_ID FROM [NO_SRTA_E_GATOREI].CLIENTES WHERE USUARIO_ID = @USER AND BAJA_LOGICA = 1";
 
             SqlCommand cmd = new SqlCommand(sql, con);
 
