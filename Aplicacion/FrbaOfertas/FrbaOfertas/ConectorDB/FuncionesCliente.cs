@@ -330,7 +330,7 @@ namespace FrbaOfertas.ConectorDB
 
             SqlDataReader reader = cmd.ExecuteReader();
 
-            if (reader.Read())
+           while(reader.Read())
             {
 
                 return reader.GetInt32(0);

@@ -33,9 +33,13 @@ namespace FrbaOfertas.ComprarOferta
 
             Cliente cliente = ConectorDB.FuncionesCliente.traerCliente(idCliente);
               
-            ofertaNueva.cantidad = (Decimal) cantidad.Value;
+            ofertaNueva.cantidad = Convert.ToDecimal(cantidad.Value);
            
-            ConectorDB.FuncionesOferta.comprarOferta(ofertaNueva, cliente);
+            
+            decimal codigoCupon = ConectorDB.FuncionesOferta.comprarOferta(ofertaNueva, cliente);
+
+
+            MessageBox.Show("CODIGO CUPON: ", codigoCupon.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
     }

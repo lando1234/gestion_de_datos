@@ -302,5 +302,29 @@ namespace FrbaOfertas.ConectorDB
             con.Close();
             throw new InvalidOperationException();
         }
+
+        public static String getProveedorRazonSocial(int proveedorID) {
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+
+
+
+
+            string sql = "SELECT RAZON_SOCIAL FROM [NO_SRTA_E_GATOREI].PROVEEDORES WHERE PROVEEDOR_ID = @ID AND BAJA_LOGICA = 0";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@ID", proveedorID);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+
+                return reader.GetString(0);
+            }
+            con.Close();
+            throw new InvalidOperationException();
+        }
     }
 }
