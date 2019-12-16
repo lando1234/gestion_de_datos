@@ -23,7 +23,7 @@ namespace FrbaOfertas
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new Facturar.FacturarListaProveedores());
+            Application.Run(new LoginConRegistro());
         }
     }
 }

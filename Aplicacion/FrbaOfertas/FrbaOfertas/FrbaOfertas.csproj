@@ -117,12 +117,6 @@
     <Compile Include="CargaDeCredito\RecargarCredito.Designer.cs">
       <DependentUpon>RecargarCredito.cs</DependentUpon>
     </Compile>
-    <Compile Include="ComprarOferta\Cantidad.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ComprarOferta\Cantidad.Designer.cs">
-      <DependentUpon>Cantidad.cs</DependentUpon>
-    </Compile>
     <Compile Include="ConectorDB\FuncionesCargaCredito.cs" />
     <Compile Include="ConectorDB\FuncionesCliente.cs" />
     <Compile Include="ConectorDB\FuncionesConsumoCupones.cs" />
@@ -265,9 +259,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ComprarOferta\CompraDeOferta.resx">
       <DependentUpon>CompraDeOferta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ComprarOferta\Cantidad.resx">
-      <DependentUpon>Cantidad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearOferta\CrearOfertaAdministrativo.resx">
       <DependentUpon>CrearOfertaAdministrativo.cs</DependentUpon>
