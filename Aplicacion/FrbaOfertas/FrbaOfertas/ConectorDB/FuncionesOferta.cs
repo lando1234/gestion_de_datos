@@ -2,6 +2,7 @@
 using FrbaOfertas.Modelo.Roles;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -45,16 +46,40 @@ namespace FrbaOfertas.ConectorDB
 
         }
 
-        public static void comprarOferta(Oferta oferta, Cliente cliente)
+        public static decimal comprarOferta(Oferta oferta, Cliente cliente)
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
             SqlCommand cmd = new SqlCommand("COMPRAR_OFERTA", con);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
             cmd.Parameters.AddWithValue("@CLIENTE_ID", cliente.id);
             cmd.Parameters.AddWithValue("@OFERTA_ID", oferta.id);
-            cmd.Parameters.AddWithValue("@FECHA_OFERTA", Config.configurationsDb.Default.fechaSistema);
+            cmd.Parameters.AddWithValue("@FECHA_COMPRA", Config.configurationsDb.Default.fechaSistema);
+            cmd.Parameters.Add("@CODIGO_CUPON", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+            var returnParameter = cmd.Parameters.Add("@ReturnValue", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+
             cmd.ExecuteNonQuery();
+
+
+            decimal returnValue = (int)returnParameter.Value;
+
+            if (returnValue == 0)
+            {
+                returnValue = Convert.ToDecimal(cmd.Parameters["@CODIGO_CUPON"].Value);
+            }
+
             con.Close();
+            return returnValue;
+
+
+
+          
+
+           
         }
 
         public static List<Oferta> getOfertasNoVencidas()

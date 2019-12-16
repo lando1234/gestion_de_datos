@@ -34,12 +34,12 @@ namespace FrbaOfertas.AbmCliente
             try
             {
                 this.validar();
-                Direccion direccion = new Direccion(null, txt_ciudad.Text, txt_calle.Text, Int16.Parse(txt_cpostal.Text));
-                Cliente cliente = new Cliente(null, int.Parse(txt_dni.Text), txt_nombre.Text, txt_apellido.Text, txt_mail.Text, int.Parse(txt_tel.Text), dateTimePicker.Value, true, null, direccion);
-                ConectorDB.FuncionesCliente.altaCliente(cliente, usuario);
-                if (this.usuario != null) {
+                Direccion direccion = new Direccion(null, txt_ciudad.Text, txt_calle.Text, Convert.ToDecimal(txt_cpostal.Text));
+                Cliente cliente = new Cliente(null, Convert.ToDecimal(txt_dni.Text), txt_nombre.Text, txt_apellido.Text, txt_mail.Text, int.Parse(txt_tel.Text), dateTimePicker.Value, true, null, direccion);
+                ConectorDB.FuncionesCliente.crearCliente(cliente);
+                //if (this.usuario != null) {
                     new LoginConRegistro().Show();
-                } 
+                //} 
             }
             catch (System.ArgumentException ex)
             {
