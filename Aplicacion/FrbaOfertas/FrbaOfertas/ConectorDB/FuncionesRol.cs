@@ -31,7 +31,8 @@ namespace FrbaOfertas.ConectorDB
             reader.Read();
 
             int rolId = (int)reader["ROL_ID"];
-            Rol rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(), !reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA")));
+            Rol rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(), reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA")));
+            rol.permisos.Add(new Permiso((int)reader["PERMISO_ID"], reader["PERMISO_DESC"].ToString(), reader["PERMISO_CLAVE"].ToString()));
 
             while (reader.Read())
             {
@@ -39,7 +40,7 @@ namespace FrbaOfertas.ConectorDB
                 if (nextId != rolId)
                 {
                     lista.Add(rol);
-                    rol = new Rol(nextId, reader["NOMBRE"].ToString(), new List<Permiso>(), !reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA")));
+                    rol = new Rol(nextId, reader["NOMBRE"].ToString(), new List<Permiso>(), reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA")));
                 }
 
                 rol.permisos.Add(new Permiso((int)reader["PERMISO_ID"], reader["PERMISO_DESC"].ToString(), reader["PERMISO_CLAVE"].ToString()));
@@ -95,8 +96,8 @@ namespace FrbaOfertas.ConectorDB
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(), !reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA")));
-
+                rol = new Rol(rolId, reader["NOMBRE"].ToString(), new List<Permiso>(), reader.GetBoolean(reader.GetOrdinal("BAJA_LOGICA")));
+                rol.permisos.Add(new Permiso((int)reader["PERMISO_ID"], reader["PERMISO_DESC"].ToString(), reader["PERMISO_CLAVE"].ToString()));
 
                 while (reader.Read())
                 {
@@ -156,7 +157,7 @@ namespace FrbaOfertas.ConectorDB
         {
             SqlConnection con = new SqlConnection(Conexion.getStringConnection());
             con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE ROLES SET BAJA_LOGICA = 0 WHERE ROL_ID =" + rolID, con);
+            SqlCommand cmd = new SqlCommand("UPDATE ROLES SET BAJA_LOGICA = 1 WHERE ROL_ID =" + rolID, con);
             cmd.ExecuteNonQuery();
             con.Close();
         }

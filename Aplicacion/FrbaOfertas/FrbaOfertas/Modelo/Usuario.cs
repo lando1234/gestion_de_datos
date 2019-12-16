@@ -14,5 +14,10 @@ namespace FrbaOfertas.Modelo
         public string password { get; set; }
         public List<Rol> roles { get; set; }
 
+
+        internal bool isAdmin()
+        {
+            return this.roles.Find(rol => rol.nombre == "ADMINISTRADOR_GENERAL") != null;
+        }
     }
 }

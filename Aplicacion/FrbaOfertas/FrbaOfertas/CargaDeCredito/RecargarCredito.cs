@@ -21,21 +21,44 @@ namespace FrbaOfertas.CargaDeCredito
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            Double cantidad = Convert.ToDouble(cantidadACargar.Value);
-            TipoPago tipopago = (TipoPago) tipoPago.SelectedItem;
-
-            if (tipopago.descripcion.ToLower().Equals("crédito")) {
-                Form alta = new CargaDeCredito.CargaTarjeta(tipopago.id, cantidad);
-                alta.Show();
-            }
-            if (tipopago.descripcion.ToLower().Equals("efectivo"))
+            try
             {
-                Credito credito = new Credito(null,
-                    HoraSistema.get(), tipopago.id, cantidad, Session.UserSession.id,
-                    "", DateTime.Now, "");
 
-                ConectorDB.FuncionesCargaCredito.cargaCredito(credito);
+                this.validar();
+
+                Double cantidad = Convert.ToDouble(cantidadACargar.Value);
+                TipoPago tipopago = (TipoPago)tipoPago.SelectedItem;
+
+
+                if (tipopago.descripcion.ToLower().Equals("crédito"))
+                {
+                    Form alta = new CargaDeCredito.CargaTarjeta(tipopago.id, cantidad);
+                    alta.Show();
+                }
+                if (tipopago.descripcion.ToLower().Equals("efectivo"))
+                {
+                    Credito credito = new Credito(null,
+                        HoraSistema.get(), tipopago.id, cantidad, Session.UserSession.id,
+                        "", DateTime.Now, "");
+
+                    ConectorDB.FuncionesCargaCredito.cargaCredito(credito);
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, ex.ParamName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void validar()
+        {
+            if (cantidadACargar.Value == null || cantidadACargar.Value == 0)
+            {
+                throw new ArgumentException("Debe ingresar un crédito", "original");
+            }
+            if (tipoPago.SelectedItem == null)
+            {
+                throw new ArgumentException("Debe seleccionar un tipo de pago", "original");
             }
         }
 
