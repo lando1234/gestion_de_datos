@@ -2,6 +2,7 @@
 using FrbaOfertas.Modelo.Roles;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -43,7 +44,43 @@ namespace FrbaOfertas.ConectorDB
             return cupones;
         
         }
+
+        public static int consumirCupon(Cupon cupon, int proveedorId){
+
+           
+
+            SqlConnection con = new SqlConnection(Conexion.getStringConnection());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("CONSUMIR_CUPON", con);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@PROVEEDOR_ID", proveedorId);
+            cmd.Parameters.AddWithValue("@FECHA_CONSUMO", cupon.fechaConsumo);
+            cmd.Parameters.AddWithValue("@CODIGO_CUPON",cupon.id);
+            
+            var returnParameter = cmd.Parameters.Add("@ReturnValue", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+
+            cmd.ExecuteNonQuery();
+
+
+            int returnValue = (int)returnParameter.Value;
+
+            
+            con.Close();
+            return returnValue;
         
+
+            
+            
+        }
+
+
+    /*        -1 distinto al que genero el cupon
+                -2 ya fue entregado
+                    3 estavencido
+  */      
         //public static void consumirCupon(Cupon cupon)
         //{
         //    SqlConnection con = new SqlConnection(Conexion.getStringConnection());
